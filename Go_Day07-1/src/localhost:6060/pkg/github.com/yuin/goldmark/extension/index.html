@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>extension - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package extension
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/yuin/goldmark/extension"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package extension is a collection of builtin extensions.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#NewCJK">func NewCJK(opts ...CJKOption) goldmark.Extender</a></dd>
+			
+				
+				<dd><a href="#NewDefinitionDescriptionParser">func NewDefinitionDescriptionParser() parser.BlockParser</a></dd>
+			
+				
+				<dd><a href="#NewDefinitionListHTMLRenderer">func NewDefinitionListHTMLRenderer(opts ...html.Option) renderer.NodeRenderer</a></dd>
+			
+				
+				<dd><a href="#NewDefinitionListParser">func NewDefinitionListParser() parser.BlockParser</a></dd>
+			
+				
+				<dd><a href="#NewFootnote">func NewFootnote(opts ...FootnoteOption) goldmark.Extender</a></dd>
+			
+				
+				<dd><a href="#NewFootnoteASTTransformer">func NewFootnoteASTTransformer() parser.ASTTransformer</a></dd>
+			
+				
+				<dd><a href="#NewFootnoteBlockParser">func NewFootnoteBlockParser() parser.BlockParser</a></dd>
+			
+				
+				<dd><a href="#NewFootnoteHTMLRenderer">func NewFootnoteHTMLRenderer(opts ...FootnoteOption) renderer.NodeRenderer</a></dd>
+			
+				
+				<dd><a href="#NewFootnoteParser">func NewFootnoteParser() parser.InlineParser</a></dd>
+			
+				
+				<dd><a href="#NewLinkify">func NewLinkify(opts ...LinkifyOption) goldmark.Extender</a></dd>
+			
+				
+				<dd><a href="#NewLinkifyParser">func NewLinkifyParser(opts ...LinkifyOption) parser.InlineParser</a></dd>
+			
+				
+				<dd><a href="#NewStrikethroughHTMLRenderer">func NewStrikethroughHTMLRenderer(opts ...html.Option) renderer.NodeRenderer</a></dd>
+			
+				
+				<dd><a href="#NewStrikethroughParser">func NewStrikethroughParser() parser.InlineParser</a></dd>
+			
+				
+				<dd><a href="#NewTable">func NewTable(opts ...TableOption) goldmark.Extender</a></dd>
+			
+				
+				<dd><a href="#NewTableASTTransformer">func NewTableASTTransformer() parser.ASTTransformer</a></dd>
+			
+				
+				<dd><a href="#NewTableHTMLRenderer">func NewTableHTMLRenderer(opts ...TableOption) renderer.NodeRenderer</a></dd>
+			
+				
+				<dd><a href="#NewTableParagraphTransformer">func NewTableParagraphTransformer() parser.ParagraphTransformer</a></dd>
+			
+				
+				<dd><a href="#NewTaskCheckBoxHTMLRenderer">func NewTaskCheckBoxHTMLRenderer(opts ...html.Option) renderer.NodeRenderer</a></dd>
+			
+				
+				<dd><a href="#NewTaskCheckBoxParser">func NewTaskCheckBoxParser() parser.InlineParser</a></dd>
+			
+				
+				<dd><a href="#NewTypographer">func NewTypographer(opts ...TypographerOption) goldmark.Extender</a></dd>
+			
+				
+				<dd><a href="#NewTypographerParser">func NewTypographerParser(opts ...TypographerOption) parser.InlineParser</a></dd>
+			
+			
+				
+				<dd><a href="#CJKOption">type CJKOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithEastAsianLineBreaks">func WithEastAsianLineBreaks(style ...EastAsianLineBreaks) CJKOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithEscapedSpace">func WithEscapedSpace() CJKOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#DefinitionListHTMLRenderer">type DefinitionListHTMLRenderer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionListHTMLRenderer.RegisterFuncs">func (r *DefinitionListHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer)</a></dd>
+				
+			
+				
+				<dd><a href="#EastAsianLineBreaks">type EastAsianLineBreaks</a></dd>
+				
+				
+			
+				
+				<dd><a href="#FootnoteConfig">type FootnoteConfig</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFootnoteConfig">func NewFootnoteConfig() FootnoteConfig</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteConfig.SetOption">func (c *FootnoteConfig) SetOption(name renderer.OptionName, value interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#FootnoteHTMLRenderer">type FootnoteHTMLRenderer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteHTMLRenderer.RegisterFuncs">func (r *FootnoteHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer)</a></dd>
+				
+			
+				
+				<dd><a href="#FootnoteOption">type FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteBacklinkClass">func WithFootnoteBacklinkClass[T []byte | string](a T) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteBacklinkHTML">func WithFootnoteBacklinkHTML[T []byte | string](a T) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteBacklinkTitle">func WithFootnoteBacklinkTitle[T []byte | string](a T) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteHTMLOptions">func WithFootnoteHTMLOptions(opts ...html.Option) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteIDPrefix">func WithFootnoteIDPrefix[T []byte | string](a T) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteIDPrefixFunction">func WithFootnoteIDPrefixFunction(a func(gast.Node) []byte) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteLinkClass">func WithFootnoteLinkClass[T []byte | string](a T) FootnoteOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithFootnoteLinkTitle">func WithFootnoteLinkTitle[T []byte | string](a T) FootnoteOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#LinkifyConfig">type LinkifyConfig</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LinkifyConfig.SetOption">func (c *LinkifyConfig) SetOption(name parser.OptionName, value interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#LinkifyOption">type LinkifyOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithLinkifyAllowedProtocols">func WithLinkifyAllowedProtocols[T []byte | string](value []T) LinkifyOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithLinkifyEmailRegexp">func WithLinkifyEmailRegexp(value *regexp.Regexp) LinkifyOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithLinkifyURLRegexp">func WithLinkifyURLRegexp(value *regexp.Regexp) LinkifyOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithLinkifyWWWRegexp">func WithLinkifyWWWRegexp(value *regexp.Regexp) LinkifyOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#StrikethroughHTMLRenderer">type StrikethroughHTMLRenderer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#StrikethroughHTMLRenderer.RegisterFuncs">func (r *StrikethroughHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer)</a></dd>
+				
+			
+				
+				<dd><a href="#TableCellAlignMethod">type TableCellAlignMethod</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TableConfig">type TableConfig</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTableConfig">func NewTableConfig() TableConfig</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableConfig.SetOption">func (c *TableConfig) SetOption(name renderer.OptionName, value interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#TableHTMLRenderer">type TableHTMLRenderer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableHTMLRenderer.RegisterFuncs">func (r *TableHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer)</a></dd>
+				
+			
+				
+				<dd><a href="#TableOption">type TableOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithTableCellAlignMethod">func WithTableCellAlignMethod(a TableCellAlignMethod) TableOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithTableHTMLOptions">func WithTableHTMLOptions(opts ...html.Option) TableOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TaskCheckBoxHTMLRenderer">type TaskCheckBoxHTMLRenderer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TaskCheckBoxHTMLRenderer.RegisterFuncs">func (r *TaskCheckBoxHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer)</a></dd>
+				
+			
+				
+				<dd><a href="#TypographerConfig">type TypographerConfig</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TypographerConfig.SetOption">func (b *TypographerConfig) SetOption(name parser.OptionName, value interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#TypographerOption">type TypographerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithTypographicSubstitutions">func WithTypographicSubstitutions[T []byte | string](values map[TypographicPunctuation]T) TypographerOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TypographicPunctuation">type TypographicPunctuation</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TypographicSubstitutions">type TypographicSubstitutions</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/yuin/goldmark/extension/cjk.go">cjk.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/definition_list.go">definition_list.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/footnote.go">footnote.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/gfm.go">gfm.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/linkify.go">linkify.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/package.go">package.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/strikethrough.go">strikethrough.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/table.go">table.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/tasklist.go">tasklist.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/typographer.go">typographer.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>CJK is a goldmark extension that provides functionalities for CJK languages.
+
+				<pre>var <span id="CJK">CJK</span> = <a href="#NewCJK">NewCJK</a>(<a href="#WithEastAsianLineBreaks">WithEastAsianLineBreaks</a>(), <a href="#WithEscapedSpace">WithEscapedSpace</a>())</pre>
+			
+				<p>DefinitionDescriptionAttributeFilter defines attribute names which dd elements can have.
+
+				<pre>var <span id="DefinitionDescriptionAttributeFilter">DefinitionDescriptionAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a></pre>
+			
+				<p>DefinitionList is an extension that allow you to use PHP Markdown Extra Definition lists.
+
+				<pre>var <span id="DefinitionList">DefinitionList</span> = &amp;definitionList{}</pre>
+			
+				<p>DefinitionListAttributeFilter defines attribute names which dl elements can have.
+
+				<pre>var <span id="DefinitionListAttributeFilter">DefinitionListAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a></pre>
+			
+				<p>DefinitionTermAttributeFilter defines attribute names which dd elements can have.
+
+				<pre>var <span id="DefinitionTermAttributeFilter">DefinitionTermAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a></pre>
+			
+				<p>Footnote is an extension that allow you to use PHP Markdown Extra Footnotes.
+
+				<pre>var <span id="Footnote">Footnote</span> = &amp;footnote{
+    options: []<a href="#FootnoteOption">FootnoteOption</a>{},
+}</pre>
+			
+				<p>GFM is an extension that provides Github Flavored markdown functionalities.
+
+				<pre>var <span id="GFM">GFM</span> = &amp;gfm{}</pre>
+			
+				<p>Linkify is an extension that allow you to parse text that seems like a URL.
+
+				<pre>var <span id="Linkify">Linkify</span> = &amp;linkify{}</pre>
+			
+				<p>Strikethrough is an extension that allow you to use strikethrough expression like &apos;~~text~~&apos; .
+
+				<pre>var <span id="Strikethrough">Strikethrough</span> = &amp;strikethrough{}</pre>
+			
+				<p>StrikethroughAttributeFilter defines attribute names which dd elements can have.
+
+				<pre>var <span id="StrikethroughAttributeFilter">StrikethroughAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a></pre>
+			
+				<p>Table is an extension that allow you to use GFM tables .
+
+				<pre>var <span id="Table">Table</span> = &amp;table{
+    options: []<a href="#TableOption">TableOption</a>{},
+}</pre>
+			
+				<p>TableAttributeFilter defines attribute names which table elements can have.
+
+				<pre>var <span id="TableAttributeFilter">TableAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a>.<a href="#Extend">Extend</a>(
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;align&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;bgcolor&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;border&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;cellpadding&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;cellspacing&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;frame&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;rules&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;summary&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;width&#34;),
+)</pre>
+			
+				<p>TableHeaderAttributeFilter defines attribute names which &lt;thead&gt; elements can have.
+
+				<pre>var <span id="TableHeaderAttributeFilter">TableHeaderAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a>.<a href="#Extend">Extend</a>(
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;align&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;bgcolor&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;char&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;charoff&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;valign&#34;),
+)</pre>
+			
+				<p>TableRowAttributeFilter defines attribute names which &lt;tr&gt; elements can have.
+
+				<pre>var <span id="TableRowAttributeFilter">TableRowAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a>.<a href="#Extend">Extend</a>(
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;align&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;bgcolor&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;char&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;charoff&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;valign&#34;),
+)</pre>
+			
+				<p>TableTdCellAttributeFilter defines attribute names which table &lt;td&gt; cells can have.
+
+				<pre>var <span id="TableTdCellAttributeFilter">TableTdCellAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a>.<a href="#Extend">Extend</a>(
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;abbr&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;align&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;axis&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;bgcolor&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;char&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;charoff&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;colspan&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;headers&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;height&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;rowspan&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;scope&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;valign&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;width&#34;),
+)</pre>
+			
+				<p>TableThCellAttributeFilter defines attribute names which table &lt;th&gt; cells can have.
+
+				<pre>var <span id="TableThCellAttributeFilter">TableThCellAttributeFilter</span> = <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#GlobalAttributeFilter">GlobalAttributeFilter</a>.<a href="#Extend">Extend</a>(
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;abbr&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;align&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;axis&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;bgcolor&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;char&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;charoff&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;colspan&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;headers&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;height&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;rowspan&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;scope&#34;),
+
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;valign&#34;),
+    []<a href="/pkg/builtin/#byte">byte</a>(&#34;width&#34;),
+)</pre>
+			
+				<p>TaskList is an extension that allow you to use GFM task lists.
+
+				<pre>var <span id="TaskList">TaskList</span> = &amp;taskList{}</pre>
+			
+				<p>Typographer is an extension that replaces punctuations with typographic entities.
+
+				<pre>var <span id="Typographer">Typographer</span> = &amp;typographer{}</pre>
+			
+		
+		
+			
+			
+			<h2 id="NewCJK">func <a href="/src/github.com/yuin/goldmark/extension/cjk.go?s=1715:1763#L45">NewCJK</a>
+				<a class="permalink" href="#NewCJK">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewCJK(opts ...<a href="#CJKOption">CJKOption</a>) <a href="/pkg/github.com/yuin/goldmark/">goldmark</a>.<a href="/pkg/github.com/yuin/goldmark/#Extender">Extender</a></pre>
+			<p>NewCJK returns a new extension with given options.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewDefinitionDescriptionParser">func <a href="/src/github.com/yuin/goldmark/extension/definition_list.go?s=2935:2991#L98">NewDefinitionDescriptionParser</a>
+				<a class="permalink" href="#NewDefinitionDescriptionParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewDefinitionDescriptionParser() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#BlockParser">BlockParser</a></pre>
+			<p>NewDefinitionDescriptionParser return a new parser.BlockParser that
+can parse definition description starts with &apos;:&apos;.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewDefinitionListHTMLRenderer">func <a href="/src/github.com/yuin/goldmark/extension/definition_list.go?s=5210:5287#L173">NewDefinitionListHTMLRenderer</a>
+				<a class="permalink" href="#NewDefinitionListHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewDefinitionListHTMLRenderer(opts ...<a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Option">Option</a>) <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRenderer">NodeRenderer</a></pre>
+			<p>NewDefinitionListHTMLRenderer returns a new DefinitionListHTMLRenderer.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewDefinitionListParser">func <a href="/src/github.com/yuin/goldmark/extension/definition_list.go?s=529:578#L11">NewDefinitionListParser</a>
+				<a class="permalink" href="#NewDefinitionListParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewDefinitionListParser() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#BlockParser">BlockParser</a></pre>
+			<p>NewDefinitionListParser return a new parser.BlockParser that
+can parse PHP Markdown Extra Definition lists.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewFootnote">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=18846:18904#L660">NewFootnote</a>
+				<a class="permalink" href="#NewFootnote">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewFootnote(opts ...<a href="#FootnoteOption">FootnoteOption</a>) <a href="/pkg/github.com/yuin/goldmark/">goldmark</a>.<a href="/pkg/github.com/yuin/goldmark/#Extender">Extender</a></pre>
+			<p>NewFootnote returns a new extension with given options.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewFootnoteASTTransformer">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=5014:5068#L183">NewFootnoteASTTransformer</a>
+				<a class="permalink" href="#NewFootnoteASTTransformer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewFootnoteASTTransformer() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#ASTTransformer">ASTTransformer</a></pre>
+			<p>NewFootnoteASTTransformer returns a new parser.ASTTransformer that
+insert a footnote list to the last of the document.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewFootnoteBlockParser">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=664:712#L18">NewFootnoteBlockParser</a>
+				<a class="permalink" href="#NewFootnoteBlockParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewFootnoteBlockParser() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#BlockParser">BlockParser</a></pre>
+			<p>NewFootnoteBlockParser returns a new parser.BlockParser that can parse
+footnotes of the Markdown(PHP Markdown Extra) text.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewFootnoteHTMLRenderer">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=14012:14086#L500">NewFootnoteHTMLRenderer</a>
+				<a class="permalink" href="#NewFootnoteHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewFootnoteHTMLRenderer(opts ...<a href="#FootnoteOption">FootnoteOption</a>) <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRenderer">NodeRenderer</a></pre>
+			<p>NewFootnoteHTMLRenderer returns a new FootnoteHTMLRenderer.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewFootnoteParser">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=3094:3138#L105">NewFootnoteParser</a>
+				<a class="permalink" href="#NewFootnoteParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewFootnoteParser() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#InlineParser">InlineParser</a></pre>
+			<p>NewFootnoteParser returns a new parser.InlineParser that can parse
+footnote links of the Markdown(PHP Markdown Extra) text.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewLinkify">func <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=7648:7704#L300">NewLinkify</a>
+				<a class="permalink" href="#NewLinkify">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewLinkify(opts ...<a href="#LinkifyOption">LinkifyOption</a>) <a href="/pkg/github.com/yuin/goldmark/">goldmark</a>.<a href="/pkg/github.com/yuin/goldmark/#Extender">Extender</a></pre>
+			<p>NewLinkify creates a new <a href="/github.com/yuin/goldmark#Extender">goldmark.Extender</a> that
+allow you to parse text that seems like a URL.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewLinkifyParser">func <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=3979:4043#L134">NewLinkifyParser</a>
+				<a class="permalink" href="#NewLinkifyParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewLinkifyParser(opts ...<a href="#LinkifyOption">LinkifyOption</a>) <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#InlineParser">InlineParser</a></pre>
+			<p>NewLinkifyParser return a new InlineParser can parse
+text that seems like a URL.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewStrikethroughHTMLRenderer">func <a href="/src/github.com/yuin/goldmark/extension/strikethrough.go?s=1960:2036#L61">NewStrikethroughHTMLRenderer</a>
+				<a class="permalink" href="#NewStrikethroughHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewStrikethroughHTMLRenderer(opts ...<a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Option">Option</a>) <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRenderer">NodeRenderer</a></pre>
+			<p>NewStrikethroughHTMLRenderer returns a new StrikethroughHTMLRenderer.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewStrikethroughParser">func <a href="/src/github.com/yuin/goldmark/extension/strikethrough.go?s=970:1019#L28">NewStrikethroughParser</a>
+				<a class="permalink" href="#NewStrikethroughParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewStrikethroughParser() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#InlineParser">InlineParser</a></pre>
+			<p>NewStrikethroughParser return a new InlineParser that parses
+strikethrough expressions.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTable">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=16410:16462#L536">NewTable</a>
+				<a class="permalink" href="#NewTable">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTable(opts ...<a href="#TableOption">TableOption</a>) <a href="/pkg/github.com/yuin/goldmark/">goldmark</a>.<a href="/pkg/github.com/yuin/goldmark/#Extender">Extender</a></pre>
+			<p>NewTable returns a new extension with given options.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTableASTTransformer">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=7806:7857#L276">NewTableASTTransformer</a>
+				<a class="permalink" href="#NewTableASTTransformer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTableASTTransformer() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#ASTTransformer">ASTTransformer</a></pre>
+			<p>NewTableASTTransformer returns a parser.ASTTransformer for tables.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTableHTMLRenderer">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=9302:9370#L332">NewTableHTMLRenderer</a>
+				<a class="permalink" href="#NewTableHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTableHTMLRenderer(opts ...<a href="#TableOption">TableOption</a>) <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRenderer">NodeRenderer</a></pre>
+			<p>NewTableHTMLRenderer returns a new TableHTMLRenderer.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTableParagraphTransformer">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=3944:4007#L138">NewTableParagraphTransformer</a>
+				<a class="permalink" href="#NewTableParagraphTransformer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTableParagraphTransformer() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#ParagraphTransformer">ParagraphTransformer</a></pre>
+			<p>NewTableParagraphTransformer returns  a new ParagraphTransformer
+that can transform paragraphs into tables.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTaskCheckBoxHTMLRenderer">func <a href="/src/github.com/yuin/goldmark/extension/tasklist.go?s=1826:1901#L62">NewTaskCheckBoxHTMLRenderer</a>
+				<a class="permalink" href="#NewTaskCheckBoxHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTaskCheckBoxHTMLRenderer(opts ...<a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Option">Option</a>) <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRenderer">NodeRenderer</a></pre>
+			<p>NewTaskCheckBoxHTMLRenderer returns a new TaskCheckBoxHTMLRenderer.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTaskCheckBoxParser">func <a href="/src/github.com/yuin/goldmark/extension/tasklist.go?s=642:690#L16">NewTaskCheckBoxParser</a>
+				<a class="permalink" href="#NewTaskCheckBoxParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTaskCheckBoxParser() <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#InlineParser">InlineParser</a></pre>
+			<p>NewTaskCheckBoxParser returns a new  InlineParser that can parse
+checkboxes in list items.
+This parser must take precedence over the parser.LinkParser.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTypographer">func <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=10041:10105#L328">NewTypographer</a>
+				<a class="permalink" href="#NewTypographer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTypographer(opts ...<a href="#TypographerOption">TypographerOption</a>) <a href="/pkg/github.com/yuin/goldmark/">goldmark</a>.<a href="/pkg/github.com/yuin/goldmark/#Extender">Extender</a></pre>
+			<p>NewTypographer returns a new Extender that replaces punctuations with typographic entities.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewTypographerParser">func <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=3846:3918#L140">NewTypographerParser</a>
+				<a class="permalink" href="#NewTypographerParser">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewTypographerParser(opts ...<a href="#TypographerOption">TypographerOption</a>) <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#InlineParser">InlineParser</a></pre>
+			<p>NewTypographerParser return a new InlineParser that parses
+typographer expressions.
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="CJKOption">type <a href="/src/github.com/yuin/goldmark/extension/cjk.go?s=213:238#L1">CJKOption</a>
+				<a class="permalink" href="#CJKOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A CJKOption sets options for CJK support mostly for HTML based renderers.
+
+			<pre>type CJKOption func(*cjk)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithEastAsianLineBreaks">func <a href="/src/github.com/yuin/goldmark/extension/cjk.go?s=996:1064#L19">WithEastAsianLineBreaks</a>
+					<a class="permalink" href="#WithEastAsianLineBreaks">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithEastAsianLineBreaks(style ...<a href="#EastAsianLineBreaks">EastAsianLineBreaks</a>) <a href="#CJKOption">CJKOption</a></pre>
+				<p>WithEastAsianLineBreaks is a functional option that indicates whether softline breaks
+between east asian wide characters should be ignored.
+style defauts to <a href="#EastAsianLineBreaksSimple">EastAsianLineBreaksSimple</a> .
+
+				
+				
+			
+				
+				<h3 id="WithEscapedSpace">func <a href="/src/github.com/yuin/goldmark/extension/cjk.go?s=1339:1372#L30">WithEscapedSpace</a>
+					<a class="permalink" href="#WithEscapedSpace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithEscapedSpace() <a href="#CJKOption">CJKOption</a></pre>
+				<p>WithEscapedSpace is a functional option that indicates that a &apos;\&apos; escaped half-space(0x20) should not be rendered.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="DefinitionListHTMLRenderer">type <a href="/src/github.com/yuin/goldmark/extension/definition_list.go?s=5078:5133#L168">DefinitionListHTMLRenderer</a>
+				<a class="permalink" href="#DefinitionListHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>DefinitionListHTMLRenderer is a renderer.NodeRenderer implementation that
+renders DefinitionList nodes.
+
+			<pre>type DefinitionListHTMLRenderer struct {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Config">Config</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DefinitionListHTMLRenderer.RegisterFuncs">func (*DefinitionListHTMLRenderer) <a href="/src/github.com/yuin/goldmark/extension/definition_list.go?s=5496:5587#L184">RegisterFuncs</a>
+					<a class="permalink" href="#DefinitionListHTMLRenderer.RegisterFuncs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#DefinitionListHTMLRenderer">DefinitionListHTMLRenderer</a>) RegisterFuncs(reg <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRendererFuncRegisterer">NodeRendererFuncRegisterer</a>)</pre>
+				<p>RegisterFuncs implements renderer.NodeRenderer.RegisterFuncs.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EastAsianLineBreaks">type <a href="/src/github.com/yuin/goldmark/extension/cjk.go?s=303:331#L3">EastAsianLineBreaks</a>
+				<a class="permalink" href="#EastAsianLineBreaks">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A EastAsianLineBreaks is a style of east asian line breaks.
+
+			<pre>type EastAsianLineBreaks <a href="/pkg/builtin/#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">//EastAsianLineBreaksNone renders line breaks as it is.</span>
+    <span id="EastAsianLineBreaksNone">EastAsianLineBreaksNone</span> <a href="#EastAsianLineBreaks">EastAsianLineBreaks</a> = <a href="/pkg/builtin/#iota">iota</a>
+    <span class="comment">// EastAsianLineBreaksSimple is a style where soft line breaks are ignored</span>
+    <span class="comment">// if both sides of the break are east asian wide characters.</span>
+    <span id="EastAsianLineBreaksSimple">EastAsianLineBreaksSimple</span>
+    <span class="comment">// EastAsianLineBreaksCSS3Draft is a style where soft line breaks are ignored</span>
+    <span class="comment">// even if only one side of the break is an east asian wide character.</span>
+    <span id="EastAsianLineBreaksCSS3Draft">EastAsianLineBreaksCSS3Draft</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FootnoteConfig">type <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=7361:8013#L269">FootnoteConfig</a>
+				<a class="permalink" href="#FootnoteConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>FootnoteConfig holds configuration values for the footnote extension.
+<p>Link* and Backlink* configurations have some variables:
+Occurrences of “^^” in the string will be replaced by the
+corresponding footnote number in the HTML output.
+Occurrences of “%%” will be replaced by a number for the
+reference (footnotes can have multiple references).
+
+			<pre>type FootnoteConfig struct {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Config">Config</a>
+
+<span id="FootnoteConfig.IDPrefix"></span>    <span class="comment">// IDPrefix is a prefix for the id attributes generated by footnotes.</span>
+    IDPrefix []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// IDPrefix is a function that determines the id attribute for given Node.</span>
+<span id="FootnoteConfig.IDPrefixFunction"></span>    IDPrefixFunction func(<a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>) []<a href="/pkg/builtin/#byte">byte</a>
+
+<span id="FootnoteConfig.LinkTitle"></span>    <span class="comment">// LinkTitle is an optional title attribute for footnote links.</span>
+    LinkTitle []<a href="/pkg/builtin/#byte">byte</a>
+
+<span id="FootnoteConfig.BacklinkTitle"></span>    <span class="comment">// BacklinkTitle is an optional title attribute for footnote backlinks.</span>
+    BacklinkTitle []<a href="/pkg/builtin/#byte">byte</a>
+
+<span id="FootnoteConfig.LinkClass"></span>    <span class="comment">// LinkClass is a class for footnote links.</span>
+    LinkClass []<a href="/pkg/builtin/#byte">byte</a>
+
+<span id="FootnoteConfig.BacklinkClass"></span>    <span class="comment">// BacklinkClass is a class for footnote backlinks.</span>
+    BacklinkClass []<a href="/pkg/builtin/#byte">byte</a>
+
+<span id="FootnoteConfig.BacklinkHTML"></span>    <span class="comment">// BacklinkHTML is an HTML content for footnote backlinks.</span>
+    BacklinkHTML []<a href="/pkg/builtin/#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFootnoteConfig">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=8298:8337#L302">NewFootnoteConfig</a>
+					<a class="permalink" href="#NewFootnoteConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFootnoteConfig() <a href="#FootnoteConfig">FootnoteConfig</a></pre>
+				<p>NewFootnoteConfig returns a new Config with defaults.
+
+				
+				
+			
+
+			
+				
+				<h3 id="FootnoteConfig.SetOption">func (*FootnoteConfig) <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=8640:8719#L314">SetOption</a>
+					<a class="permalink" href="#FootnoteConfig.SetOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#FootnoteConfig">FootnoteConfig</a>) SetOption(name <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#OptionName">OptionName</a>, value interface{})</pre>
+				<p>SetOption implements renderer.SetOptioner.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FootnoteHTMLRenderer">type <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=13895:13947#L495">FootnoteHTMLRenderer</a>
+				<a class="permalink" href="#FootnoteHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>FootnoteHTMLRenderer is a renderer.NodeRenderer implementation that
+renders FootnoteLink nodes.
+
+			<pre>type FootnoteHTMLRenderer struct {
+    <a href="#FootnoteConfig">FootnoteConfig</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FootnoteHTMLRenderer.RegisterFuncs">func (*FootnoteHTMLRenderer) <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=14312:14397#L511">RegisterFuncs</a>
+					<a class="permalink" href="#FootnoteHTMLRenderer.RegisterFuncs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#FootnoteHTMLRenderer">FootnoteHTMLRenderer</a>) RegisterFuncs(reg <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRendererFuncRegisterer">NodeRendererFuncRegisterer</a>)</pre>
+				<p>RegisterFuncs implements renderer.NodeRenderer.RegisterFuncs.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FootnoteOption">type <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=8095:8239#L295">FootnoteOption</a>
+				<a class="permalink" href="#FootnoteOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>FootnoteOption interface is a functional option interface for the extension.
+
+			<pre>type FootnoteOption interface {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#Option">Option</a>
+    <span class="comment">// SetFootnoteOption sets given option to the extension.</span>
+    SetFootnoteOption(*<a href="#FootnoteConfig">FootnoteConfig</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithFootnoteBacklinkClass">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=13131:13200#L470">WithFootnoteBacklinkClass</a>
+					<a class="permalink" href="#WithFootnoteBacklinkClass">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteBacklinkClass[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](a T) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteBacklinkClass is a functional option that is a class for footnote backlinks.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteBacklinkHTML">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=13674:13742#L489">WithFootnoteBacklinkHTML</a>
+					<a class="permalink" href="#WithFootnoteBacklinkHTML">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteBacklinkHTML[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](a T) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteBacklinkHTML is an HTML content for footnote backlinks.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteBacklinkTitle">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=12033:12102#L432">WithFootnoteBacklinkTitle</a>
+					<a class="permalink" href="#WithFootnoteBacklinkTitle">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteBacklinkTitle[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](a T) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteBacklinkTitle is a functional option that is an optional title attribute for footnote backlinks.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteHTMLOptions">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=9729:9793#L356">WithFootnoteHTMLOptions</a>
+					<a class="permalink" href="#WithFootnoteHTMLOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteHTMLOptions(opts ...<a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Option">Option</a>) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteHTMLOptions is functional option that wraps goldmark HTMLRenderer options.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteIDPrefix">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=10271:10335#L375">WithFootnoteIDPrefix</a>
+					<a class="permalink" href="#WithFootnoteIDPrefix">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteIDPrefix[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](a T) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteIDPrefix is a functional option that is a prefix for the id attributes generated by footnotes.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteIDPrefixFunction">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=10895:10969#L394">WithFootnoteIDPrefixFunction</a>
+					<a class="permalink" href="#WithFootnoteIDPrefixFunction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteIDPrefixFunction(a func(<a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>) []<a href="/pkg/builtin/#byte">byte</a>) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteIDPrefixFunction is a functional option that is a prefix for the id attributes generated by footnotes.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteLinkClass">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=12568:12633#L451">WithFootnoteLinkClass</a>
+					<a class="permalink" href="#WithFootnoteLinkClass">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteLinkClass[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](a T) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteLinkClass is a functional option that is a class for footnote links.
+
+				
+				
+			
+				
+				<h3 id="WithFootnoteLinkTitle">func <a href="/src/github.com/yuin/goldmark/extension/footnote.go?s=11450:11515#L413">WithFootnoteLinkTitle</a>
+					<a class="permalink" href="#WithFootnoteLinkTitle">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithFootnoteLinkTitle[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](a T) <a href="#FootnoteOption">FootnoteOption</a></pre>
+				<p>WithFootnoteLinkTitle is a functional option that is an optional title attribute for footnote links.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="LinkifyConfig">type <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=676:831#L10">LinkifyConfig</a>
+				<a class="permalink" href="#LinkifyConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An LinkifyConfig struct is a data structure that holds configuration of the
+Linkify extension.
+
+			<pre>type LinkifyConfig struct {
+<span id="LinkifyConfig.AllowedProtocols"></span>    AllowedProtocols [][]<a href="/pkg/builtin/#byte">byte</a>
+<span id="LinkifyConfig.URLRegexp"></span>    URLRegexp        *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>
+<span id="LinkifyConfig.WWWRegexp"></span>    WWWRegexp        *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>
+<span id="LinkifyConfig.EmailRegexp"></span>    EmailRegexp      *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LinkifyConfig.SetOption">func (*LinkifyConfig) <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=1158:1234#L25">SetOption</a>
+					<a class="permalink" href="#LinkifyConfig.SetOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#LinkifyConfig">LinkifyConfig</a>) SetOption(name <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#OptionName">OptionName</a>, value interface{})</pre>
+				<p>SetOption implements SetOptioner.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LinkifyOption">type <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=1599:1680#L39">LinkifyOption</a>
+				<a class="permalink" href="#LinkifyOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A LinkifyOption interface sets options for the LinkifyOption.
+
+			<pre>type LinkifyOption interface {
+    <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#Option">Option</a>
+    SetLinkifyOption(*<a href="#LinkifyConfig">LinkifyConfig</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithLinkifyAllowedProtocols">func <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=2129:2205#L59">WithLinkifyAllowedProtocols</a>
+					<a class="permalink" href="#WithLinkifyAllowedProtocols">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithLinkifyAllowedProtocols[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](value []T) <a href="#LinkifyOption">LinkifyOption</a></pre>
+				<p>WithLinkifyAllowedProtocols is a functional option that specify allowed
+protocols in autolinks. Each protocol must end with &apos;:&apos; like
+&apos;http:&apos; .
+
+				
+				
+			
+				
+				<h3 id="WithLinkifyEmailRegexp">func <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=3725:3788#L122">WithLinkifyEmailRegexp</a>
+					<a class="permalink" href="#WithLinkifyEmailRegexp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithLinkifyEmailRegexp(value *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>) <a href="#LinkifyOption">LinkifyOption</a></pre>
+				<p>WithLinkifyEmailRegexp is a functional otpion that specify
+a pattern of the email address.
+
+				
+				
+			
+				
+				<h3 id="WithLinkifyURLRegexp">func <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=2707:2768#L81">WithLinkifyURLRegexp</a>
+					<a class="permalink" href="#WithLinkifyURLRegexp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithLinkifyURLRegexp(value *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>) <a href="#LinkifyOption">LinkifyOption</a></pre>
+				<p>WithLinkifyURLRegexp is a functional option that specify
+a pattern of the URL including a protocol.
+
+				
+				
+			
+				
+				<h3 id="WithLinkifyWWWRegexp">func <a href="/src/github.com/yuin/goldmark/extension/linkify.go?s=3235:3296#L102">WithLinkifyWWWRegexp</a>
+					<a class="permalink" href="#WithLinkifyWWWRegexp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithLinkifyWWWRegexp(value *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>) <a href="#LinkifyOption">LinkifyOption</a></pre>
+				<p>WithLinkifyWWWRegexp is a functional option that specify
+a pattern of the URL without a protocol.
+This pattern must start with &apos;www.&apos; .
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="StrikethroughHTMLRenderer">type <a href="/src/github.com/yuin/goldmark/extension/strikethrough.go?s=1831:1885#L56">StrikethroughHTMLRenderer</a>
+				<a class="permalink" href="#StrikethroughHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>StrikethroughHTMLRenderer is a renderer.NodeRenderer implementation that
+renders Strikethrough nodes.
+
+			<pre>type StrikethroughHTMLRenderer struct {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Config">Config</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StrikethroughHTMLRenderer.RegisterFuncs">func (*StrikethroughHTMLRenderer) <a href="/src/github.com/yuin/goldmark/extension/strikethrough.go?s=2244:2334#L72">RegisterFuncs</a>
+					<a class="permalink" href="#StrikethroughHTMLRenderer.RegisterFuncs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#StrikethroughHTMLRenderer">StrikethroughHTMLRenderer</a>) RegisterFuncs(reg <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRendererFuncRegisterer">NodeRendererFuncRegisterer</a>)</pre>
+				<p>RegisterFuncs implements renderer.NodeRenderer.RegisterFuncs.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TableCellAlignMethod">type <a href="/src/github.com/yuin/goldmark/extension/table.go?s=574:603#L17">TableCellAlignMethod</a>
+				<a class="permalink" href="#TableCellAlignMethod">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TableCellAlignMethod indicates how are table cells aligned in HTML format.
+
+			<pre>type TableCellAlignMethod <a href="/pkg/builtin/#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// TableCellAlignDefault renders alignments by default method.</span>
+    <span class="comment">// With XHTML, alignments are rendered as an align attribute.</span>
+    <span class="comment">// With HTML5, alignments are rendered as a style attribute.</span>
+    <span id="TableCellAlignDefault">TableCellAlignDefault</span> <a href="#TableCellAlignMethod">TableCellAlignMethod</a> = <a href="/pkg/builtin/#iota">iota</a>
+
+    <span class="comment">// TableCellAlignAttribute renders alignments as an align attribute.</span>
+    <span id="TableCellAlignAttribute">TableCellAlignAttribute</span>
+
+    <span class="comment">// TableCellAlignStyle renders alignments as a style attribute.</span>
+    <span id="TableCellAlignStyle">TableCellAlignStyle</span>
+
+    <span class="comment">// TableCellAlignNone does not care about alignments.</span>
+    <span class="comment">// If you using classes or other styles, you can add these attributes</span>
+    <span class="comment">// in an ASTTransformer.</span>
+    <span id="TableCellAlignNone">TableCellAlignNone</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TableConfig">type <a href="/src/github.com/yuin/goldmark/extension/table.go?s=1267:1415#L38">TableConfig</a>
+				<a class="permalink" href="#TableConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TableConfig struct holds options for the extension.
+
+			<pre>type TableConfig struct {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Config">Config</a>
+
+<span id="TableConfig.TableCellAlignMethod"></span>    <span class="comment">// TableCellAlignMethod indicates how are table celss aligned.</span>
+    TableCellAlignMethod <a href="#TableCellAlignMethod">TableCellAlignMethod</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTableConfig">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=1682:1715#L53">NewTableConfig</a>
+					<a class="permalink" href="#NewTableConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTableConfig() <a href="#TableConfig">TableConfig</a></pre>
+				<p>NewTableConfig returns a new Config with defaults.
+
+				
+				
+			
+
+			
+				
+				<h3 id="TableConfig.SetOption">func (*TableConfig) <a href="/src/github.com/yuin/goldmark/extension/table.go?s=1880:1956#L61">SetOption</a>
+					<a class="permalink" href="#TableConfig.SetOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#TableConfig">TableConfig</a>) SetOption(name <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#OptionName">OptionName</a>, value interface{})</pre>
+				<p>SetOption implements renderer.SetOptioner.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TableHTMLRenderer">type <a href="/src/github.com/yuin/goldmark/extension/table.go?s=9197:9243#L327">TableHTMLRenderer</a>
+				<a class="permalink" href="#TableHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TableHTMLRenderer is a renderer.NodeRenderer implementation that
+renders Table nodes.
+
+			<pre>type TableHTMLRenderer struct {
+    <a href="#TableConfig">TableConfig</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TableHTMLRenderer.RegisterFuncs">func (*TableHTMLRenderer) <a href="/src/github.com/yuin/goldmark/extension/table.go?s=9581:9663#L343">RegisterFuncs</a>
+					<a class="permalink" href="#TableHTMLRenderer.RegisterFuncs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#TableHTMLRenderer">TableHTMLRenderer</a>) RegisterFuncs(reg <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRendererFuncRegisterer">NodeRendererFuncRegisterer</a>)</pre>
+				<p>RegisterFuncs implements renderer.NodeRenderer.RegisterFuncs.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TableOption">type <a href="/src/github.com/yuin/goldmark/extension/table.go?s=1494:1626#L46">TableOption</a>
+				<a class="permalink" href="#TableOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TableOption interface is a functional option interface for the extension.
+
+			<pre>type TableOption interface {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#Option">Option</a>
+    <span class="comment">// SetTableOption sets given option to the extension.</span>
+    SetTableOption(*<a href="#TableConfig">TableConfig</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithTableCellAlignMethod">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=3154:3219#L110">WithTableCellAlignMethod</a>
+					<a class="permalink" href="#WithTableCellAlignMethod">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTableCellAlignMethod(a <a href="#TableCellAlignMethod">TableCellAlignMethod</a>) <a href="#TableOption">TableOption</a></pre>
+				<p>WithTableCellAlignMethod is a functional option that indicates how are table cells aligned in HTML format.
+
+				
+				
+			
+				
+				<h3 id="WithTableHTMLOptions">func <a href="/src/github.com/yuin/goldmark/extension/table.go?s=2572:2630#L91">WithTableHTMLOptions</a>
+					<a class="permalink" href="#WithTableHTMLOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTableHTMLOptions(opts ...<a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Option">Option</a>) <a href="#TableOption">TableOption</a></pre>
+				<p>WithTableHTMLOptions is functional option that wraps goldmark HTMLRenderer options.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="TaskCheckBoxHTMLRenderer">type <a href="/src/github.com/yuin/goldmark/extension/tasklist.go?s=1700:1753#L57">TaskCheckBoxHTMLRenderer</a>
+				<a class="permalink" href="#TaskCheckBoxHTMLRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TaskCheckBoxHTMLRenderer is a renderer.NodeRenderer implementation that
+renders checkboxes in list items.
+
+			<pre>type TaskCheckBoxHTMLRenderer struct {
+    <a href="/pkg/github.com/yuin/goldmark/renderer/html/">html</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/html/#Config">Config</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TaskCheckBoxHTMLRenderer.RegisterFuncs">func (*TaskCheckBoxHTMLRenderer) <a href="/src/github.com/yuin/goldmark/extension/tasklist.go?s=2108:2197#L73">RegisterFuncs</a>
+					<a class="permalink" href="#TaskCheckBoxHTMLRenderer.RegisterFuncs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="#TaskCheckBoxHTMLRenderer">TaskCheckBoxHTMLRenderer</a>) RegisterFuncs(reg <a href="/pkg/github.com/yuin/goldmark/renderer/">renderer</a>.<a href="/pkg/github.com/yuin/goldmark/renderer/#NodeRendererFuncRegisterer">NodeRendererFuncRegisterer</a>)</pre>
+				<p>RegisterFuncs implements renderer.NodeRenderer.RegisterFuncs.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypographerConfig">type <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=1291:1348#L55">TypographerConfig</a>
+				<a class="permalink" href="#TypographerConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An TypographerConfig struct is a data structure that holds configuration of the
+Typographer extension.
+
+			<pre>type TypographerConfig struct {
+<span id="TypographerConfig.Substitutions"></span>    Substitutions [][]<a href="/pkg/builtin/#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TypographerConfig.SetOption">func (*TypographerConfig) <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=1995:2075#L76">SetOption</a>
+					<a class="permalink" href="#TypographerConfig.SetOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#TypographerConfig">TypographerConfig</a>) SetOption(name <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#OptionName">OptionName</a>, value interface{})</pre>
+				<p>SetOption implements SetOptioner.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypographerOption">type <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=2244:2337#L84">TypographerOption</a>
+				<a class="permalink" href="#TypographerOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TypographerOption interface sets options for the TypographerParser.
+
+			<pre>type TypographerOption interface {
+    <a href="/pkg/github.com/yuin/goldmark/parser/">parser</a>.<a href="/pkg/github.com/yuin/goldmark/parser/#Option">Option</a>
+    SetTypographerOption(*<a href="#TypographerConfig">TypographerConfig</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithTypographicSubstitutions">func <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=2986:3093#L108">WithTypographicSubstitutions</a>
+					<a class="permalink" href="#WithTypographicSubstitutions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTypographicSubstitutions[T []<a href="/pkg/builtin/#byte">byte</a> | <a href="/pkg/builtin/#string">string</a>](values map[<a href="#TypographicPunctuation">TypographicPunctuation</a>]T) <a href="#TypographerOption">TypographerOption</a></pre>
+				<p>WithTypographicSubstitutions is a functional otpion that specify replacement text
+for punctuations.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="TypographicPunctuation">type <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=687:718#L26">TypographicPunctuation</a>
+				<a class="permalink" href="#TypographicPunctuation">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TypographicPunctuation is a key of the punctuations that can be replaced with
+typographic entities.
+
+			<pre>type TypographicPunctuation <a href="/pkg/builtin/#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// LeftSingleQuote is &#39; .</span>
+    <span id="LeftSingleQuote">LeftSingleQuote</span> <a href="#TypographicPunctuation">TypographicPunctuation</a> = <a href="/pkg/builtin/#iota">iota</a> + 1
+    <span class="comment">// RightSingleQuote is &#39; .</span>
+    <span id="RightSingleQuote">RightSingleQuote</span>
+    <span class="comment">// LeftDoubleQuote is &#34; .</span>
+    <span id="LeftDoubleQuote">LeftDoubleQuote</span>
+    <span class="comment">// RightDoubleQuote is &#34; .</span>
+    <span id="RightDoubleQuote">RightDoubleQuote</span>
+    <span class="comment">// EnDash is -- .</span>
+    <span id="EnDash">EnDash</span>
+    <span class="comment">// EmDash is --- .</span>
+    <span id="EmDash">EmDash</span>
+    <span class="comment">// Ellipsis is ... .</span>
+    <span id="Ellipsis">Ellipsis</span>
+    <span class="comment">// LeftAngleQuote is &lt;&lt; .</span>
+    <span id="LeftAngleQuote">LeftAngleQuote</span>
+    <span class="comment">// RightAngleQuote is &gt;&gt; .</span>
+    <span id="RightAngleQuote">RightAngleQuote</span>
+    <span class="comment">// Apostrophe is &#39; .</span>
+    <span id="Apostrophe">Apostrophe</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TypographicSubstitutions">type <a href="/src/github.com/yuin/goldmark/extension/typographer.go?s=2511:2574#L92">TypographicSubstitutions</a>
+				<a class="permalink" href="#TypographicSubstitutions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>TypographicSubstitutions is a list of the substitutions for the Typographer extension.
+
+			<pre>type TypographicSubstitutions map[<a href="#TypographicPunctuation">TypographicPunctuation</a>][]<a href="/pkg/builtin/#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="ast/">ast</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package ast defines AST nodes that represents extension&#39;s elements
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

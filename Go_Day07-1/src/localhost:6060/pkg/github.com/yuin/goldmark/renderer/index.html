@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>renderer - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package renderer
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/yuin/goldmark/renderer"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package renderer renders the given AST to certain formats.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#Config">type Config</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewConfig">func NewConfig() *Config</a></dd>
+				
+				
+			
+				
+				<dd><a href="#NodeRenderer">type NodeRenderer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#NodeRendererFunc">type NodeRendererFunc</a></dd>
+				
+				
+			
+				
+				<dd><a href="#NodeRendererFuncRegisterer">type NodeRendererFuncRegisterer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithNodeRenderers">func WithNodeRenderers(ps ...util.PrioritizedValue) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithOption">func WithOption(name OptionName, value interface{}) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OptionName">type OptionName</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Renderer">type Renderer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewRenderer">func NewRenderer(options ...Option) Renderer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#SetOptioner">type SetOptioner</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/yuin/goldmark/renderer/renderer.go">renderer.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Config">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=262:363#L4">Config</a>
+				<a class="permalink" href="#Config">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Config struct is a data structure that holds configuration of the Renderer.
+
+			<pre>type Config struct {
+<span id="Config.Options"></span>    Options       map[<a href="#OptionName">OptionName</a>]interface{}
+<span id="Config.NodeRenderers"></span>    NodeRenderers <a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedSlice">PrioritizedSlice</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewConfig">func <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=400:424#L10">NewConfig</a>
+					<a class="permalink" href="#NewConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewConfig() *<a href="#Config">Config</a></pre>
+				<p>NewConfig returns a new Config.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="NodeRenderer">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=1943:2100#L66">NodeRenderer</a>
+				<a class="permalink" href="#NodeRenderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A NodeRenderer interface offers NodeRendererFuncs.
+
+			<pre>type NodeRenderer interface {
+    <span class="comment">// RendererFuncs registers NodeRendererFuncs to given NodeRendererFuncRegisterer.</span>
+    RegisterFuncs(<a href="#NodeRendererFuncRegisterer">NodeRendererFuncRegisterer</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="NodeRendererFunc">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=1772:1887#L63">NodeRendererFunc</a>
+				<a class="permalink" href="#NodeRendererFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>NodeRendererFunc is a function that renders a given node.
+
+			<pre>type NodeRendererFunc func(writer <a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#BufWriter">BufWriter</a>, source []<a href="/pkg/builtin/#byte">byte</a>, n <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, entering <a href="/pkg/builtin/#bool">bool</a>) (<a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#WalkStatus">WalkStatus</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="NodeRendererFuncRegisterer">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=2183:2332#L72">NodeRendererFuncRegisterer</a>
+				<a class="permalink" href="#NodeRendererFuncRegisterer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A NodeRendererFuncRegisterer registers given NodeRendererFunc to this object.
+
+			<pre>type NodeRendererFuncRegisterer interface {
+    <span class="comment">// Register registers given NodeRendererFunc to this object.</span>
+    Register(<a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a>, <a href="#NodeRendererFunc">NodeRendererFunc</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Option">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=674:719#L21">Option</a>
+				<a class="permalink" href="#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An Option interface is a functional option type for the Renderer.
+
+			<pre>type Option interface {
+    SetConfig(*<a href="#Config">Config</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithNodeRenderers">func <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=996:1054#L35">WithNodeRenderers</a>
+					<a class="permalink" href="#WithNodeRenderers">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithNodeRenderers(ps ...<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a>) <a href="#Option">Option</a></pre>
+				<p>WithNodeRenderers is a functional option that allow you to add
+NodeRenderers to the renderer.
+
+				
+				
+			
+				
+				<h3 id="WithOption">func <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=1329:1387#L50">WithOption</a>
+					<a class="permalink" href="#WithOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithOption(name <a href="#OptionName">OptionName</a>, value interface{}) <a href="#Option">Option</a></pre>
+				<p>WithOption is a functional option that allow you to set
+an arbitrary option to the parser.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="OptionName">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=581:603#L18">OptionName</a>
+				<a class="permalink" href="#OptionName">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An OptionName is a name of the option.
+
+			<pre>type OptionName <a href="/pkg/builtin/#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Renderer">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=2421:2577#L79">Renderer</a>
+				<a class="permalink" href="#Renderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Renderer interface renders given AST node to given
+writer with given Renderer.
+
+			<pre>type Renderer interface {
+    Render(w <a href="/pkg/io/">io</a>.<a href="/pkg/io/#Writer">Writer</a>, source []<a href="/pkg/builtin/#byte">byte</a>, n <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>) <a href="/pkg/builtin/#error">error</a>
+
+    <span class="comment">// AddOptions adds given option to this renderer.</span>
+    AddOptions(...<a href="#Option">Option</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewRenderer">func <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=2897:2941#L96">NewRenderer</a>
+					<a class="permalink" href="#NewRenderer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRenderer(options ...<a href="#Option">Option</a>) <a href="#Renderer">Renderer</a></pre>
+				<p>NewRenderer returns a new Renderer with given options.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="SetOptioner">type <a href="/src/github.com/yuin/goldmark/renderer/renderer.go?s=1486:1709#L55">SetOptioner</a>
+				<a class="permalink" href="#SetOptioner">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A SetOptioner interface sets given option to the object.
+
+			<pre>type SetOptioner interface {
+    <span class="comment">// SetOption sets given option to the object.</span>
+    <span class="comment">// Unacceptable options may be passed.</span>
+    <span class="comment">// Thus implementations must ignore unacceptable options.</span>
+    SetOption(name <a href="#OptionName">OptionName</a>, value interface{})
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="html/">html</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package html implements renderer that outputs HTMLs.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

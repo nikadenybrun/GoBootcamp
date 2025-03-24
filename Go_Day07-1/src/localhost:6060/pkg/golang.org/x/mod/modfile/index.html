@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>modfile - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package modfile
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/modfile"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package modfile implements a parser and formatter for go.mod files.
+<p>The go.mod syntax is described in
+<a href="https://pkg.go.dev/cmd/go/#hdr-The_go_mod_file">https://pkg.go.dev/cmd/go/#hdr-The_go_mod_file</a>.
+<p>The <a href="#Parse">Parse</a> and <a href="#ParseLax">ParseLax</a> functions both parse a go.mod file and return an
+abstract syntax tree. ParseLax ignores unknown statements and may be used to
+parse go.mod files that may have been developed with newer versions of Go.
+<p>The <a href="#File">File</a> struct returned by Parse and ParseLax represent an abstract
+go.mod file. File has several methods like <a href="#File.AddNewRequire">File.AddNewRequire</a> and
+<a href="#File.DropReplace">File.DropReplace</a> that can be used to programmatically edit a file.
+<p>The <a href="#Format">Format</a> function formats a File back to a byte slice which can be
+written to a file.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#AutoQuote">func AutoQuote(s string) string</a></dd>
+			
+				
+				<dd><a href="#Format">func Format(f *FileSyntax) []byte</a></dd>
+			
+				
+				<dd><a href="#IsDirectoryPath">func IsDirectoryPath(ns string) bool</a></dd>
+			
+				
+				<dd><a href="#ModulePath">func ModulePath(mod []byte) string</a></dd>
+			
+				
+				<dd><a href="#MustQuote">func MustQuote(s string) bool</a></dd>
+			
+			
+				
+				<dd><a href="#Comment">type Comment</a></dd>
+				
+				
+			
+				
+				<dd><a href="#CommentBlock">type CommentBlock</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CommentBlock.Span">func (x *CommentBlock) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="#Comments">type Comments</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Comments.Comment">func (c *Comments) Comment() *Comments</a></dd>
+				
+			
+				
+				<dd><a href="#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Error.Error">func (e *Error) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Error.Unwrap">func (e *Error) Unwrap() error</a></dd>
+				
+			
+				
+				<dd><a href="#ErrorList">type ErrorList</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ErrorList.Error">func (e ErrorList) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#Exclude">type Exclude</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Expr">type Expr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#File">type File</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Parse">func Parse(file string, data []byte, fix VersionFixer) (*File, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ParseLax">func ParseLax(file string, data []byte, fix VersionFixer) (*File, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddComment">func (f *File) AddComment(text string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddExclude">func (f *File) AddExclude(path, vers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddGoStmt">func (f *File) AddGoStmt(version string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddGodebug">func (f *File) AddGodebug(key, value string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddModuleStmt">func (f *File) AddModuleStmt(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddNewRequire">func (f *File) AddNewRequire(path, vers string, indirect bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddReplace">func (f *File) AddReplace(oldPath, oldVers, newPath, newVers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddRequire">func (f *File) AddRequire(path, vers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddRetract">func (f *File) AddRetract(vi VersionInterval, rationale string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddTool">func (f *File) AddTool(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.AddToolchainStmt">func (f *File) AddToolchainStmt(name string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.Cleanup">func (f *File) Cleanup()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropExclude">func (f *File) DropExclude(path, vers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropGoStmt">func (f *File) DropGoStmt()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropGodebug">func (f *File) DropGodebug(key string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropReplace">func (f *File) DropReplace(oldPath, oldVers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropRequire">func (f *File) DropRequire(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropRetract">func (f *File) DropRetract(vi VersionInterval) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropTool">func (f *File) DropTool(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.DropToolchainStmt">func (f *File) DropToolchainStmt()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.Format">func (f *File) Format() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.SetRequire">func (f *File) SetRequire(req []*Require)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.SetRequireSeparateIndirect">func (f *File) SetRequireSeparateIndirect(req []*Require)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#File.SortBlocks">func (f *File) SortBlocks()</a></dd>
+				
+			
+				
+				<dd><a href="#FileSyntax">type FileSyntax</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FileSyntax.Cleanup">func (x *FileSyntax) Cleanup()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FileSyntax.Span">func (x *FileSyntax) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="#Go">type Go</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Godebug">type Godebug</a></dd>
+				
+				
+			
+				
+				<dd><a href="#LParen">type LParen</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LParen.Span">func (x *LParen) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="#Line">type Line</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Line.Span">func (x *Line) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="#LineBlock">type LineBlock</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LineBlock.Span">func (x *LineBlock) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="#Module">type Module</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Position">type Position</a></dd>
+				
+				
+			
+				
+				<dd><a href="#RParen">type RParen</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RParen.Span">func (x *RParen) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="#Replace">type Replace</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Require">type Require</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Retract">type Retract</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Tool">type Tool</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Toolchain">type Toolchain</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Use">type Use</a></dd>
+				
+				
+			
+				
+				<dd><a href="#VersionFixer">type VersionFixer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#VersionInterval">type VersionInterval</a></dd>
+				
+				
+			
+				
+				<dd><a href="#WorkFile">type WorkFile</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ParseWork">func ParseWork(file string, data []byte, fix VersionFixer) (*WorkFile, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.AddGoStmt">func (f *WorkFile) AddGoStmt(version string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.AddGodebug">func (f *WorkFile) AddGodebug(key, value string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.AddNewUse">func (f *WorkFile) AddNewUse(diskPath, modulePath string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.AddReplace">func (f *WorkFile) AddReplace(oldPath, oldVers, newPath, newVers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.AddToolchainStmt">func (f *WorkFile) AddToolchainStmt(name string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.AddUse">func (f *WorkFile) AddUse(diskPath, modulePath string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.Cleanup">func (f *WorkFile) Cleanup()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.DropGoStmt">func (f *WorkFile) DropGoStmt()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.DropGodebug">func (f *WorkFile) DropGodebug(key string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.DropReplace">func (f *WorkFile) DropReplace(oldPath, oldVers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.DropToolchainStmt">func (f *WorkFile) DropToolchainStmt()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.DropUse">func (f *WorkFile) DropUse(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.SetUse">func (f *WorkFile) SetUse(dirs []*Use)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WorkFile.SortBlocks">func (f *WorkFile) SortBlocks()</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/golang.org/x/mod/modfile/print.go">print.go</a>
+			
+				<a href="/src/golang.org/x/mod/modfile/read.go">read.go</a>
+			
+				<a href="/src/golang.org/x/mod/modfile/rule.go">rule.go</a>
+			
+				<a href="/src/golang.org/x/mod/modfile/work.go">work.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var <span id="GoVersionRE">GoVersionRE</span> = <a href="/pkg/golang.org/x/mod/internal/lazyregexp/">lazyregexp</a>.<a href="/pkg/golang.org/x/mod/internal/lazyregexp/#New">New</a>(`^([1-9][0-9]*)\.(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))?([a-z]+[0-9]+)?$`)</pre>
+			
+				<p>Toolchains must be named beginning with `go1`,
+like &quot;go1.20.3&quot; or &quot;go1.20.3-gccgo&quot;. As a special case, &quot;default&quot; is also permitted.
+Note that this regexp is a much looser condition than go/version.IsValid,
+for forward compatibility.
+(This code has to be work to identify new toolchains even if we tweak the syntax in the future.)
+
+				<pre>var <span id="ToolchainRE">ToolchainRE</span> = <a href="/pkg/golang.org/x/mod/internal/lazyregexp/">lazyregexp</a>.<a href="/pkg/golang.org/x/mod/internal/lazyregexp/#New">New</a>(`^default$|^go1($|\.)`)</pre>
+			
+		
+		
+			
+			
+			<h2 id="AutoQuote">func <a href="/src/golang.org/x/mod/modfile/rule.go?s=20336:20367#L772">AutoQuote</a>
+				<a class="permalink" href="#AutoQuote">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AutoQuote(s <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>AutoQuote returns s or, if quoting is required for s to appear in a go.mod,
+the quotation of s.
+
+			
+			
+
+		
+			
+			
+			<h2 id="Format">func <a href="/src/golang.org/x/mod/modfile/print.go?s=319:352#L6">Format</a>
+				<a class="permalink" href="#Format">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Format(f *<a href="#FileSyntax">FileSyntax</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>Format returns a go.mod file as a byte slice, formatted in standard style.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsDirectoryPath">func <a href="/src/golang.org/x/mod/modfile/rule.go?s=19304:19340#L739">IsDirectoryPath</a>
+				<a class="permalink" href="#IsDirectoryPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsDirectoryPath(ns <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsDirectoryPath reports whether the given path should be interpreted as a directory path.
+Just like on the go command line, relative paths starting with a &apos;.&apos; or &apos;..&apos; path component
+and rooted paths are directory paths; the rest are module paths.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ModulePath">func <a href="/src/golang.org/x/mod/modfile/read.go?s=23051:23085#L917">ModulePath</a>
+				<a class="permalink" href="#ModulePath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ModulePath(mod []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>ModulePath returns the module path from the gomod file text.
+If it cannot find a module path, it returns an empty string.
+It is tolerant of unrelated problems in the go.mod file.
+
+			
+			
+
+		
+			
+			
+			<h2 id="MustQuote">func <a href="/src/golang.org/x/mod/modfile/rule.go?s=19895:19924#L750">MustQuote</a>
+				<a class="permalink" href="#MustQuote">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MustQuote(s <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>MustQuote reports whether s must be quoted in order to appear as
+a single token in a go.mod line.
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Comment">type <a href="/src/golang.org/x/mod/modfile/read.go?s=1303:1444#L41">Comment</a>
+				<a class="permalink" href="#Comment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Comment represents a single // comment.
+
+			<pre>type Comment struct {
+<span id="Comment.Start"></span>    Start  <a href="#Position">Position</a>
+<span id="Comment.Token"></span>    Token  <a href="/pkg/builtin/#string">string</a> <span class="comment">// without trailing newline</span>
+<span id="Comment.Suffix"></span>    Suffix <a href="/pkg/builtin/#bool">bool</a>   <span class="comment">// an end of line (not whole line) comment</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CommentBlock">type <a href="/src/golang.org/x/mod/modfile/read.go?s=6761:6815#L251">CommentBlock</a>
+				<a class="permalink" href="#CommentBlock">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A CommentBlock represents a top-level block of comments separate
+from any rule.
+
+			<pre>type CommentBlock struct {
+    <a href="#Comments">Comments</a>
+<span id="CommentBlock.Start"></span>    Start <a href="#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CommentBlock.Span">func (*CommentBlock) <a href="/src/golang.org/x/mod/modfile/read.go?s=6817:6868#L256">Span</a>
+					<a class="permalink" href="#CommentBlock.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#CommentBlock">CommentBlock</a>) Span() (start, end <a href="#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Comments">type <a href="/src/golang.org/x/mod/modfile/read.go?s=1511:1779#L48">Comments</a>
+				<a class="permalink" href="#Comments">&#xb6;</a>
+				
+				
+			</h2>
+			<p>Comments collects the comments associated with an expression.
+
+			<pre>type Comments struct {
+<span id="Comments.Before"></span>    Before []<a href="#Comment">Comment</a> <span class="comment">// whole-line comments before this expression</span>
+<span id="Comments.Suffix"></span>    Suffix []<a href="#Comment">Comment</a> <span class="comment">// end-of-line comments after this expression</span>
+
+    <span class="comment">// For top-level expressions only, After lists whole-line</span>
+    <span class="comment">// comments following the expression.</span>
+<span id="Comments.After"></span>    After []<a href="#Comment">Comment</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Comments.Comment">func (*Comments) <a href="/src/golang.org/x/mod/modfile/read.go?s=2011:2049#L61">Comment</a>
+					<a class="permalink" href="#Comments.Comment">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Comments">Comments</a>) Comment() *<a href="#Comments">Comments</a></pre>
+				<p>Comment returns the receiver. This isn&apos;t useful by itself, but
+a <a href="#Comments">Comments</a> struct is embedded into all the expression
+implementation types, and this gives each of those a Comment
+method to satisfy the Expr interface.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Error">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=23864:23971#L893">Error</a>
+				<a class="permalink" href="#Error">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Error struct {
+<span id="Error.Filename"></span>    Filename <a href="/pkg/builtin/#string">string</a>
+<span id="Error.Pos"></span>    Pos      <a href="#Position">Position</a>
+<span id="Error.Verb"></span>    Verb     <a href="/pkg/builtin/#string">string</a>
+<span id="Error.ModPath"></span>    ModPath  <a href="/pkg/builtin/#string">string</a>
+<span id="Error.Err"></span>    Err      <a href="/pkg/builtin/#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (*Error) <a href="/src/golang.org/x/mod/modfile/rule.go?s=23973:24003#L901">Error</a>
+					<a class="permalink" href="#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="#Error">Error</a>) Error() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Error.Unwrap">func (*Error) <a href="/src/golang.org/x/mod/modfile/rule.go?s=24611:24641#L923">Unwrap</a>
+					<a class="permalink" href="#Error.Unwrap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="#Error">Error</a>) Unwrap() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrorList">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=23675:23697#L883">ErrorList</a>
+				<a class="permalink" href="#ErrorList">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ErrorList []<a href="#Error">Error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrorList.Error">func (ErrorList) <a href="/src/golang.org/x/mod/modfile/rule.go?s=23699:23732#L885">Error</a>
+					<a class="permalink" href="#ErrorList.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="#ErrorList">ErrorList</a>) Error() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Exclude">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1865:1925#L68">Exclude</a>
+				<a class="permalink" href="#Exclude">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An Exclude is a single exclude statement.
+
+			<pre>type Exclude struct {
+<span id="Exclude.Mod"></span>    Mod    <a href="/pkg/golang.org/x/mod/module/">module</a>.<a href="/pkg/golang.org/x/mod/module/#Version">Version</a>
+<span id="Exclude.Syntax"></span>    Syntax *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Expr">type <a href="/src/golang.org/x/mod/modfile/read.go?s=893:1256#L29">Expr</a>
+				<a class="permalink" href="#Expr">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An Expr represents an input element.
+
+			<pre>type Expr interface {
+    <span class="comment">// Span returns the start and end position of the expression,</span>
+    <span class="comment">// excluding leading or trailing comments.</span>
+    Span() (start, end <a href="#Position">Position</a>)
+
+    <span class="comment">// Comment returns the comments attached to the expression.</span>
+    <span class="comment">// This method would normally be named &#39;Comments&#39; but that</span>
+    <span class="comment">// would interfere with embedding a type of the same name.</span>
+    Comment() *<a href="#Comments">Comments</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="File">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1140:1366#L27">File</a>
+				<a class="permalink" href="#File">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A File is the parsed, interpreted form of a go.mod file.
+
+			<pre>type File struct {
+<span id="File.Module"></span>    Module    *<a href="#Module">Module</a>
+<span id="File.Go"></span>    Go        *<a href="#Go">Go</a>
+<span id="File.Toolchain"></span>    Toolchain *<a href="#Toolchain">Toolchain</a>
+<span id="File.Godebug"></span>    Godebug   []*<a href="#Godebug">Godebug</a>
+<span id="File.Require"></span>    Require   []*<a href="#Require">Require</a>
+<span id="File.Exclude"></span>    Exclude   []*<a href="#Exclude">Exclude</a>
+<span id="File.Replace"></span>    Replace   []*<a href="#Replace">Replace</a>
+<span id="File.Retract"></span>    Retract   []*<a href="#Retract">Retract</a>
+<span id="File.Tool"></span>    Tool      []*<a href="#Tool">Tool</a>
+
+<span id="File.Syntax"></span>    Syntax *<a href="#FileSyntax">FileSyntax</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Parse">func <a href="/src/golang.org/x/mod/modfile/rule.go?s=6123:6192#L236">Parse</a>
+					<a class="permalink" href="#Parse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Parse(file <a href="/pkg/builtin/#string">string</a>, data []<a href="/pkg/builtin/#byte">byte</a>, fix <a href="#VersionFixer">VersionFixer</a>) (*<a href="#File">File</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>Parse parses and returns a go.mod file.
+<p>file is the name of the file, used in positions and errors.
+<p>data is the content of the file.
+<p>fix is an optional function that canonicalizes module versions.
+If fix is nil, all module versions must be canonical (<a href="/golang.org/x/mod/module#CanonicalVersion">module.CanonicalVersion</a>
+must return the same string).
+
+				
+				
+			
+				
+				<h3 id="ParseLax">func <a href="/src/golang.org/x/mod/modfile/rule.go?s=6643:6715#L247">ParseLax</a>
+					<a class="permalink" href="#ParseLax">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseLax(file <a href="/pkg/builtin/#string">string</a>, data []<a href="/pkg/builtin/#byte">byte</a>, fix <a href="#VersionFixer">VersionFixer</a>) (*<a href="#File">File</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ParseLax is like Parse but ignores unknown statements.
+It is used when parsing go.mod files other than the main module,
+under the theory that most statement types we add in the future will
+only apply in the main module, like exclude and replace,
+and so we get better gradual deployments if old go commands
+simply ignore those statements when found in go.mod files
+in dependencies.
+
+				
+				
+			
+
+			
+				
+				<h3 id="File.AddComment">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=5270:5308#L204">AddComment</a>
+					<a class="permalink" href="#File.AddComment">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddComment(text <a href="/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddExclude">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=39154:39204#L1461">AddExclude</a>
+					<a class="permalink" href="#File.AddExclude">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddExclude(path, vers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>AddExclude adds a exclude statement to the mod file. Errors if the provided
+version is not a canonical version string
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddGoStmt">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=26632:26678#L1033">AddGoStmt</a>
+					<a class="permalink" href="#File.AddGoStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddGoStmt(version <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddGodebug">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=28316:28366#L1099">AddGodebug</a>
+					<a class="permalink" href="#File.AddGodebug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddGodebug(key, value <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>AddGodebug sets the first godebug line for key to value,
+preserving any existing comments for that line and removing all
+other godebug lines for key.
+<p>If no line currently exists for key, AddGodebug adds a new line
+at the end of the last godebug block.
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddModuleStmt">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=4897:4944#L188">AddModuleStmt</a>
+					<a class="permalink" href="#File.AddModuleStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddModuleStmt(path <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddNewRequire">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=29841:29903#L1161">AddNewRequire</a>
+					<a class="permalink" href="#File.AddNewRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddNewRequire(path, vers <a href="/pkg/builtin/#string">string</a>, indirect <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>AddNewRequire adds a new require line for path at version vers at the end of
+the last require block, regardless of any existing require lines for path.
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddReplace">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=39824:39898#L1490">AddReplace</a>
+					<a class="permalink" href="#File.AddReplace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddReplace(oldPath, oldVers, newPath, newVers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddRequire">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=29299:29349#L1138">AddRequire</a>
+					<a class="permalink" href="#File.AddRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddRequire(path, vers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>AddRequire sets the first require line for path to version vers,
+preserving any existing comments for that line and removing all
+other lines for path.
+<p>If no line currently exists for path, AddRequire adds a new line
+at the end of the last require block.
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddRetract">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=41365:41434#L1543">AddRetract</a>
+					<a class="permalink" href="#File.AddRetract">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddRetract(vi <a href="#VersionInterval">VersionInterval</a>, rationale <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>AddRetract adds a retract statement to the mod file. Errors if the provided
+version interval does not consist of canonical version strings
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddTool">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=42408:42449#L1584">AddTool</a>
+					<a class="permalink" href="#File.AddTool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddTool(path <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>AddTool adds a new tool directive with the given path.
+It does nothing if the tool line already exists.
+
+				
+				
+				
+			
+				
+				<h3 id="File.AddToolchainStmt">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=27490:27540#L1071">AddToolchainStmt</a>
+					<a class="permalink" href="#File.AddToolchainStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) AddToolchainStmt(name <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.Cleanup">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=25955:25979#L984">Cleanup</a>
+					<a class="permalink" href="#File.Cleanup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) Cleanup()</pre>
+				<p>Cleanup cleans up the file f after any edit operations.
+To avoid quadratic behavior, modifications like <a href="#File.DropRequire">File.DropRequire</a>
+clear the entry but do not remove it from the slice.
+Cleanup cleans out all the cleared entries.
+
+				
+				
+				
+			
+				
+				<h3 id="File.DropExclude">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=39622:39673#L1480">DropExclude</a>
+					<a class="permalink" href="#File.DropExclude">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropExclude(path, vers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropGoStmt">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=27204:27231#L1056">DropGoStmt</a>
+					<a class="permalink" href="#File.DropGoStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropGoStmt()</pre>
+				<p>DropGoStmt deletes the go statement from the file.
+
+				
+				
+				
+			
+				
+				<h3 id="File.DropGodebug">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=38695:38739#L1439">DropGodebug</a>
+					<a class="permalink" href="#File.DropGodebug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropGodebug(key <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropReplace">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=41006:41063#L1531">DropReplace</a>
+					<a class="permalink" href="#File.DropReplace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropReplace(oldPath, oldVers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropRequire">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=38859:38904#L1449">DropRequire</a>
+					<a class="permalink" href="#File.DropRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropRequire(path <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropRetract">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=42115:42167#L1572">DropRetract</a>
+					<a class="permalink" href="#File.DropRetract">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropRetract(vi <a href="#VersionInterval">VersionInterval</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropTool">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=42768:42810#L1602">DropTool</a>
+					<a class="permalink" href="#File.DropTool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropTool(path <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>RemoveTool removes a tool directive with the given path.
+It does nothing if no such tool directive exists.
+
+				
+				
+				
+			
+				
+				<h3 id="File.DropToolchainStmt">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=27367:27401#L1064">DropToolchainStmt</a>
+					<a class="permalink" href="#File.DropToolchainStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) DropToolchainStmt()</pre>
+				<p>DropToolchainStmt deletes the toolchain statement from the file.
+
+				
+				
+				
+			
+				
+				<h3 id="File.Format">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=25648:25687#L976">Format</a>
+					<a class="permalink" href="#File.Format">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) Format() ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.SetRequire">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=30744:30785#L1185">SetRequire</a>
+					<a class="permalink" href="#File.SetRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) SetRequire(req []*<a href="#Require">Require</a>)</pre>
+				<p>SetRequire updates the requirements of f to contain exactly req, preserving
+the existing block structure and line comment contents (except for &apos;indirect&apos;
+markings) for the first requirement on each named module path.
+<p>The Syntax field is ignored for the requirements in req.
+<p>Any requirements not already present in the file are added to the block
+containing the last require line.
+<p>The requirements in req must specify at most one distinct version for each
+module path.
+<p>If any existing requirements may be removed, the caller should call
+<a href="#File.Cleanup">File.Cleanup</a> after all edits are complete.
+
+				
+				
+				
+			
+				
+				<h3 id="File.SetRequireSeparateIndirect">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=32927:32984#L1241">SetRequireSeparateIndirect</a>
+					<a class="permalink" href="#File.SetRequireSeparateIndirect">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) SetRequireSeparateIndirect(req []*<a href="#Require">Require</a>)</pre>
+				<p>SetRequireSeparateIndirect updates the requirements of f to contain the given
+requirements. Comment contents (except for &apos;indirect&apos; markings) are retained
+from the first existing requirement for each module path. Like SetRequire,
+SetRequireSeparateIndirect adds requirements for new paths in req,
+updates the version and &quot;// indirect&quot; comment on existing requirements,
+and deletes requirements on paths not in req. Existing duplicate requirements
+are deleted.
+<p>As its name suggests, SetRequireSeparateIndirect puts direct and indirect
+requirements into two separate blocks, one containing only direct
+requirements, and the other containing only indirect requirements.
+SetRequireSeparateIndirect may move requirements between these two blocks
+when their indirect markings change. However, SetRequireSeparateIndirect
+won&apos;t move requirements from other blocks, especially blocks with comments.
+<p>If the file initially has one uncommented block of requirements,
+SetRequireSeparateIndirect will split it into a direct-only and indirect-only
+block. This aids in the transition to separate blocks.
+
+				
+				
+				
+			
+				
+				<h3 id="File.SortBlocks">func (*File) <a href="/src/golang.org/x/mod/modfile/rule.go?s=42926:42953#L1612">SortBlocks</a>
+					<a class="permalink" href="#File.SortBlocks">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#File">File</a>) SortBlocks()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FileSyntax">type <a href="/src/golang.org/x/mod/modfile/read.go?s=2115:2190#L66">FileSyntax</a>
+				<a class="permalink" href="#FileSyntax">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A FileSyntax represents an entire go.mod file.
+
+			<pre>type FileSyntax struct {
+<span id="FileSyntax.Name"></span>    Name <a href="/pkg/builtin/#string">string</a> <span class="comment">// file path</span>
+    <a href="#Comments">Comments</a>
+<span id="FileSyntax.Stmt"></span>    Stmt []<a href="#Expr">Expr</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FileSyntax.Cleanup">func (*FileSyntax) <a href="/src/golang.org/x/mod/modfile/read.go?s=5558:5588#L199">Cleanup</a>
+					<a class="permalink" href="#FileSyntax.Cleanup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#FileSyntax">FileSyntax</a>) Cleanup()</pre>
+				<p>Cleanup cleans up the file syntax x after any edit operations.
+To avoid quadratic behavior, (*Line).markRemoved marks the line as dead
+by setting line.Token = nil but does not remove it from the slice
+in which it appears. After edits have all been indicated,
+calling Cleanup cleans out the dead lines.
+
+				
+				
+				
+			
+				
+				<h3 id="FileSyntax.Span">func (*FileSyntax) <a href="/src/golang.org/x/mod/modfile/read.go?s=2192:2241#L72">Span</a>
+					<a class="permalink" href="#FileSyntax.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#FileSyntax">FileSyntax</a>) Span() (start, end <a href="#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Go">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1522:1581#L49">Go</a>
+				<a class="permalink" href="#Go">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Go is the go statement.
+
+			<pre>type Go struct {
+<span id="Go.Version"></span>    Version <a href="/pkg/builtin/#string">string</a> <span class="comment">// &#34;1.23&#34;</span>
+<span id="Go.Syntax"></span>    Syntax  *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Godebug">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1751:1818#L61">Godebug</a>
+				<a class="permalink" href="#Godebug">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Godebug is a single godebug key=value statement.
+
+			<pre>type Godebug struct {
+<span id="Godebug.Key"></span>    Key    <a href="/pkg/builtin/#string">string</a>
+<span id="Godebug.Value"></span>    Value  <a href="/pkg/builtin/#string">string</a>
+<span id="Godebug.Syntax"></span>    Syntax *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LParen">type <a href="/src/golang.org/x/mod/modfile/read.go?s=7518:7564#L294">LParen</a>
+				<a class="permalink" href="#LParen">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An LParen represents the beginning of a parenthesized line block.
+It is a place to store suffix comments.
+
+			<pre>type LParen struct {
+    <a href="#Comments">Comments</a>
+<span id="LParen.Pos"></span>    Pos <a href="#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LParen.Span">func (*LParen) <a href="/src/golang.org/x/mod/modfile/read.go?s=7566:7611#L299">Span</a>
+					<a class="permalink" href="#LParen.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#LParen">LParen</a>) Span() (start, end <a href="#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Line">type <a href="/src/golang.org/x/mod/modfile/read.go?s=6937:7035#L261">Line</a>
+				<a class="permalink" href="#Line">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Line is a single line of tokens.
+
+			<pre>type Line struct {
+    <a href="#Comments">Comments</a>
+<span id="Line.Start"></span>    Start   <a href="#Position">Position</a>
+<span id="Line.Token"></span>    Token   []<a href="/pkg/builtin/#string">string</a>
+<span id="Line.InBlock"></span>    InBlock <a href="/pkg/builtin/#bool">bool</a>
+<span id="Line.End"></span>    End     <a href="#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Line.Span">func (*Line) <a href="/src/golang.org/x/mod/modfile/read.go?s=7037:7080#L269">Span</a>
+					<a class="permalink" href="#Line.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#Line">Line</a>) Span() (start, end <a href="#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LineBlock">type <a href="/src/golang.org/x/mod/modfile/read.go?s=7196:7311#L279">LineBlock</a>
+				<a class="permalink" href="#LineBlock">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A LineBlock is a factored block of lines, like
+<pre>require (
+	&quot;x&quot;
+	&quot;y&quot;
+)
+</pre>
+
+			<pre>type LineBlock struct {
+    <a href="#Comments">Comments</a>
+<span id="LineBlock.Start"></span>    Start  <a href="#Position">Position</a>
+<span id="LineBlock.LParen"></span>    LParen <a href="#LParen">LParen</a>
+<span id="LineBlock.Token"></span>    Token  []<a href="/pkg/builtin/#string">string</a>
+<span id="LineBlock.Line"></span>    Line   []*<a href="#Line">Line</a>
+<span id="LineBlock.RParen"></span>    RParen <a href="#RParen">RParen</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LineBlock.Span">func (*LineBlock) <a href="/src/golang.org/x/mod/modfile/read.go?s=7313:7361#L288">Span</a>
+					<a class="permalink" href="#LineBlock.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#LineBlock">LineBlock</a>) Span() (start, end <a href="#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Module">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1405:1491#L42">Module</a>
+				<a class="permalink" href="#Module">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Module is the module statement.
+
+			<pre>type Module struct {
+<span id="Module.Mod"></span>    Mod        <a href="/pkg/golang.org/x/mod/module/">module</a>.<a href="/pkg/golang.org/x/mod/module/#Version">Version</a>
+<span id="Module.Deprecated"></span>    Deprecated <a href="/pkg/builtin/#string">string</a>
+<span id="Module.Syntax"></span>    Syntax     *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Position">type <a href="/src/golang.org/x/mod/modfile/read.go?s=388:552#L10">Position</a>
+				<a class="permalink" href="#Position">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Position describes an arbitrary source position in a file, including the
+file, line, column, and byte offset.
+
+			<pre>type Position struct {
+<span id="Position.Line"></span>    Line     <a href="/pkg/builtin/#int">int</a> <span class="comment">// line in input (starting at 1)</span>
+<span id="Position.LineRune"></span>    LineRune <a href="/pkg/builtin/#int">int</a> <span class="comment">// rune in line (starting at 1)</span>
+<span id="Position.Byte"></span>    Byte     <a href="/pkg/builtin/#int">int</a> <span class="comment">// byte in input (starting at 0)</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RParen">type <a href="/src/golang.org/x/mod/modfile/read.go?s=7766:7812#L305">RParen</a>
+				<a class="permalink" href="#RParen">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An RParen represents the end of a parenthesized line block.
+It is a place to store whole-line (before) comments.
+
+			<pre>type RParen struct {
+    <a href="#Comments">Comments</a>
+<span id="RParen.Pos"></span>    Pos <a href="#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RParen.Span">func (*RParen) <a href="/src/golang.org/x/mod/modfile/read.go?s=7814:7859#L310">Span</a>
+					<a class="permalink" href="#RParen.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="#RParen">RParen</a>) Span() (start, end <a href="#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Replace">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1971:2054#L74">Replace</a>
+				<a class="permalink" href="#Replace">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Replace is a single replace statement.
+
+			<pre>type Replace struct {
+<span id="Replace.Old"></span>    Old    <a href="/pkg/golang.org/x/mod/module/">module</a>.<a href="/pkg/golang.org/x/mod/module/#Version">Version</a>
+<span id="Replace.New"></span>    New    <a href="/pkg/golang.org/x/mod/module/">module</a>.<a href="/pkg/golang.org/x/mod/module/#Version">Version</a>
+<span id="Replace.Syntax"></span>    Syntax *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Require">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=2652:2760#L102">Require</a>
+				<a class="permalink" href="#Require">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Require is a single require statement.
+
+			<pre>type Require struct {
+<span id="Require.Mod"></span>    Mod      <a href="/pkg/golang.org/x/mod/module/">module</a>.<a href="/pkg/golang.org/x/mod/module/#Version">Version</a>
+<span id="Require.Indirect"></span>    Indirect <a href="/pkg/builtin/#bool">bool</a> <span class="comment">// has &#34;// indirect&#34; comment</span>
+<span id="Require.Syntax"></span>    Syntax   *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Retract">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=2100:2175#L81">Retract</a>
+				<a class="permalink" href="#Retract">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Retract is a single retract statement.
+
+			<pre>type Retract struct {
+    <a href="#VersionInterval">VersionInterval</a>
+<span id="Retract.Rationale"></span>    Rationale <a href="/pkg/builtin/#string">string</a>
+<span id="Retract.Syntax"></span>    Syntax    *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Tool">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=2215:2264#L88">Tool</a>
+				<a class="permalink" href="#Tool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Tool is a single tool statement.
+
+			<pre>type Tool struct {
+<span id="Tool.Path"></span>    Path   <a href="/pkg/builtin/#string">string</a>
+<span id="Tool.Syntax"></span>    Syntax *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Toolchain">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=1626:1695#L55">Toolchain</a>
+				<a class="permalink" href="#Toolchain">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Toolchain is the toolchain statement.
+
+			<pre>type Toolchain struct {
+<span id="Toolchain.Name"></span>    Name   <a href="/pkg/builtin/#string">string</a> <span class="comment">// &#34;go1.21rc1&#34;</span>
+<span id="Toolchain.Syntax"></span>    Syntax *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Use">type <a href="/src/golang.org/x/mod/modfile/work.go?s=468:597#L15">Use</a>
+				<a class="permalink" href="#Use">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Use is a single directory statement.
+
+			<pre>type Use struct {
+<span id="Use.Path"></span>    Path       <a href="/pkg/builtin/#string">string</a> <span class="comment">// Use path of module.</span>
+<span id="Use.ModulePath"></span>    ModulePath <a href="/pkg/builtin/#string">string</a> <span class="comment">// Module path in the comment.</span>
+<span id="Use.Syntax"></span>    Syntax     *<a href="#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="VersionFixer">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=5512:5572#L219">VersionFixer</a>
+				<a class="permalink" href="#VersionFixer">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type VersionFixer func(path, version <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="VersionInterval">type <a href="/src/golang.org/x/mod/modfile/rule.go?s=2557:2606#L97">VersionInterval</a>
+				<a class="permalink" href="#VersionInterval">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A VersionInterval represents a range of versions with upper and lower bounds.
+Intervals are closed: both bounds are included. When Low is equal to High,
+the interval may refer to a single version (&apos;v1.2.3&apos;) or an interval
+(&apos;[v1.2.3, v1.2.3]&apos;); both have the same representation.
+
+			<pre>type VersionInterval struct {
+<span id="VersionInterval.Low"></span>    Low, High <a href="/pkg/builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="WorkFile">type <a href="/src/golang.org/x/mod/modfile/work.go?s=280:424#L4">WorkFile</a>
+				<a class="permalink" href="#WorkFile">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A WorkFile is the parsed, interpreted form of a go.work file.
+
+			<pre>type WorkFile struct {
+<span id="WorkFile.Go"></span>    Go        *<a href="#Go">Go</a>
+<span id="WorkFile.Toolchain"></span>    Toolchain *<a href="#Toolchain">Toolchain</a>
+<span id="WorkFile.Godebug"></span>    Godebug   []*<a href="#Godebug">Godebug</a>
+<span id="WorkFile.Use"></span>    Use       []*<a href="#Use">Use</a>
+<span id="WorkFile.Replace"></span>    Replace   []*<a href="#Replace">Replace</a>
+
+<span id="WorkFile.Syntax"></span>    Syntax *<a href="#FileSyntax">FileSyntax</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseWork">func <a href="/src/golang.org/x/mod/modfile/work.go?s=938:1015#L30">ParseWork</a>
+					<a class="permalink" href="#ParseWork">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseWork(file <a href="/pkg/builtin/#string">string</a>, data []<a href="/pkg/builtin/#byte">byte</a>, fix <a href="#VersionFixer">VersionFixer</a>) (*<a href="#WorkFile">WorkFile</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ParseWork parses and returns a go.work file.
+<p>file is the name of the file, used in positions and errors.
+<p>data is the content of the file.
+<p>fix is an optional function that canonicalizes module versions.
+If fix is nil, all module versions must be canonical (<a href="/golang.org/x/mod/module#CanonicalVersion">module.CanonicalVersion</a>
+must return the same string).
+
+				
+				
+			
+
+			
+				
+				<h3 id="WorkFile.AddGoStmt">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=2410:2460#L102">AddGoStmt</a>
+					<a class="permalink" href="#WorkFile.AddGoStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) AddGoStmt(version <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.AddGodebug">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=4735:4789#L184">AddGodebug</a>
+					<a class="permalink" href="#WorkFile.AddGodebug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) AddGodebug(key, value <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>AddGodebug sets the first godebug line for key to value,
+preserving any existing comments for that line and removing all
+other godebug lines for key.
+<p>If no line currently exists for key, AddGodebug adds a new line
+at the end of the last godebug block.
+
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.AddNewUse">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=6006:6063#L248">AddNewUse</a>
+					<a class="permalink" href="#WorkFile.AddNewUse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) AddNewUse(diskPath, modulePath <a href="/pkg/builtin/#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.AddReplace">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=6808:6886#L286">AddReplace</a>
+					<a class="permalink" href="#WorkFile.AddReplace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) AddReplace(oldPath, oldVers, newPath, newVers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.AddToolchainStmt">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=3125:3179#L128">AddToolchainStmt</a>
+					<a class="permalink" href="#WorkFile.AddToolchainStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) AddToolchainStmt(name <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.AddUse">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=5622:5682#L227">AddUse</a>
+					<a class="permalink" href="#WorkFile.AddUse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) AddUse(diskPath, modulePath <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.Cleanup">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=2127:2155#L80">Cleanup</a>
+					<a class="permalink" href="#WorkFile.Cleanup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) Cleanup()</pre>
+				<p>Cleanup cleans up the file f after any edit operations.
+To avoid quadratic behavior, modifications like [WorkFile.DropRequire]
+clear the entry but do not remove it from the slice.
+Cleanup cleans out all the cleared entries.
+
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.DropGoStmt">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=4171:4202#L163">DropGoStmt</a>
+					<a class="permalink" href="#WorkFile.DropGoStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) DropGoStmt()</pre>
+				<p>DropGoStmt deletes the go statement from the file.
+
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.DropGodebug">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=5454:5502#L217">DropGodebug</a>
+					<a class="permalink" href="#WorkFile.DropGodebug">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) DropGodebug(key <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.DropReplace">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=6969:7030#L290">DropReplace</a>
+					<a class="permalink" href="#WorkFile.DropReplace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) DropReplace(oldPath, oldVers <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.DropToolchainStmt">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=4338:4376#L171">DropToolchainStmt</a>
+					<a class="permalink" href="#WorkFile.DropToolchainStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) DropToolchainStmt()</pre>
+				<p>DropToolchainStmt deletes the toolchain statement from the file.
+
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.DropUse">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=6649:6694#L276">DropUse</a>
+					<a class="permalink" href="#WorkFile.DropUse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) DropUse(path <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.SetUse">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=6211:6249#L253">SetUse</a>
+					<a class="permalink" href="#WorkFile.SetUse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) SetUse(dirs []*<a href="#Use">Use</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WorkFile.SortBlocks">func (*WorkFile) <a href="/src/golang.org/x/mod/modfile/work.go?s=7187:7218#L300">SortBlocks</a>
+					<a class="permalink" href="#WorkFile.SortBlocks">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="#WorkFile">WorkFile</a>) SortBlocks()</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

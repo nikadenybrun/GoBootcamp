@@ -1,0 +1,9 @@
+form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+button {
+    background-color: blue;
+    color: white;
+}

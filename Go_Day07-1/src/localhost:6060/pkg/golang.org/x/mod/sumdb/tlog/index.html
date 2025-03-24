@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>tlog - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package tlog
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/sumdb/tlog"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package tlog implements a tamper-evident log
+used in the Go module go.sum database server.
+<p>This package follows the design of Certificate Transparency (RFC 6962)
+and its proofs are compatible with that system.
+See TestCertificateTransparency.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#CheckRecord">func CheckRecord(p RecordProof, t int64, th Hash, n int64, h Hash) error</a></dd>
+			
+				
+				<dd><a href="#CheckTree">func CheckTree(p TreeProof, t int64, th Hash, n int64, h Hash) error</a></dd>
+			
+				
+				<dd><a href="#FormatRecord">func FormatRecord(id int64, text []byte) (msg []byte, err error)</a></dd>
+			
+				
+				<dd><a href="#FormatTree">func FormatTree(tree Tree) []byte</a></dd>
+			
+				
+				<dd><a href="#ParseRecord">func ParseRecord(msg []byte) (id int64, text, rest []byte, err error)</a></dd>
+			
+				
+				<dd><a href="#ReadTileData">func ReadTileData(t Tile, r HashReader) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="#SplitStoredHashIndex">func SplitStoredHashIndex(index int64) (level int, n int64)</a></dd>
+			
+				
+				<dd><a href="#StoredHashCount">func StoredHashCount(n int64) int64</a></dd>
+			
+				
+				<dd><a href="#StoredHashIndex">func StoredHashIndex(level int, n int64) int64</a></dd>
+			
+			
+				
+				<dd><a href="#Hash">type Hash</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#HashFromTile">func HashFromTile(t Tile, data []byte, index int64) (Hash, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NodeHash">func NodeHash(left, right Hash) Hash</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ParseHash">func ParseHash(s string) (Hash, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RecordHash">func RecordHash(data []byte) Hash</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#StoredHashes">func StoredHashes(n int64, data []byte, r HashReader) ([]Hash, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#StoredHashesForRecordHash">func StoredHashesForRecordHash(n int64, h Hash, r HashReader) ([]Hash, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TreeHash">func TreeHash(n int64, r HashReader) (Hash, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Hash.MarshalJSON">func (h Hash) MarshalJSON() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Hash.String">func (h Hash) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Hash.UnmarshalJSON">func (h *Hash) UnmarshalJSON(data []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="#HashReader">type HashReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TileHashReader">func TileHashReader(tree Tree, tr TileReader) HashReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HashReaderFunc">type HashReaderFunc</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#HashReaderFunc.ReadHashes">func (f HashReaderFunc) ReadHashes(indexes []int64) ([]Hash, error)</a></dd>
+				
+			
+				
+				<dd><a href="#RecordProof">type RecordProof</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ProveRecord">func ProveRecord(t, n int64, r HashReader) (RecordProof, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Tile">type Tile</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTiles">func NewTiles(h int, oldTreeSize, newTreeSize int64) []Tile</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ParseTilePath">func ParseTilePath(path string) (Tile, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TileForIndex">func TileForIndex(h int, index int64) Tile</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Tile.Path">func (t Tile) Path() string</a></dd>
+				
+			
+				
+				<dd><a href="#TileReader">type TileReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Tree">type Tree</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ParseTree">func ParseTree(text []byte) (tree Tree, err error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TreeProof">type TreeProof</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ProveTree">func ProveTree(t, n int64, h HashReader) (TreeProof, error)</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/golang.org/x/mod/sumdb/tlog/note.go">note.go</a>
+			
+				<a href="/src/golang.org/x/mod/sumdb/tlog/tile.go">tile.go</a>
+			
+				<a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go">tlog.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>HashSize is the size of a Hash in bytes.
+
+				<pre>const <span id="HashSize">HashSize</span> = 32</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="CheckRecord">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=12853:12925#L392">CheckRecord</a>
+				<a class="permalink" href="#CheckRecord">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CheckRecord(p <a href="#RecordProof">RecordProof</a>, t <a href="/pkg/builtin/#int64">int64</a>, th <a href="#Hash">Hash</a>, n <a href="/pkg/builtin/#int64">int64</a>, h <a href="#Hash">Hash</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>CheckRecord verifies that p is a valid proof that the tree of size t
+with hash th has an n&apos;th record with hash h.
+
+			
+			
+
+		
+			
+			
+			<h2 id="CheckTree">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=17037:17105#L538">CheckTree</a>
+				<a class="permalink" href="#CheckTree">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CheckTree(p <a href="#TreeProof">TreeProof</a>, t <a href="/pkg/builtin/#int64">int64</a>, th <a href="#Hash">Hash</a>, n <a href="/pkg/builtin/#int64">int64</a>, h <a href="#Hash">Hash</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>CheckTree verifies that p is a valid proof that the tree of size t with hash th
+contains as a prefix the tree of size n with hash h.
+
+			
+			
+
+		
+			
+			
+			<h2 id="FormatRecord">func <a href="/src/golang.org/x/mod/sumdb/tlog/note.go?s=2401:2465#L73">FormatRecord</a>
+				<a class="permalink" href="#FormatRecord">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FormatRecord(id <a href="/pkg/builtin/#int64">int64</a>, text []<a href="/pkg/builtin/#byte">byte</a>) (msg []<a href="/pkg/builtin/#byte">byte</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>FormatRecord formats a record for serving to a client
+in a lookup response or data tile.
+<p>The encoded form is the record ID as a single number,
+then the text of the record, and then a terminating blank line.
+Record text must be valid UTF-8 and must not contain any ASCII control
+characters (those below U+0020) other than newline (U+000A).
+It must end in a terminating newline and not contain any blank lines.
+
+			
+			
+
+		
+			
+			
+			<h2 id="FormatTree">func <a href="/src/golang.org/x/mod/sumdb/tlog/note.go?s=845:878#L27">FormatTree</a>
+				<a class="permalink" href="#FormatTree">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FormatTree(tree <a href="#Tree">Tree</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>FormatTree formats a tree description for inclusion in a note.
+<p>The encoded form is three lines, each ending in a newline (U+000A):
+<pre>go.sum database tree
+N
+Hash
+</pre>
+<p>where N is in decimal and Hash is in base64.
+<p>A future backwards-compatible encoding may add additional lines,
+which the parser can ignore.
+A future backwards-incompatible encoding would use a different
+first line (for example, &quot;go.sum database tree v2&quot;).
+
+			
+			
+
+		
+			
+			
+			<h2 id="ParseRecord">func <a href="/src/golang.org/x/mod/sumdb/tlog/note.go?s=3241:3310#L103">ParseRecord</a>
+				<a class="permalink" href="#ParseRecord">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ParseRecord(msg []<a href="/pkg/builtin/#byte">byte</a>) (id <a href="/pkg/builtin/#int64">int64</a>, text, rest []<a href="/pkg/builtin/#byte">byte</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>ParseRecord parses a record description at the start of text,
+stopping immediately after the terminating blank line.
+It returns the record id, the record text, and the remainder of text.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadTileData">func <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=4582:4637#L124">ReadTileData</a>
+				<a class="permalink" href="#ReadTileData">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadTileData(t <a href="#Tile">Tile</a>, r <a href="#HashReader">HashReader</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>ReadTileData reads the hashes for tile t from r
+and returns the corresponding tile data.
+
+			
+			
+
+		
+			
+			
+			<h2 id="SplitStoredHashIndex">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=4218:4277#L126">SplitStoredHashIndex</a>
+				<a class="permalink" href="#SplitStoredHashIndex">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SplitStoredHashIndex(index <a href="/pkg/builtin/#int64">int64</a>) (level <a href="/pkg/builtin/#int">int</a>, n <a href="/pkg/builtin/#int64">int64</a>)</pre>
+			<p>SplitStoredHashIndex is the inverse of <a href="#StoredHashIndex">StoredHashIndex</a>.
+That is, SplitStoredHashIndex(StoredHashIndex(level, n)) == level, n.
+
+			
+			
+
+		
+			
+			
+			<h2 id="StoredHashCount">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=4960:4995#L152">StoredHashCount</a>
+				<a class="permalink" href="#StoredHashCount">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func StoredHashCount(n <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#int64">int64</a></pre>
+			<p>StoredHashCount returns the number of stored hashes
+that are expected for a tree with n records.
+
+			
+			
+
+		
+			
+			
+			<h2 id="StoredHashIndex">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=3648:3694#L107">StoredHashIndex</a>
+				<a class="permalink" href="#StoredHashIndex">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func StoredHashIndex(level <a href="/pkg/builtin/#int">int</a>, n <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#int64">int64</a></pre>
+			<p>StoredHashIndex maps the tree coordinates (level, n)
+to a dense linear ordering that can be used for hash storage.
+Hash storage implementations that store hashes in sequential
+storage can use this function to compute where to read or write
+a given hash.
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Hash">type <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=572:596#L12">Hash</a>
+				<a class="permalink" href="#Hash">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Hash is a hash identifying a log record or tree root.
+
+			<pre>type Hash [<a href="#HashSize">HashSize</a>]<a href="/pkg/builtin/#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="HashFromTile">func <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=2740:2805#L65">HashFromTile</a>
+					<a class="permalink" href="#HashFromTile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func HashFromTile(t <a href="#Tile">Tile</a>, data []<a href="/pkg/builtin/#byte">byte</a>, index <a href="/pkg/builtin/#int64">int64</a>) (<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>HashFromTile returns the hash at the given storage index,
+provided that t == TileForIndex(t.H, index) or a wider version,
+and data is t&apos;s tile data (of length at least t.W*HashSize).
+
+				
+				
+			
+				
+				<h3 id="NodeHash">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=2762:2798#L85">NodeHash</a>
+					<a class="permalink" href="#NodeHash">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NodeHash(left, right <a href="#Hash">Hash</a>) <a href="#Hash">Hash</a></pre>
+				<p>NodeHash returns the hash for an interior tree node with the given left and right hashes.
+
+				
+				
+			
+				
+				<h3 id="ParseHash">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=1922:1960#L50">ParseHash</a>
+					<a class="permalink" href="#ParseHash">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseHash(s <a href="/pkg/builtin/#string">string</a>) (<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ParseHash parses the base64-encoded string form of a hash.
+
+				
+				
+			
+				
+				<h3 id="RecordHash">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=2459:2492#L73">RecordHash</a>
+					<a class="permalink" href="#RecordHash">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func RecordHash(data []<a href="/pkg/builtin/#byte">byte</a>) <a href="#Hash">Hash</a></pre>
+				<p>RecordHash returns the content hash for the given record data.
+
+				
+				
+			
+				
+				<h3 id="StoredHashes">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=5689:5758#L172">StoredHashes</a>
+					<a class="permalink" href="#StoredHashes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func StoredHashes(n <a href="/pkg/builtin/#int64">int64</a>, data []<a href="/pkg/builtin/#byte">byte</a>, r <a href="#HashReader">HashReader</a>) ([]<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>StoredHashes returns the hashes that must be stored when writing
+record n with the given data. The hashes should be stored starting
+at StoredHashIndex(0, n). The result will have at most 1 + log₂ n hashes,
+but it will average just under two per call for a sequence of calls for n=1..k.
+<p>StoredHashes may read up to log n earlier hashes from r
+in order to compute hashes for completed subtrees.
+
+				
+				
+			
+				
+				<h3 id="StoredHashesForRecordHash">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=5951:6028#L178">StoredHashesForRecordHash</a>
+					<a class="permalink" href="#StoredHashesForRecordHash">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func StoredHashesForRecordHash(n <a href="/pkg/builtin/#int64">int64</a>, h <a href="#Hash">Hash</a>, r <a href="#HashReader">HashReader</a>) ([]<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>StoredHashesForRecordHash is like <a href="#StoredHashes">StoredHashes</a> but takes
+as its second argument RecordHash(data) instead of data itself.
+
+				
+				
+			
+				
+				<h3 id="TreeHash">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=8147:8197#L240">TreeHash</a>
+					<a class="permalink" href="#TreeHash">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func TreeHash(n <a href="/pkg/builtin/#int64">int64</a>, r <a href="#HashReader">HashReader</a>) (<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>TreeHash computes the hash for the root of the tree with n records,
+using the HashReader to obtain previously stored hashes
+(those returned by StoredHashes during the writes of those n records).
+TreeHash makes a single call to ReadHash requesting at most 1 + log₂ n hashes.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Hash.MarshalJSON">func (Hash) <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=900:943#L23">MarshalJSON</a>
+					<a class="permalink" href="#Hash.MarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h <a href="#Hash">Hash</a>) MarshalJSON() ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>MarshalJSON marshals the hash as a JSON string containing the base64-encoded hash.
+
+				
+				
+				
+			
+				
+				<h3 id="Hash.String">func (Hash) <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=731:760#L18">String</a>
+					<a class="permalink" href="#Hash.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h <a href="#Hash">Hash</a>) String() <a href="/pkg/builtin/#string">string</a></pre>
+				<p>String returns a base64 representation of the hash for printing.
+
+				
+				
+				
+			
+				
+				<h3 id="Hash.UnmarshalJSON">func (*Hash) <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=1083:1130#L28">UnmarshalJSON</a>
+					<a class="permalink" href="#Hash.UnmarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="#Hash">Hash</a>) UnmarshalJSON(data []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>UnmarshalJSON unmarshals a hash from JSON string containing the a base64-encoded hash.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HashReader">type <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=6938:7322#L211">HashReader</a>
+				<a class="permalink" href="#HashReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A HashReader can read hashes for nodes in the log&apos;s tree structure.
+
+			<pre>type HashReader interface {
+    <span class="comment">// ReadHashes returns the hashes with the given stored hash indexes</span>
+    <span class="comment">// (see StoredHashIndex and SplitStoredHashIndex).</span>
+    <span class="comment">// ReadHashes must return a slice of hashes the same length as indexes,</span>
+    <span class="comment">// or else it must return a non-nil error.</span>
+    <span class="comment">// ReadHashes may run faster if indexes is sorted in increasing order.</span>
+    ReadHashes(indexes []<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="TileHashReader">func <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=8652:8708#L266">TileHashReader</a>
+					<a class="permalink" href="#TileHashReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func TileHashReader(tree <a href="#Tree">Tree</a>, tr <a href="#TileReader">TileReader</a>) <a href="#HashReader">HashReader</a></pre>
+				<p>TileHashReader returns a HashReader that satisfies requests
+by loading tiles of the given tree.
+<p>The returned <a href="#HashReader">HashReader</a> checks that loaded tiles are
+valid for the given tree. Therefore, any hashes returned
+by the HashReader are already proven to be in the tree.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="HashReaderFunc">type <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=7385:7434#L221">HashReaderFunc</a>
+				<a class="permalink" href="#HashReaderFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A HashReaderFunc is a function implementing <a href="#HashReader">HashReader</a>.
+
+			<pre>type HashReaderFunc func([]<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="HashReaderFunc.ReadHashes">func (HashReaderFunc) <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=7436:7503#L223">ReadHashes</a>
+					<a class="permalink" href="#HashReaderFunc.ReadHashes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="#HashReaderFunc">HashReaderFunc</a>) ReadHashes(indexes []<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#Hash">Hash</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RecordProof">type <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=10232:10255#L309">RecordProof</a>
+				<a class="permalink" href="#RecordProof">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A RecordProof is a verifiable proof that a particular log root contains a particular record.
+RFC 6962 calls this a “Merkle audit path.”
+
+			<pre>type RecordProof []<a href="#Hash">Hash</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ProveRecord">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=10348:10411#L312">ProveRecord</a>
+					<a class="permalink" href="#ProveRecord">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ProveRecord(t, n <a href="/pkg/builtin/#int64">int64</a>, r <a href="#HashReader">HashReader</a>) (<a href="#RecordProof">RecordProof</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ProveRecord returns the proof that the tree of size t contains the record with index n.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Tile">type <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=1449:1680#L29">Tile</a>
+				<a class="permalink" href="#Tile">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Tile is a description of a transparency log tile.
+A tile of height H at level L offset N lists W consecutive hashes
+at level H*L of the tree starting at offset N*(2**H).
+A complete tile lists 2**H hashes; a partial tile lists fewer.
+Note that a tile represents the entire subtree of height H
+with those hashes as the leaves. The levels above H*L
+can be reconstructed by hashing the leaves.
+<p>Each Tile can be encoded as a “tile coordinate path”
+of the form tile/H/L/NNN[.p/W].
+The .p/W suffix is present only for partial tiles, meaning W &lt; 2**H.
+The NNN element is an encoding of N into 3-digit path elements.
+All but the last path element begins with an &quot;x&quot;.
+For example,
+Tile{H: 3, L: 4, N: 1234067, W: 1}&apos;s path
+is tile/3/4/x001/x234/067.p/1, and
+Tile{H: 3, L: 4, N: 1234067, W: 8}&apos;s path
+is tile/3/4/x001/x234/067.
+See the <a href="#Tile.Path">Tile.Path</a> method and the <a href="#ParseTilePath">ParseTilePath</a> function.
+<p>The special level L=-1 holds raw record data instead of hashes.
+In this case, the level encodes into a tile path as the path element
+&quot;data&quot; instead of &quot;-1&quot;.
+<p>See also <a href="https://golang.org/design/25530-sumdb#checksum-database">https://golang.org/design/25530-sumdb#checksum-database</a>
+and <a href="https://research.swtch.com/tlog#tiling_a_log">https://research.swtch.com/tlog#tiling_a_log</a>.
+
+			<pre>type Tile struct {
+<span id="Tile.H"></span>    H <a href="/pkg/builtin/#int">int</a>   <span class="comment">// height of tile (1 ≤ H ≤ 30)</span>
+<span id="Tile.L"></span>    L <a href="/pkg/builtin/#int">int</a>   <span class="comment">// level in tiling (-1 ≤ L ≤ 63)</span>
+<span id="Tile.N"></span>    N <a href="/pkg/builtin/#int64">int64</a> <span class="comment">// number within level (0 ≤ N, unbounded)</span>
+<span id="Tile.W"></span>    W <a href="/pkg/builtin/#int">int</a>   <span class="comment">// width of tile (1 ≤ W ≤ 2**H; 2**H is complete tile)</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTiles">func <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=3896:3955#L99">NewTiles</a>
+					<a class="permalink" href="#NewTiles">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTiles(h <a href="/pkg/builtin/#int">int</a>, oldTreeSize, newTreeSize <a href="/pkg/builtin/#int64">int64</a>) []<a href="#Tile">Tile</a></pre>
+				<p>NewTiles returns the coordinates of the tiles of height h ≥ 1
+that must be published when publishing from a tree of
+size newTreeSize to replace a tree of size oldTreeSize.
+(No tiles need to be published for a tree of size zero.)
+<p>If h ≤ 0, NewTiles panics.
+
+				
+				
+			
+				
+				<h3 id="ParseTilePath">func <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=6030:6075#L180">ParseTilePath</a>
+					<a class="permalink" href="#ParseTilePath">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseTilePath(path <a href="/pkg/builtin/#string">string</a>) (<a href="#Tile">Tile</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ParseTilePath parses a tile coordinate path.
+
+				
+				
+			
+				
+				<h3 id="TileForIndex">func <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=1837:1879#L40">TileForIndex</a>
+					<a class="permalink" href="#TileForIndex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func TileForIndex(h <a href="/pkg/builtin/#int">int</a>, index <a href="/pkg/builtin/#int64">int64</a>) <a href="#Tile">Tile</a></pre>
+				<p>TileForIndex returns the tile of fixed height h ≥ 1
+and least width storing the given hash storage index.
+<p>If h ≤ 0, <a href="#TileForIndex">TileForIndex</a> panics.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Tile.Path">func (Tile) <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=5587:5614#L159">Path</a>
+					<a class="permalink" href="#Tile.Path">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t <a href="#Tile">Tile</a>) Path() <a href="/pkg/builtin/#string">string</a></pre>
+				<p>Path returns a tile coordinate path describing t.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TileReader">type <a href="/src/golang.org/x/mod/sumdb/tlog/tile.go?s=7248:8368#L233">TileReader</a>
+				<a class="permalink" href="#TileReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TileReader reads tiles from a go.sum database log.
+
+			<pre>type TileReader interface {
+    <span class="comment">// Height returns the height of the available tiles.</span>
+    Height() <a href="/pkg/builtin/#int">int</a>
+
+    <span class="comment">// ReadTiles returns the data for each requested tile.</span>
+    <span class="comment">// If ReadTiles returns err == nil, it must also return</span>
+    <span class="comment">// a data record for each tile (len(data) == len(tiles))</span>
+    <span class="comment">// and each data record must be the correct length</span>
+    <span class="comment">// (len(data[i]) == tiles[i].W*HashSize).</span>
+    <span class="comment">//</span>
+    <span class="comment">// An implementation of ReadTiles typically reads</span>
+    <span class="comment">// them from an on-disk cache or else from a remote</span>
+    <span class="comment">// tile server. Tile data downloaded from a server should</span>
+    <span class="comment">// be considered suspect and not saved into a persistent</span>
+    <span class="comment">// on-disk cache before returning from ReadTiles.</span>
+    <span class="comment">// When the client confirms the validity of the tile data,</span>
+    <span class="comment">// it will call SaveTiles to signal that they can be safely</span>
+    <span class="comment">// written to persistent storage.</span>
+    <span class="comment">// See also https://research.swtch.com/tlog#authenticating_tiles.</span>
+    ReadTiles(tiles []<a href="#Tile">Tile</a>) (data [][]<a href="/pkg/builtin/#byte">byte</a>, err <a href="/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// SaveTiles informs the TileReader that the tile data</span>
+    <span class="comment">// returned by ReadTiles has been confirmed as valid</span>
+    <span class="comment">// and can be saved in persistent storage (on disk).</span>
+    SaveTiles(tiles []<a href="#Tile">Tile</a>, data [][]<a href="/pkg/builtin/#byte">byte</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Tree">type <a href="/src/golang.org/x/mod/sumdb/tlog/note.go?s=344:387#L8">Tree</a>
+				<a class="permalink" href="#Tree">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Tree is a tree description, to be signed by a go.sum database server.
+
+			<pre>type Tree struct {
+<span id="Tree.N"></span>    N    <a href="/pkg/builtin/#int64">int64</a>
+<span id="Tree.Hash"></span>    Hash <a href="#Hash">Hash</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseTree">func <a href="/src/golang.org/x/mod/sumdb/tlog/note.go?s=1128:1178#L35">ParseTree</a>
+					<a class="permalink" href="#ParseTree">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseTree(text []<a href="/pkg/builtin/#byte">byte</a>) (tree <a href="#Tree">Tree</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ParseTree parses a formatted tree root description.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="TreeProof">type <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=14350:14371#L447">TreeProof</a>
+				<a class="permalink" href="#TreeProof">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TreeProof is a verifiable proof that a particular log tree contains
+as a prefix all records present in an earlier tree.
+RFC 6962 calls this a “Merkle consistency proof.”
+
+			<pre>type TreeProof []<a href="#Hash">Hash</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ProveTree">func <a href="/src/golang.org/x/mod/sumdb/tlog/tlog.go?s=14501:14560#L451">ProveTree</a>
+					<a class="permalink" href="#ProveTree">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ProveTree(t, n <a href="/pkg/builtin/#int64">int64</a>, h <a href="#HashReader">HashReader</a>) (<a href="#TreeProof">TreeProof</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>ProveTree returns the proof that the tree of size t contains
+as a prefix all the records from the tree of smaller size n.
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

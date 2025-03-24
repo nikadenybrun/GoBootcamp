@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>parser - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package parser
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/yuin/goldmark/parser"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package parser contains stuff that are related to parsing a Markdown text.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#DefaultBlockParsers">func DefaultBlockParsers() []util.PrioritizedValue</a></dd>
+			
+				
+				<dd><a href="#DefaultInlineParsers">func DefaultInlineParsers() []util.PrioritizedValue</a></dd>
+			
+				
+				<dd><a href="#DefaultParagraphTransformers">func DefaultParagraphTransformers() []util.PrioritizedValue</a></dd>
+			
+				
+				<dd><a href="#ProcessDelimiters">func ProcessDelimiters(bottom ast.Node, pc Context)</a></dd>
+			
+			
+				
+				<dd><a href="#ASTTransformer">type ASTTransformer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Attribute">type Attribute</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Attributes">type Attributes</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ParseAttributes">func ParseAttributes(reader text.Reader) (Attributes, bool)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Attributes.Find">func (as Attributes) Find(name []byte) (interface{}, bool)</a></dd>
+				
+			
+				
+				<dd><a href="#Block">type Block</a></dd>
+				
+				
+			
+				
+				<dd><a href="#BlockParser">type BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewATXHeadingParser">func NewATXHeadingParser(opts ...HeadingOption) BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewBlockquoteParser">func NewBlockquoteParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewCodeBlockParser">func NewCodeBlockParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFencedCodeBlockParser">func NewFencedCodeBlockParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewHTMLBlockParser">func NewHTMLBlockParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewListItemParser">func NewListItemParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewListParser">func NewListParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewParagraphParser">func NewParagraphParser() BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewSetextHeadingParser">func NewSetextHeadingParser(opts ...HeadingOption) BlockParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewThematicBreakParser">func NewThematicBreakParser() BlockParser</a></dd>
+				
+				
+			
+				
+				<dd><a href="#CloseBlocker">type CloseBlocker</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Config">type Config</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewConfig">func NewConfig() *Config</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Context">type Context</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewContext">func NewContext(options ...ContextOption) Context</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ContextConfig">type ContextConfig</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ContextKey">type ContextKey</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewContextKey">func NewContextKey() ContextKey</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ContextOption">type ContextOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithIDs">func WithIDs(ids IDs) ContextOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Delimiter">type Delimiter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewDelimiter">func NewDelimiter(canOpen, canClose bool, length int, char byte, processor DelimiterProcessor) *Delimiter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ScanDelimiter">func ScanDelimiter(line []byte, before rune, min int, processor DelimiterProcessor) *Delimiter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Delimiter.CalcComsumption">func (d *Delimiter) CalcComsumption(closer *Delimiter) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Delimiter.ConsumeCharacters">func (d *Delimiter) ConsumeCharacters(n int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Delimiter.Dump">func (d *Delimiter) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Delimiter.Inline">func (d *Delimiter) Inline()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Delimiter.Kind">func (d *Delimiter) Kind() ast.NodeKind</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Delimiter.Text">func (d *Delimiter) Text(source []byte) []byte</a></dd>
+				
+			
+				
+				<dd><a href="#DelimiterProcessor">type DelimiterProcessor</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HeadingConfig">type HeadingConfig</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#HeadingConfig.SetOption">func (b *HeadingConfig) SetOption(name OptionName, _ interface{})</a></dd>
+				
+			
+				
+				<dd><a href="#HeadingOption">type HeadingOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithAutoHeadingID">func WithAutoHeadingID() HeadingOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithHeadingAttribute">func WithHeadingAttribute() HeadingOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#IDs">type IDs</a></dd>
+				
+				
+			
+				
+				<dd><a href="#InlineParser">type InlineParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewAutoLinkParser">func NewAutoLinkParser() InlineParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewCodeSpanParser">func NewCodeSpanParser() InlineParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewEmphasisParser">func NewEmphasisParser() InlineParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewLinkParser">func NewLinkParser() InlineParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewRawHTMLParser">func NewRawHTMLParser() InlineParser</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithASTTransformers">func WithASTTransformers(ps ...util.PrioritizedValue) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithAttribute">func WithAttribute() Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithBlockParsers">func WithBlockParsers(bs ...util.PrioritizedValue) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithEscapedSpace">func WithEscapedSpace() Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithInlineParsers">func WithInlineParsers(bs ...util.PrioritizedValue) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithOption">func WithOption(name OptionName, value interface{}) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithParagraphTransformers">func WithParagraphTransformers(ps ...util.PrioritizedValue) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OptionName">type OptionName</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ParagraphTransformer">type ParagraphTransformer</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ParseConfig">type ParseConfig</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ParseOption">type ParseOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WithContext">func WithContext(context Context) ParseOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Parser">type Parser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewParser">func NewParser(options ...Option) Parser</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Reference">type Reference</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewReference">func NewReference(label, destination, title []byte) Reference</a></dd>
+				
+				
+			
+				
+				<dd><a href="#SetOptioner">type SetOptioner</a></dd>
+				
+				
+			
+				
+				<dd><a href="#State">type State</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/yuin/goldmark/parser/attribute.go">attribute.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/atx_heading.go">atx_heading.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/auto_link.go">auto_link.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/blockquote.go">blockquote.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/code_block.go">code_block.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/code_span.go">code_span.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/delimiter.go">delimiter.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/emphasis.go">emphasis.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/fcode_block.go">fcode_block.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/html_block.go">html_block.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/link.go">link.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/link_ref.go">link_ref.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/list.go">list.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/list_item.go">list_item.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/paragraph.go">paragraph.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/parser.go">parser.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/raw_html.go">raw_html.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/setext_headings.go">setext_headings.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/parser/thematic_break.go">thematic_break.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>LinkReferenceParagraphTransformer is a ParagraphTransformer implementation
+that parses and extracts link reference from paragraphs.
+
+				<pre>var <span id="LinkReferenceParagraphTransformer">LinkReferenceParagraphTransformer</span> = &amp;linkReferenceParagraphTransformer{}</pre>
+			
+		
+		
+			
+			
+			<h2 id="DefaultBlockParsers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=15495:15545#L571">DefaultBlockParsers</a>
+				<a class="permalink" href="#DefaultBlockParsers">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DefaultBlockParsers() []<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a></pre>
+			<p>DefaultBlockParsers returns a new list of default BlockParsers.
+Priorities of default BlockParsers are:
+<pre>SetextHeadingParser, 100
+ThematicBreakParser, 200
+ListParser, 300
+ListItemParser, 400
+CodeBlockParser, 500
+ATXHeadingParser, 600
+FencedCodeBlockParser, 700
+BlockquoteParser, 800
+HTMLBlockParser, 900
+ParagraphParser, 1000
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DefaultInlineParsers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=16294:16345#L594">DefaultInlineParsers</a>
+				<a class="permalink" href="#DefaultInlineParsers">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DefaultInlineParsers() []<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a></pre>
+			<p>DefaultInlineParsers returns a new list of default InlineParsers.
+Priorities of default InlineParsers are:
+<pre>CodeSpanParser, 100
+LinkParser, 200
+AutoLinkParser, 300
+RawHTMLParser, 400
+EmphasisParser, 500
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DefaultParagraphTransformers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=16794:16853#L608">DefaultParagraphTransformers</a>
+				<a class="permalink" href="#DefaultParagraphTransformers">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DefaultParagraphTransformers() []<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a></pre>
+			<p>DefaultParagraphTransformers returns a new list of default ParagraphTransformers.
+Priorities of default ParagraphTransformers are:
+<pre>LinkReferenceParagraphTransformer, 100
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ProcessDelimiters">func <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=4532:4583#L147">ProcessDelimiters</a>
+				<a class="permalink" href="#ProcessDelimiters">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ProcessDelimiters(bottom <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, pc <a href="#Context">Context</a>)</pre>
+			<p>ProcessDelimiters processes the delimiter list in the context.
+Processing will be stop when reaching the bottom.
+<p>If you implement an inline parser that can have other inline nodes as
+children, you should call this function when nesting span has closed.
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ASTTransformer">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=14988:15129#L553">ASTTransformer</a>
+				<a class="permalink" href="#ASTTransformer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>ASTTransformer transforms entire Markdown document AST tree.
+
+			<pre>type ASTTransformer interface {
+    <span class="comment">// Transform transforms the given AST tree.</span>
+    Transform(node *<a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Document">Document</a>, reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Attribute">type <a href="/src/github.com/yuin/goldmark/parser/attribute.go?s=246:304#L6">Attribute</a>
+				<a class="permalink" href="#Attribute">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An Attribute is an attribute of the markdown elements.
+
+			<pre>type Attribute struct {
+<span id="Attribute.Name"></span>    Name  []<a href="/pkg/builtin/#byte">byte</a>
+<span id="Attribute.Value"></span>    Value interface{}
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Attributes">type <a href="/src/github.com/yuin/goldmark/parser/attribute.go?s=354:381#L12">Attributes</a>
+				<a class="permalink" href="#Attributes">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An Attributes is a collection of attributes.
+
+			<pre>type Attributes []<a href="#Attribute">Attribute</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseAttributes">func <a href="/src/github.com/yuin/goldmark/parser/attribute.go?s=1036:1095#L37">ParseAttributes</a>
+					<a class="permalink" href="#ParseAttributes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseAttributes(reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>) (<a href="#Attributes">Attributes</a>, <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>ParseAttributes parses attributes into a map.
+ParseAttributes returns a parsed attributes and true if could parse
+attributes, otherwise nil and false.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Attributes.Find">func (Attributes) <a href="/src/github.com/yuin/goldmark/parser/attribute.go?s=492:550#L15">Find</a>
+					<a class="permalink" href="#Attributes.Find">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (as <a href="#Attributes">Attributes</a>) Find(name []<a href="/pkg/builtin/#byte">byte</a>) (interface{}, <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>Find returns a (value, true) if an attribute correspond with given name is found, otherwise (nil, false).
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Block">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=17014:17124#L615">Block</a>
+				<a class="permalink" href="#Block">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Block struct holds a node and correspond parser pair.
+
+			<pre>type Block struct {
+<span id="Block.Node"></span>    <span class="comment">// Node is a BlockNode.</span>
+    Node <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>
+<span id="Block.Parser"></span>    <span class="comment">// Parser is a BlockParser.</span>
+    Parser <a href="#BlockParser">BlockParser</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="BlockParser">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=12005:13711#L480">BlockParser</a>
+				<a class="permalink" href="#BlockParser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A BlockParser interface parses a block level element like Paragraph, List,
+Blockquote etc.
+
+			<pre>type BlockParser interface {
+    <span class="comment">// Trigger returns a list of characters that triggers Parse method of</span>
+    <span class="comment">// this parser.</span>
+    <span class="comment">// If Trigger returns a nil, Open will be called with any lines.</span>
+    Trigger() []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// Open parses the current line and returns a result of parsing.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Open must not parse beyond the current line.</span>
+    <span class="comment">// If Open has been able to parse the current line, Open must advance a reader</span>
+    <span class="comment">// position by consumed byte length.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If Open has not been able to parse the current line, Open should returns</span>
+    <span class="comment">// (nil, NoChildren). If Open has been able to parse the current line, Open</span>
+    <span class="comment">// should returns a new Block node and returns HasChildren or NoChildren.</span>
+    Open(parent <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>) (<a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, <a href="#State">State</a>)
+
+    <span class="comment">// Continue parses the current line and returns a result of parsing.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Continue must not parse beyond the current line.</span>
+    <span class="comment">// If Continue has been able to parse the current line, Continue must advance</span>
+    <span class="comment">// a reader position by consumed byte length.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If Continue has not been able to parse the current line, Continue should</span>
+    <span class="comment">// returns Close. If Continue has been able to parse the current line,</span>
+    <span class="comment">// Continue should returns (Continue | NoChildren) or</span>
+    <span class="comment">// (Continue | HasChildren)</span>
+    Continue(node <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>) <a href="#State">State</a>
+
+    <span class="comment">// Close will be called when the parser returns Close.</span>
+    Close(node <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>)
+
+    <span class="comment">// CanInterruptParagraph returns true if the parser can interrupt paragraphs,</span>
+    <span class="comment">// otherwise false.</span>
+    CanInterruptParagraph() <a href="/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// CanAcceptIndentedLine returns true if the parser can open new node when</span>
+    <span class="comment">// the given line is being indented more than 3 spaces.</span>
+    CanAcceptIndentedLine() <a href="/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewATXHeadingParser">func <a href="/src/github.com/yuin/goldmark/parser/atx_heading.go?s=1636:1695#L59">NewATXHeadingParser</a>
+					<a class="permalink" href="#NewATXHeadingParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewATXHeadingParser(opts ...<a href="#HeadingOption">HeadingOption</a>) <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewATXHeadingParser return a new BlockParser that can parse ATX headings.
+
+				
+				
+			
+				
+				<h3 id="NewBlockquoteParser">func <a href="/src/github.com/yuin/goldmark/parser/blockquote.go?s=288:326#L6">NewBlockquoteParser</a>
+					<a class="permalink" href="#NewBlockquoteParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBlockquoteParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewBlockquoteParser returns a new BlockParser that
+parses blockquotes.
+
+				
+				
+			
+				
+				<h3 id="NewCodeBlockParser">func <a href="/src/github.com/yuin/goldmark/parser/code_block.go?s=369:406#L7">NewCodeBlockParser</a>
+					<a class="permalink" href="#NewCodeBlockParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCodeBlockParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewCodeBlockParser returns a new BlockParser that
+parses code blocks.
+
+				
+				
+			
+				
+				<h3 id="NewFencedCodeBlockParser">func <a href="/src/github.com/yuin/goldmark/parser/fcode_block.go?s=325:368#L8">NewFencedCodeBlockParser</a>
+					<a class="permalink" href="#NewFencedCodeBlockParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFencedCodeBlockParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewFencedCodeBlockParser returns a new BlockParser that
+parses fenced code blocks.
+
+				
+				
+			
+				
+				<h3 id="NewHTMLBlockParser">func <a href="/src/github.com/yuin/goldmark/parser/html_block.go?s=2721:2758#L95">NewHTMLBlockParser</a>
+					<a class="permalink" href="#NewHTMLBlockParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewHTMLBlockParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewHTMLBlockParser return a new BlockParser that can parse html
+blocks.
+
+				
+				
+			
+				
+				<h3 id="NewListItemParser">func <a href="/src/github.com/yuin/goldmark/parser/list_item.go?s=279:315#L6">NewListItemParser</a>
+					<a class="permalink" href="#NewListItemParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewListItemParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewListItemParser returns a new BlockParser that
+parses list items.
+
+				
+				
+			
+				
+				<h3 id="NewListParser">func <a href="/src/github.com/yuin/goldmark/parser/list.go?s=2370:2402#L110">NewListParser</a>
+					<a class="permalink" href="#NewListParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewListParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewListParser returns a new BlockParser that
+parses lists.
+This parser must take precedence over the ListItemParser.
+
+				
+				
+			
+				
+				<h3 id="NewParagraphParser">func <a href="/src/github.com/yuin/goldmark/parser/paragraph.go?s=283:320#L6">NewParagraphParser</a>
+					<a class="permalink" href="#NewParagraphParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewParagraphParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewParagraphParser returns a new BlockParser that
+parses paragraphs.
+
+				
+				
+			
+				
+				<h3 id="NewSetextHeadingParser">func <a href="/src/github.com/yuin/goldmark/parser/setext_headings.go?s=891:953#L30">NewSetextHeadingParser</a>
+					<a class="permalink" href="#NewSetextHeadingParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewSetextHeadingParser(opts ...<a href="#HeadingOption">HeadingOption</a>) <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewSetextHeadingParser return a new BlockParser that can parse Setext headings.
+
+				
+				
+			
+				
+				<h3 id="NewThematicBreakParser">func <a href="/src/github.com/yuin/goldmark/parser/thematic_break.go?s=304:345#L6">NewThematicBreakParser</a>
+					<a class="permalink" href="#NewThematicBreakParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewThematicBreakParser() <a href="#BlockParser">BlockParser</a></pre>
+				<p>NewThematicBreakParser returns a new BlockParser that
+parses thematic breaks.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="CloseBlocker">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=14498:14643#L540">CloseBlocker</a>
+				<a class="permalink" href="#CloseBlocker">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A CloseBlocker interface is a callback function that will be
+called when block is closed in the inline parsing.
+
+			<pre>type CloseBlocker interface {
+    <span class="comment">// CloseBlock will be called when a block is closed.</span>
+    CloseBlock(parent <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, block <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Config">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=10083:10448#L418">Config</a>
+				<a class="permalink" href="#Config">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Config struct is a data structure that holds configuration of the Parser.
+
+			<pre>type Config struct {
+<span id="Config.Options"></span>    Options               map[<a href="#OptionName">OptionName</a>]interface{}
+<span id="Config.BlockParsers"></span>    BlockParsers          <a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedSlice">PrioritizedSlice</a> <span class="comment">/*&lt;BlockParser&gt;*/</span>
+<span id="Config.InlineParsers"></span>    InlineParsers         <a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedSlice">PrioritizedSlice</a> <span class="comment">/*&lt;InlineParser&gt;*/</span>
+<span id="Config.ParagraphTransformers"></span>    ParagraphTransformers <a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedSlice">PrioritizedSlice</a> <span class="comment">/*&lt;ParagraphTransformer&gt;*/</span>
+<span id="Config.ASTTransformers"></span>    ASTTransformers       <a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedSlice">PrioritizedSlice</a> <span class="comment">/*&lt;ASTTransformer&gt;*/</span>
+<span id="Config.EscapedSpace"></span>    EscapedSpace          <a href="/pkg/builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewConfig">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=10485:10509#L428">NewConfig</a>
+					<a class="permalink" href="#NewConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewConfig() *<a href="#Config">Config</a></pre>
+				<p>NewConfig returns a new Config.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Context">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=2914:5304#L124">Context</a>
+				<a class="permalink" href="#Context">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Context interface holds a information that are necessary to parse
+Markdown text.
+
+			<pre>type Context interface {
+    <span class="comment">// String implements Stringer.</span>
+    String() <a href="/pkg/builtin/#string">string</a>
+
+    <span class="comment">// Get returns a value associated with the given key.</span>
+    Get(<a href="#ContextKey">ContextKey</a>) interface{}
+
+    <span class="comment">// ComputeIfAbsent computes a value if a value associated with the given key is absent and returns the value.</span>
+    ComputeIfAbsent(<a href="#ContextKey">ContextKey</a>, func() interface{}) interface{}
+
+    <span class="comment">// Set sets the given value to the context.</span>
+    Set(<a href="#ContextKey">ContextKey</a>, interface{})
+
+    <span class="comment">// AddReference adds the given reference to this context.</span>
+    AddReference(<a href="#Reference">Reference</a>)
+
+    <span class="comment">// Reference returns (a reference, true) if a reference associated with</span>
+    <span class="comment">// the given label exists, otherwise (nil, false).</span>
+    Reference(label <a href="/pkg/builtin/#string">string</a>) (<a href="#Reference">Reference</a>, <a href="/pkg/builtin/#bool">bool</a>)
+
+    <span class="comment">// References returns a list of references.</span>
+    References() []<a href="#Reference">Reference</a>
+
+    <span class="comment">// IDs returns a collection of the element ids.</span>
+    IDs() <a href="#IDs">IDs</a>
+
+    <span class="comment">// BlockOffset returns a first non-space character position on current line.</span>
+    <span class="comment">// This value is valid only for BlockParser.Open.</span>
+    <span class="comment">// BlockOffset returns -1 if current line is blank.</span>
+    BlockOffset() <a href="/pkg/builtin/#int">int</a>
+
+    <span class="comment">// BlockOffset sets a first non-space character position on current line.</span>
+    <span class="comment">// This value is valid only for BlockParser.Open.</span>
+    SetBlockOffset(<a href="/pkg/builtin/#int">int</a>)
+
+    <span class="comment">// BlockIndent returns an indent width on current line.</span>
+    <span class="comment">// This value is valid only for BlockParser.Open.</span>
+    <span class="comment">// BlockIndent returns -1 if current line is blank.</span>
+    BlockIndent() <a href="/pkg/builtin/#int">int</a>
+
+    <span class="comment">// BlockIndent sets an indent width on current line.</span>
+    <span class="comment">// This value is valid only for BlockParser.Open.</span>
+    SetBlockIndent(<a href="/pkg/builtin/#int">int</a>)
+
+    <span class="comment">// FirstDelimiter returns a first delimiter of the current delimiter list.</span>
+    FirstDelimiter() *<a href="#Delimiter">Delimiter</a>
+
+    <span class="comment">// LastDelimiter returns a last delimiter of the current delimiter list.</span>
+    LastDelimiter() *<a href="#Delimiter">Delimiter</a>
+
+    <span class="comment">// PushDelimiter appends the given delimiter to the tail of the current</span>
+    <span class="comment">// delimiter list.</span>
+    PushDelimiter(delimiter *<a href="#Delimiter">Delimiter</a>)
+
+    <span class="comment">// RemoveDelimiter removes the given delimiter from the current delimiter list.</span>
+    RemoveDelimiter(d *<a href="#Delimiter">Delimiter</a>)
+
+    <span class="comment">// ClearDelimiters clears the current delimiter list.</span>
+    ClearDelimiters(bottom <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>)
+
+    <span class="comment">// OpenedBlocks returns a list of nodes that are currently in parsing.</span>
+    OpenedBlocks() []<a href="#Block">Block</a>
+
+    <span class="comment">// SetOpenedBlocks sets a list of nodes that are currently in parsing.</span>
+    SetOpenedBlocks([]<a href="#Block">Block</a>)
+
+    <span class="comment">// LastOpenedBlock returns a last node that is currently in parsing.</span>
+    LastOpenedBlock() <a href="#Block">Block</a>
+
+    <span class="comment">// IsInLinkLabel returns true if current position seems to be in link label.</span>
+    IsInLinkLabel() <a href="/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewContext">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=5945:5994#L224">NewContext</a>
+					<a class="permalink" href="#NewContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewContext(options ...<a href="#ContextOption">ContextOption</a>) <a href="#Context">Context</a></pre>
+				<p>NewContext returns a new Context.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ContextConfig">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=5393:5431#L198">ContextConfig</a>
+				<a class="permalink" href="#ContextConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A ContextConfig struct is a data structure that holds configuration of the Context.
+
+			<pre>type ContextConfig struct {
+<span id="ContextConfig.IDs"></span>    IDs <a href="#IDs">IDs</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ContextKey">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=2595:2614#L111">ContextKey</a>
+				<a class="permalink" href="#ContextKey">&#xb6;</a>
+				
+				
+			</h2>
+			<p>ContextKey is a key that is used to set arbitrary values to the context.
+
+			<pre>type ContextKey <a href="/pkg/builtin/#int">int</a></pre>
+
+			
+
+			
+				<p>ContextKeyMax is a maximum value of the ContextKey.
+
+				<pre>var <span id="ContextKeyMax">ContextKeyMax</span> <a href="#ContextKey">ContextKey</a></pre>
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewContextKey">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=2749:2780#L117">NewContextKey</a>
+					<a class="permalink" href="#NewContextKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewContextKey() <a href="#ContextKey">ContextKey</a></pre>
+				<p>NewContextKey return a new ContextKey value.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ContextOption">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=5498:5537#L203">ContextOption</a>
+				<a class="permalink" href="#ContextOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An ContextOption is a functional option type for the Context.
+
+			<pre>type ContextOption func(*<a href="#ContextConfig">ContextConfig</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithIDs">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=5590:5625#L206">WithIDs</a>
+					<a class="permalink" href="#WithIDs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithIDs(ids <a href="#IDs">IDs</a>) <a href="#ContextOption">ContextOption</a></pre>
+				<p>WithIDs is a functional option for the Context.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Delimiter">type <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=757:1655#L17">Delimiter</a>
+				<a class="permalink" href="#Delimiter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Delimiter struct represents a delimiter like &apos;*&apos; of the Markdown text.
+
+			<pre>type Delimiter struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseInline">BaseInline</a>
+
+<span id="Delimiter.Segment"></span>    Segment <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Segment">Segment</a>
+
+<span id="Delimiter.CanOpen"></span>    <span class="comment">// CanOpen is set true if this delimiter can open a span for a new node.</span>
+    <span class="comment">// See https://spec.commonmark.org/0.30/#can-open-emphasis for details.</span>
+    CanOpen <a href="/pkg/builtin/#bool">bool</a>
+
+<span id="Delimiter.CanClose"></span>    <span class="comment">// CanClose is set true if this delimiter can close a span for a new node.</span>
+    <span class="comment">// See https://spec.commonmark.org/0.30/#can-open-emphasis for details.</span>
+    CanClose <a href="/pkg/builtin/#bool">bool</a>
+
+<span id="Delimiter.Length"></span>    <span class="comment">// Length is a remaining length of this delimiter.</span>
+    Length <a href="/pkg/builtin/#int">int</a>
+
+<span id="Delimiter.OriginalLength"></span>    <span class="comment">// OriginalLength is a original length of this delimiter.</span>
+    OriginalLength <a href="/pkg/builtin/#int">int</a>
+
+<span id="Delimiter.Char"></span>    <span class="comment">// Char is a character of this delimiter.</span>
+    Char <a href="/pkg/builtin/#byte">byte</a>
+
+<span id="Delimiter.PreviousDelimiter"></span>    <span class="comment">// PreviousDelimiter is a previous sibling delimiter node of this delimiter.</span>
+    PreviousDelimiter *<a href="#Delimiter">Delimiter</a>
+
+<span id="Delimiter.NextDelimiter"></span>    <span class="comment">// NextDelimiter is a next sibling delimiter node of this delimiter.</span>
+    NextDelimiter *<a href="#Delimiter">Delimiter</a>
+
+<span id="Delimiter.Processor"></span>    <span class="comment">// Processor is a DelimiterProcessor associated with this delimiter.</span>
+    Processor <a href="#DelimiterProcessor">DelimiterProcessor</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDelimiter">func <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=2761:2866#L88">NewDelimiter</a>
+					<a class="permalink" href="#NewDelimiter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDelimiter(canOpen, canClose <a href="/pkg/builtin/#bool">bool</a>, length <a href="/pkg/builtin/#int">int</a>, char <a href="/pkg/builtin/#byte">byte</a>, processor <a href="#DelimiterProcessor">DelimiterProcessor</a>) *<a href="#Delimiter">Delimiter</a></pre>
+				<p>NewDelimiter returns a new Delimiter node.
+
+				
+				
+			
+				
+				<h3 id="ScanDelimiter">func <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=3236:3330#L104">ScanDelimiter</a>
+					<a class="permalink" href="#ScanDelimiter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ScanDelimiter(line []<a href="/pkg/builtin/#byte">byte</a>, before <a href="/pkg/builtin/#rune">rune</a>, min <a href="/pkg/builtin/#int">int</a>, processor <a href="#DelimiterProcessor">DelimiterProcessor</a>) *<a href="#Delimiter">Delimiter</a></pre>
+				<p>ScanDelimiter scans a delimiter by given DelimiterProcessor.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Delimiter.CalcComsumption">func (*Delimiter) <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=2451:2509#L77">CalcComsumption</a>
+					<a class="permalink" href="#Delimiter.CalcComsumption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="#Delimiter">Delimiter</a>) CalcComsumption(closer *<a href="#Delimiter">Delimiter</a>) <a href="/pkg/builtin/#int">int</a></pre>
+				<p>CalcComsumption calculates how many characters should be used for opening
+a new span correspond to given closer.
+
+				
+				
+				
+			
+				
+				<h3 id="Delimiter.ConsumeCharacters">func (*Delimiter) <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=2207:2251#L70">ConsumeCharacters</a>
+					<a class="permalink" href="#Delimiter.ConsumeCharacters">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="#Delimiter">Delimiter</a>) ConsumeCharacters(n <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>ConsumeCharacters consumes delimiters.
+
+				
+				
+				
+			
+				
+				<h3 id="Delimiter.Dump">func (*Delimiter) <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=1756:1806#L53">Dump</a>
+					<a class="permalink" href="#Delimiter.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="#Delimiter">Delimiter</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="Delimiter.Inline">func (*Delimiter) <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=1693:1721#L50">Inline</a>
+					<a class="permalink" href="#Delimiter.Inline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="#Delimiter">Delimiter</a>) Inline()</pre>
+				<p>Inline implements Inline.Inline.
+
+				
+				
+				
+			
+				
+				<h3 id="Delimiter.Kind">func (*Delimiter) <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=1984:2023#L60">Kind</a>
+					<a class="permalink" href="#Delimiter.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="#Delimiter">Delimiter</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+				
+				<h3 id="Delimiter.Text">func (*Delimiter) <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=2081:2127#L65">Text</a>
+					<a class="permalink" href="#Delimiter.Text">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="#Delimiter">Delimiter</a>) Text(source []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<p>Text implements Node.Text.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DelimiterProcessor">type <a href="/src/github.com/yuin/goldmark/parser/delimiter.go?s=233:679#L4">DelimiterProcessor</a>
+				<a class="permalink" href="#DelimiterProcessor">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A DelimiterProcessor interface provides a set of functions about
+Delimiter nodes.
+
+			<pre>type DelimiterProcessor interface {
+    <span class="comment">// IsDelimiter returns true if given character is a delimiter, otherwise false.</span>
+    IsDelimiter(<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// CanOpenCloser returns true if given opener can close given closer, otherwise false.</span>
+    CanOpenCloser(opener, closer *<a href="#Delimiter">Delimiter</a>) <a href="/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// OnMatch will be called when new matched delimiter found.</span>
+    <span class="comment">// OnMatch should return a new Node correspond to the matched delimiter.</span>
+    OnMatch(consumes <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HeadingConfig">type <a href="/src/github.com/yuin/goldmark/parser/atx_heading.go?s=235:304#L1">HeadingConfig</a>
+				<a class="permalink" href="#HeadingConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A HeadingConfig struct is a data structure that holds configuration of the renderers related to headings.
+
+			<pre>type HeadingConfig struct {
+<span id="HeadingConfig.AutoHeadingID"></span>    AutoHeadingID <a href="/pkg/builtin/#bool">bool</a>
+<span id="HeadingConfig.Attribute"></span>    Attribute     <a href="/pkg/builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="HeadingConfig.SetOption">func (*HeadingConfig) <a href="/src/github.com/yuin/goldmark/parser/atx_heading.go?s=343:408#L6">SetOption</a>
+					<a class="permalink" href="#HeadingConfig.SetOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#HeadingConfig">HeadingConfig</a>) SetOption(name <a href="#OptionName">OptionName</a>, _ interface{})</pre>
+				<p>SetOption implements SetOptioner.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HeadingOption">type <a href="/src/github.com/yuin/goldmark/parser/atx_heading.go?s=585:659#L16">HeadingOption</a>
+				<a class="permalink" href="#HeadingOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A HeadingOption interface sets options for heading parsers.
+
+			<pre>type HeadingOption interface {
+    <a href="#Option">Option</a>
+    SetHeadingOption(*<a href="#HeadingConfig">HeadingConfig</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithAutoHeadingID">func <a href="/src/github.com/yuin/goldmark/parser/atx_heading.go?s=1119:1157#L37">WithAutoHeadingID</a>
+					<a class="permalink" href="#WithAutoHeadingID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithAutoHeadingID() <a href="#HeadingOption">HeadingOption</a></pre>
+				<p>WithAutoHeadingID is a functional option that enables custom heading ids and
+auto generated heading ids.
+
+				
+				
+			
+				
+				<h3 id="WithHeadingAttribute">func <a href="/src/github.com/yuin/goldmark/parser/atx_heading.go?s=1416:1457#L50">WithHeadingAttribute</a>
+					<a class="permalink" href="#WithHeadingAttribute">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithHeadingAttribute() <a href="#HeadingOption">HeadingOption</a></pre>
+				<p>WithHeadingAttribute is a functional option that enables custom heading attributes.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="IDs">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=1207:1395#L47">IDs</a>
+				<a class="permalink" href="#IDs">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An IDs interface is a collection of the element ids.
+
+			<pre>type IDs interface {
+    <span class="comment">// Generate generates a new element id.</span>
+    Generate(value []<a href="/pkg/builtin/#byte">byte</a>, kind <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a>) []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// Put puts a given element id to the used ids table.</span>
+    Put(value []<a href="/pkg/builtin/#byte">byte</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="InlineParser">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=13798:14378#L522">InlineParser</a>
+				<a class="permalink" href="#InlineParser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An InlineParser interface parses an inline level element like CodeSpan, Link etc.
+
+			<pre>type InlineParser interface {
+    <span class="comment">// Trigger returns a list of characters that triggers Parse method of</span>
+    <span class="comment">// this parser.</span>
+    <span class="comment">// Trigger characters must be a punctuation or a halfspace.</span>
+    <span class="comment">// Halfspaces triggers this parser when character is any spaces characters or</span>
+    <span class="comment">// a head of line</span>
+    Trigger() []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// Parse parse the given block into an inline node.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Parse can parse beyond the current line.</span>
+    <span class="comment">// If Parse has been able to parse the current line, it must advance a reader</span>
+    <span class="comment">// position by consumed byte length.</span>
+    Parse(parent <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>, block <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>) <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewAutoLinkParser">func <a href="/src/github.com/yuin/goldmark/parser/auto_link.go?s=306:343#L6">NewAutoLinkParser</a>
+					<a class="permalink" href="#NewAutoLinkParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewAutoLinkParser() <a href="#InlineParser">InlineParser</a></pre>
+				<p>NewAutoLinkParser returns a new InlineParser that parses autolinks
+surrounded by &apos;&lt;&apos; and &apos;&gt;&apos; .
+
+				
+				
+			
+				
+				<h3 id="NewCodeSpanParser">func <a href="/src/github.com/yuin/goldmark/parser/code_span.go?s=267:304#L5">NewCodeSpanParser</a>
+					<a class="permalink" href="#NewCodeSpanParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCodeSpanParser() <a href="#InlineParser">InlineParser</a></pre>
+				<p>NewCodeSpanParser return a new InlineParser that parses inline codes
+surrounded by &apos;`&apos; .
+
+				
+				
+			
+				
+				<h3 id="NewEmphasisParser">func <a href="/src/github.com/yuin/goldmark/parser/emphasis.go?s=684:721#L21">NewEmphasisParser</a>
+					<a class="permalink" href="#NewEmphasisParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEmphasisParser() <a href="#InlineParser">InlineParser</a></pre>
+				<p>NewEmphasisParser return a new InlineParser that parses emphasises.
+
+				
+				
+			
+				
+				<h3 id="NewLinkParser">func <a href="/src/github.com/yuin/goldmark/parser/link.go?s=2093:2126#L104">NewLinkParser</a>
+					<a class="permalink" href="#NewLinkParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewLinkParser() <a href="#InlineParser">InlineParser</a></pre>
+				<p>NewLinkParser return a new InlineParser that parses links.
+
+				
+				
+			
+				
+				<h3 id="NewRawHTMLParser">func <a href="/src/github.com/yuin/goldmark/parser/raw_html.go?s=300:336#L9">NewRawHTMLParser</a>
+					<a class="permalink" href="#NewRawHTMLParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRawHTMLParser() <a href="#InlineParser">InlineParser</a></pre>
+				<p>NewRawHTMLParser return a new InlineParser that can parse
+inline htmls.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Option">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=10857:10908#L439">Option</a>
+				<a class="permalink" href="#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An Option interface is a functional option type for the Parser.
+
+			<pre>type Option interface {
+    SetParserOption(*<a href="#Config">Config</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithASTTransformers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=19007:19067#L687">WithASTTransformers</a>
+					<a class="permalink" href="#WithASTTransformers">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithASTTransformers(ps ...<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a>) <a href="#Option">Option</a></pre>
+				<p>WithASTTransformers is a functional option that allow you to add
+ASTTransformers to the parser.
+
+				
+				
+			
+				
+				<h3 id="WithAttribute">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=11281:11308#L457">WithAttribute</a>
+					<a class="permalink" href="#WithAttribute">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithAttribute() <a href="#Option">Option</a></pre>
+				<p>WithAttribute is a functional option that enables custom attributes.
+
+				
+				
+			
+				
+				<h3 id="WithBlockParsers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=17811:17868#L645">WithBlockParsers</a>
+					<a class="permalink" href="#WithBlockParsers">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithBlockParsers(bs ...<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a>) <a href="#Option">Option</a></pre>
+				<p>WithBlockParsers is a functional option that allow you to add
+BlockParsers to the parser.
+
+				
+				
+			
+				
+				<h3 id="WithEscapedSpace">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=19339:19369#L699">WithEscapedSpace</a>
+					<a class="permalink" href="#WithEscapedSpace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithEscapedSpace() <a href="#Option">Option</a></pre>
+				<p>WithEscapedSpace is a functional option indicates that a &apos;\&apos; escaped half-space(0x20) should not trigger parsers.
+
+				
+				
+			
+				
+				<h3 id="WithInlineParsers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=18183:18241#L659">WithInlineParsers</a>
+					<a class="permalink" href="#WithInlineParsers">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithInlineParsers(bs ...<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a>) <a href="#Option">Option</a></pre>
+				<p>WithInlineParsers is a functional option that allow you to add
+InlineParsers to the parser.
+
+				
+				
+			
+				
+				<h3 id="WithOption">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=19647:19705#L714">WithOption</a>
+					<a class="permalink" href="#WithOption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithOption(name <a href="#OptionName">OptionName</a>, value interface{}) <a href="#Option">Option</a></pre>
+				<p>WithOption is a functional option that allow you to set
+an arbitrary option to the parser.
+
+				
+				
+			
+				
+				<h3 id="WithParagraphTransformers">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=18605:18671#L673">WithParagraphTransformers</a>
+					<a class="permalink" href="#WithParagraphTransformers">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithParagraphTransformers(ps ...<a href="/pkg/github.com/yuin/goldmark/util/">util</a>.<a href="/pkg/github.com/yuin/goldmark/util/#PrioritizedValue">PrioritizedValue</a>) <a href="#Option">Option</a></pre>
+				<p>WithParagraphTransformers is a functional option that allow you to add
+ParagraphTransformers to the parser.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="OptionName">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=10953:10975#L444">OptionName</a>
+				<a class="permalink" href="#OptionName">&#xb6;</a>
+				
+				
+			</h2>
+			<p>OptionName is a name of parser options.
+
+			<pre>type OptionName <a href="/pkg/builtin/#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ParagraphTransformer">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=14773:14922#L547">ParagraphTransformer</a>
+				<a class="permalink" href="#ParagraphTransformer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A ParagraphTransformer transforms parsed Paragraph nodes.
+For example, link references are searched in parsed Paragraphs.
+
+			<pre>type ParagraphTransformer interface {
+    <span class="comment">// Transform transforms the given paragraph.</span>
+    Transform(node *<a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Paragraph">Paragraph</a>, reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, pc <a href="#Context">Context</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ParseConfig">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=22202:22246#L815">ParseConfig</a>
+				<a class="permalink" href="#ParseConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A ParseConfig struct is a data structure that holds configuration of the Parser.Parse.
+
+			<pre>type ParseConfig struct {
+<span id="ParseConfig.Context"></span>    Context <a href="#Context">Context</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ParseOption">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=22315:22352#L820">ParseOption</a>
+				<a class="permalink" href="#ParseOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A ParseOption is a functional option type for the Parser.Parse.
+
+			<pre>type ParseOption func(c *<a href="#ParseConfig">ParseConfig</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithContext">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=22441:22486#L824">WithContext</a>
+					<a class="permalink" href="#WithContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithContext(context <a href="#Context">Context</a>) <a href="#ParseOption">ParseOption</a></pre>
+				<p>WithContext is a functional option that allow you to override
+a default context.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Parser">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=11398:11613#L462">Parser</a>
+				<a class="permalink" href="#Parser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Parser interface parses Markdown text into AST nodes.
+
+			<pre>type Parser interface {
+    <span class="comment">// Parse parses the given Markdown text into AST nodes.</span>
+    Parse(reader <a href="/pkg/github.com/yuin/goldmark/text/">text</a>.<a href="/pkg/github.com/yuin/goldmark/text/#Reader">Reader</a>, opts ...<a href="#ParseOption">ParseOption</a>) <a href="/pkg/github.com/yuin/goldmark/ast/">ast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Node">Node</a>
+
+    <span class="comment">// AddOption adds the given option to this parser.</span>
+    AddOptions(...<a href="#Option">Option</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewParser">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=19798:19838#L719">NewParser</a>
+					<a class="permalink" href="#NewParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewParser(options ...<a href="#Option">Option</a>) <a href="#Parser">Parser</a></pre>
+				<p>NewParser returns a new Parser with given options.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Reference">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=302:585#L5">Reference</a>
+				<a class="permalink" href="#Reference">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Reference interface represents a link reference in Markdown text.
+
+			<pre>type Reference interface {
+    <span class="comment">// String implements Stringer.</span>
+    String() <a href="/pkg/builtin/#string">string</a>
+
+    <span class="comment">// Label returns a label of the reference.</span>
+    Label() []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// Destination returns a destination(URL) of the reference.</span>
+    Destination() []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// Title returns a title of the reference.</span>
+    Title() []<a href="/pkg/builtin/#byte">byte</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewReference">func <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=715:776#L26">NewReference</a>
+					<a class="permalink" href="#NewReference">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewReference(label, destination, title []<a href="/pkg/builtin/#byte">byte</a>) <a href="#Reference">Reference</a></pre>
+				<p>NewReference returns a new Reference.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="SetOptioner">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=11679:11906#L471">SetOptioner</a>
+				<a class="permalink" href="#SetOptioner">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A SetOptioner interface sets the given option to the object.
+
+			<pre>type SetOptioner interface {
+    <span class="comment">// SetOption sets the given option to the object.</span>
+    <span class="comment">// Unacceptable options may be passed.</span>
+    <span class="comment">// Thus implementations must ignore unacceptable options.</span>
+    SetOption(name <a href="#OptionName">OptionName</a>, value interface{})
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="State">type <a href="/src/github.com/yuin/goldmark/parser/parser.go?s=9471:9485#L393">State</a>
+				<a class="permalink" href="#State">&#xb6;</a>
+				
+				
+			</h2>
+			<p>State represents parser&apos;s state.
+State is designed to use as a bit flag.
+
+			<pre>type State <a href="/pkg/builtin/#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// None is a default value of the [State].</span>
+    <span id="None">None</span> <a href="#State">State</a> = 1 &lt;&lt; <a href="/pkg/builtin/#iota">iota</a>
+
+    <span class="comment">// Continue indicates parser can continue parsing.</span>
+    <span id="Continue">Continue</span>
+
+    <span class="comment">// Close indicates parser cannot parse anymore.</span>
+    <span id="Close">Close</span>
+
+    <span class="comment">// HasChildren indicates parser may have child blocks.</span>
+    <span id="HasChildren">HasChildren</span>
+
+    <span class="comment">// NoChildren indicates parser does not have child blocks.</span>
+    <span id="NoChildren">NoChildren</span>
+
+    <span class="comment">// RequireParagraph indicates parser requires that the last node</span>
+    <span class="comment">// must be a paragraph and is not converted to other nodes by</span>
+    <span class="comment">// ParagraphTransformers.</span>
+    <span id="RequireParagraph">RequireParagraph</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

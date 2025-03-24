@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>ast - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package ast
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/yuin/goldmark/extension/ast"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package ast defines AST nodes that represents extension&apos;s elements
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="#Alignment">type Alignment</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Alignment.String">func (a Alignment) String() string</a></dd>
+				
+			
+				
+				<dd><a href="#DefinitionDescription">type DefinitionDescription</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewDefinitionDescription">func NewDefinitionDescription() *DefinitionDescription</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionDescription.Dump">func (n *DefinitionDescription) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionDescription.Kind">func (n *DefinitionDescription) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#DefinitionList">type DefinitionList</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewDefinitionList">func NewDefinitionList(offset int, para *gast.Paragraph) *DefinitionList</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionList.Dump">func (n *DefinitionList) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionList.Kind">func (n *DefinitionList) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#DefinitionTerm">type DefinitionTerm</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewDefinitionTerm">func NewDefinitionTerm() *DefinitionTerm</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionTerm.Dump">func (n *DefinitionTerm) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#DefinitionTerm.Kind">func (n *DefinitionTerm) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#Footnote">type Footnote</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFootnote">func NewFootnote(ref []byte) *Footnote</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Footnote.Dump">func (n *Footnote) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Footnote.Kind">func (n *Footnote) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#FootnoteBacklink">type FootnoteBacklink</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFootnoteBacklink">func NewFootnoteBacklink(index int) *FootnoteBacklink</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteBacklink.Dump">func (n *FootnoteBacklink) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteBacklink.Kind">func (n *FootnoteBacklink) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#FootnoteLink">type FootnoteLink</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFootnoteLink">func NewFootnoteLink(index int) *FootnoteLink</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteLink.Dump">func (n *FootnoteLink) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteLink.Kind">func (n *FootnoteLink) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#FootnoteList">type FootnoteList</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFootnoteList">func NewFootnoteList() *FootnoteList</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteList.Dump">func (n *FootnoteList) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FootnoteList.Kind">func (n *FootnoteList) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#Strikethrough">type Strikethrough</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewStrikethrough">func NewStrikethrough() *Strikethrough</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Strikethrough.Dump">func (n *Strikethrough) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Strikethrough.Kind">func (n *Strikethrough) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#Table">type Table</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTable">func NewTable() *Table</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Table.Dump">func (n *Table) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Table.Kind">func (n *Table) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#TableCell">type TableCell</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTableCell">func NewTableCell() *TableCell</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableCell.Dump">func (n *TableCell) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableCell.Kind">func (n *TableCell) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#TableHeader">type TableHeader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTableHeader">func NewTableHeader(row *TableRow) *TableHeader</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableHeader.Dump">func (n *TableHeader) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableHeader.Kind">func (n *TableHeader) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#TableRow">type TableRow</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTableRow">func NewTableRow(alignments []Alignment) *TableRow</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableRow.Dump">func (n *TableRow) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TableRow.Kind">func (n *TableRow) Kind() gast.NodeKind</a></dd>
+				
+			
+				
+				<dd><a href="#TaskCheckBox">type TaskCheckBox</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewTaskCheckBox">func NewTaskCheckBox(checked bool) *TaskCheckBox</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TaskCheckBox.Dump">func (n *TaskCheckBox) Dump(source []byte, level int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#TaskCheckBox.Kind">func (n *TaskCheckBox) Kind() gast.NodeKind</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go">definition_list.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go">footnote.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/ast/strikethrough.go">strikethrough.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/ast/table.go">table.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/extension/ast/tasklist.go">tasklist.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>KindDefinitionDescription is a NodeKind of the DefinitionDescription node.
+
+				<pre>var <span id="KindDefinitionDescription">KindDefinitionDescription</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;DefinitionDescription&#34;)</pre>
+			
+				<p>KindDefinitionList is a NodeKind of the DefinitionList node.
+
+				<pre>var <span id="KindDefinitionList">KindDefinitionList</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;DefinitionList&#34;)</pre>
+			
+				<p>KindDefinitionTerm is a NodeKind of the DefinitionTerm node.
+
+				<pre>var <span id="KindDefinitionTerm">KindDefinitionTerm</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;DefinitionTerm&#34;)</pre>
+			
+				<p>KindFootnote is a NodeKind of the Footnote node.
+
+				<pre>var <span id="KindFootnote">KindFootnote</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;Footnote&#34;)</pre>
+			
+				<p>KindFootnoteBacklink is a NodeKind of the FootnoteBacklink node.
+
+				<pre>var <span id="KindFootnoteBacklink">KindFootnoteBacklink</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;FootnoteBacklink&#34;)</pre>
+			
+				<p>KindFootnoteLink is a NodeKind of the FootnoteLink node.
+
+				<pre>var <span id="KindFootnoteLink">KindFootnoteLink</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;FootnoteLink&#34;)</pre>
+			
+				<p>KindFootnoteList is a NodeKind of the FootnoteList node.
+
+				<pre>var <span id="KindFootnoteList">KindFootnoteList</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;FootnoteList&#34;)</pre>
+			
+				<p>KindStrikethrough is a NodeKind of the Strikethrough node.
+
+				<pre>var <span id="KindStrikethrough">KindStrikethrough</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;Strikethrough&#34;)</pre>
+			
+				<p>KindTable is a NodeKind of the Table node.
+
+				<pre>var <span id="KindTable">KindTable</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;Table&#34;)</pre>
+			
+				<p>KindTableCell is a NodeKind of the TableCell node.
+
+				<pre>var <span id="KindTableCell">KindTableCell</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;TableCell&#34;)</pre>
+			
+				<p>KindTableHeader is a NodeKind of the TableHeader node.
+
+				<pre>var <span id="KindTableHeader">KindTableHeader</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;TableHeader&#34;)</pre>
+			
+				<p>KindTableRow is a NodeKind of the TableRow node.
+
+				<pre>var <span id="KindTableRow">KindTableRow</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;TableRow&#34;)</pre>
+			
+				<p>KindTaskCheckBox is a NodeKind of the TaskCheckBox node.
+
+				<pre>var <span id="KindTaskCheckBox">KindTaskCheckBox</span> = <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NewNodeKind">NewNodeKind</a>(&#34;TaskCheckBox&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Alignment">type <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=130:148#L1">Alignment</a>
+				<a class="permalink" href="#Alignment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>Alignment is a text alignment of table cells.
+
+			<pre>type Alignment <a href="/pkg/builtin/#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// AlignLeft indicates text should be left justified.</span>
+    <span id="AlignLeft">AlignLeft</span> <a href="#Alignment">Alignment</a> = <a href="/pkg/builtin/#iota">iota</a> + 1
+
+    <span class="comment">// AlignRight indicates text should be right justified.</span>
+    <span id="AlignRight">AlignRight</span>
+
+    <span class="comment">// AlignCenter indicates text should be centered.</span>
+    <span id="AlignCenter">AlignCenter</span>
+
+    <span class="comment">// AlignNone indicates text should be aligned by default manner.</span>
+    <span id="AlignNone">AlignNone</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Alignment.String">func (Alignment) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=461:495#L17">String</a>
+					<a class="permalink" href="#Alignment.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a <a href="#Alignment">Alignment</a>) String() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DefinitionDescription">type <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=1616:1683#L52">DefinitionDescription</a>
+				<a class="permalink" href="#DefinitionDescription">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A DefinitionDescription struct represents a definition list description of Markdown
+(PHPMarkdownExtra) text.
+
+			<pre>type DefinitionDescription struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="DefinitionDescription.IsTight"></span>    IsTight <a href="/pkg/builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDefinitionDescription">func <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=2173:2227#L71">NewDefinitionDescription</a>
+					<a class="permalink" href="#NewDefinitionDescription">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDefinitionDescription() *<a href="#DefinitionDescription">DefinitionDescription</a></pre>
+				<p>NewDefinitionDescription returns a new DefinitionDescription node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="DefinitionDescription.Dump">func (*DefinitionDescription) <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=1715:1777#L58">Dump</a>
+					<a class="permalink" href="#DefinitionDescription.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#DefinitionDescription">DefinitionDescription</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="DefinitionDescription.Kind">func (*DefinitionDescription) <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=2011:2063#L66">Kind</a>
+					<a class="permalink" href="#DefinitionDescription.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#DefinitionDescription">DefinitionDescription</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DefinitionList">type <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=158:264#L1">DefinitionList</a>
+				<a class="permalink" href="#DefinitionList">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A DefinitionList struct represents a definition list of Markdown
+(PHPMarkdownExtra) text.
+
+			<pre>type DefinitionList struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="DefinitionList.Offset"></span>    Offset             <a href="/pkg/builtin/#int">int</a>
+<span id="DefinitionList.TemporaryParagraph"></span>    TemporaryParagraph *<a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Paragraph">Paragraph</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDefinitionList">func <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=691:763#L19">NewDefinitionList</a>
+					<a class="permalink" href="#NewDefinitionList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDefinitionList(offset <a href="/pkg/builtin/#int">int</a>, para *<a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#Paragraph">Paragraph</a>) *<a href="#DefinitionList">DefinitionList</a></pre>
+				<p>NewDefinitionList returns a new DefinitionList node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="DefinitionList.Dump">func (*DefinitionList) <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=296:351#L6">Dump</a>
+					<a class="permalink" href="#DefinitionList.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#DefinitionList">DefinitionList</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="DefinitionList.Kind">func (*DefinitionList) <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=557:602#L14">Kind</a>
+					<a class="permalink" href="#DefinitionList.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#DefinitionList">DefinitionList</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DefinitionTerm">type <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=956:1002#L28">DefinitionTerm</a>
+				<a class="permalink" href="#DefinitionTerm">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A DefinitionTerm struct represents a definition list term of Markdown
+(PHPMarkdownExtra) text.
+
+			<pre>type DefinitionTerm struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDefinitionTerm">func <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=1429:1469#L46">NewDefinitionTerm</a>
+					<a class="permalink" href="#NewDefinitionTerm">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDefinitionTerm() *<a href="#DefinitionTerm">DefinitionTerm</a></pre>
+				<p>NewDefinitionTerm returns a new DefinitionTerm node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="DefinitionTerm.Dump">func (*DefinitionTerm) <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=1034:1089#L33">Dump</a>
+					<a class="permalink" href="#DefinitionTerm.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#DefinitionTerm">DefinitionTerm</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="DefinitionTerm.Kind">func (*DefinitionTerm) <a href="/src/github.com/yuin/goldmark/extension/ast/definition_list.go?s=1295:1340#L41">Kind</a>
+					<a class="permalink" href="#DefinitionTerm.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#DefinitionTerm">DefinitionTerm</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Footnote">type <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=1971:2036#L71">Footnote</a>
+				<a class="permalink" href="#Footnote">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Footnote struct represents a footnote of Markdown
+(PHP Markdown Extra) text.
+
+			<pre>type Footnote struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="Footnote.Ref"></span>    Ref   []<a href="/pkg/builtin/#byte">byte</a>
+<span id="Footnote.Index"></span>    Index <a href="/pkg/builtin/#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFootnote">func <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=2500:2538#L94">NewFootnote</a>
+					<a class="permalink" href="#NewFootnote">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFootnote(ref []<a href="/pkg/builtin/#byte">byte</a>) *<a href="#Footnote">Footnote</a></pre>
+				<p>NewFootnote returns a new Footnote node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Footnote.Dump">func (*Footnote) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=2068:2117#L78">Dump</a>
+					<a class="permalink" href="#Footnote.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Footnote">Footnote</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="Footnote.Kind">func (*Footnote) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=2390:2429#L89">Kind</a>
+					<a class="permalink" href="#Footnote.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Footnote">Footnote</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FootnoteBacklink">type <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=1053:1144#L36">FootnoteBacklink</a>
+				<a class="permalink" href="#FootnoteBacklink">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A FootnoteBacklink struct represents a link to a footnote of Markdown
+(PHP Markdown Extra) text.
+
+			<pre>type FootnoteBacklink struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseInline">BaseInline</a>
+<span id="FootnoteBacklink.Index"></span>    Index    <a href="/pkg/builtin/#int">int</a>
+<span id="FootnoteBacklink.RefCount"></span>    RefCount <a href="/pkg/builtin/#int">int</a>
+<span id="FootnoteBacklink.RefIndex"></span>    RefIndex <a href="/pkg/builtin/#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFootnoteBacklink">func <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=1748:1801#L61">NewFootnoteBacklink</a>
+					<a class="permalink" href="#NewFootnoteBacklink">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFootnoteBacklink(index <a href="/pkg/builtin/#int">int</a>) *<a href="#FootnoteBacklink">FootnoteBacklink</a></pre>
+				<p>NewFootnoteBacklink returns a new FootnoteBacklink node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="FootnoteBacklink.Dump">func (*FootnoteBacklink) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=1176:1233#L44">Dump</a>
+					<a class="permalink" href="#FootnoteBacklink.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#FootnoteBacklink">FootnoteBacklink</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="FootnoteBacklink.Kind">func (*FootnoteBacklink) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=1606:1653#L56">Kind</a>
+					<a class="permalink" href="#FootnoteBacklink.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#FootnoteBacklink">FootnoteBacklink</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FootnoteLink">type <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=169:256#L1">FootnoteLink</a>
+				<a class="permalink" href="#FootnoteLink">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A FootnoteLink struct represents a link to a footnote of Markdown
+(PHP Markdown Extra) text.
+
+			<pre>type FootnoteLink struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseInline">BaseInline</a>
+<span id="FootnoteLink.Index"></span>    Index    <a href="/pkg/builtin/#int">int</a>
+<span id="FootnoteLink.RefCount"></span>    RefCount <a href="/pkg/builtin/#int">int</a>
+<span id="FootnoteLink.RefIndex"></span>    RefIndex <a href="/pkg/builtin/#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFootnoteLink">func <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=824:869#L26">NewFootnoteLink</a>
+					<a class="permalink" href="#NewFootnoteLink">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFootnoteLink(index <a href="/pkg/builtin/#int">int</a>) *<a href="#FootnoteLink">FootnoteLink</a></pre>
+				<p>NewFootnoteLink returns a new FootnoteLink node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="FootnoteLink.Dump">func (*FootnoteLink) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=288:341#L9">Dump</a>
+					<a class="permalink" href="#FootnoteLink.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#FootnoteLink">FootnoteLink</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="FootnoteLink.Kind">func (*FootnoteLink) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=698:741#L21">Kind</a>
+					<a class="permalink" href="#FootnoteLink.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#FootnoteLink">FootnoteLink</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FootnoteList">type <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=2681:2736#L103">FootnoteList</a>
+				<a class="permalink" href="#FootnoteList">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A FootnoteList struct represents footnotes of Markdown
+(PHP Markdown Extra) text.
+
+			<pre>type FootnoteList struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="FootnoteList.Count"></span>    Count <a href="/pkg/builtin/#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFootnoteList">func <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=3210:3246#L124">NewFootnoteList</a>
+					<a class="permalink" href="#NewFootnoteList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFootnoteList() *<a href="#FootnoteList">FootnoteList</a></pre>
+				<p>NewFootnoteList returns a new FootnoteList node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="FootnoteList.Dump">func (*FootnoteList) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=2768:2821#L109">Dump</a>
+					<a class="permalink" href="#FootnoteList.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#FootnoteList">FootnoteList</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="FootnoteList.Kind">func (*FootnoteList) <a href="/src/github.com/yuin/goldmark/extension/ast/footnote.go?s=3084:3127#L119">Kind</a>
+					<a class="permalink" href="#FootnoteList.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#FootnoteList">FootnoteList</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Strikethrough">type <a href="/src/github.com/yuin/goldmark/extension/ast/strikethrough.go?s=198:244#L1">Strikethrough</a>
+				<a class="permalink" href="#Strikethrough">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Strikethrough struct represents a strikethrough of GFM text.
+
+			<pre>type Strikethrough struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseInline">BaseInline</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewStrikethrough">func <a href="/src/github.com/yuin/goldmark/extension/ast/strikethrough.go?s=662:700#L17">NewStrikethrough</a>
+					<a class="permalink" href="#NewStrikethrough">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewStrikethrough() *<a href="#Strikethrough">Strikethrough</a></pre>
+				<p>NewStrikethrough returns a new Strikethrough node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Strikethrough.Dump">func (*Strikethrough) <a href="/src/github.com/yuin/goldmark/extension/ast/strikethrough.go?s=276:330#L4">Dump</a>
+					<a class="permalink" href="#Strikethrough.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Strikethrough">Strikethrough</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="Strikethrough.Kind">func (*Strikethrough) <a href="/src/github.com/yuin/goldmark/extension/ast/strikethrough.go?s=532:576#L12">Kind</a>
+					<a class="permalink" href="#Strikethrough.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Strikethrough">Strikethrough</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Table">type <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=725:837#L32">Table</a>
+				<a class="permalink" href="#Table">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Table struct represents a table of Markdown(GFM) text.
+
+			<pre>type Table struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+
+<span id="Table.Alignments"></span>    <span class="comment">// Alignments returns alignments of the columns.</span>
+    Alignments []<a href="#Alignment">Alignment</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTable">func <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=1517:1539#L64">NewTable</a>
+					<a class="permalink" href="#NewTable">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTable() *<a href="#Table">Table</a></pre>
+				<p>NewTable returns a new Table node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Table.Dump">func (*Table) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=869:915#L40">Dump</a>
+					<a class="permalink" href="#Table.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Table">Table</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="Table.Kind">func (*Table) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=1419:1455#L59">Kind</a>
+					<a class="permalink" href="#Table.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Table">Table</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TableCell">type <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=2992:3054#L125">TableCell</a>
+				<a class="permalink" href="#TableCell">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TableCell struct represents a table cell of a Markdown(GFM) text.
+
+			<pre>type TableCell struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="TableCell.Alignment"></span>    Alignment <a href="#Alignment">Alignment</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTableCell">func <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=3436:3466#L144">NewTableCell</a>
+					<a class="permalink" href="#NewTableCell">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTableCell() *<a href="#TableCell">TableCell</a></pre>
+				<p>NewTableCell returns a new TableCell node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="TableCell.Dump">func (*TableCell) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=3086:3136#L131">Dump</a>
+					<a class="permalink" href="#TableCell.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TableCell">TableCell</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="TableCell.Kind">func (*TableCell) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=3322:3362#L139">Kind</a>
+					<a class="permalink" href="#TableCell.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TableCell">TableCell</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TableHeader">type <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=2268:2335#L95">TableHeader</a>
+				<a class="permalink" href="#TableHeader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TableHeader struct represents a table header of Markdown(GFM) text.
+
+			<pre>type TableHeader struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="TableHeader.Alignments"></span>    Alignments []<a href="#Alignment">Alignment</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTableHeader">func <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=2735:2782#L114">NewTableHeader</a>
+					<a class="permalink" href="#NewTableHeader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTableHeader(row *<a href="#TableRow">TableRow</a>) *<a href="#TableHeader">TableHeader</a></pre>
+				<p>NewTableHeader returns a new TableHeader node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="TableHeader.Dump">func (*TableHeader) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=2582:2634#L109">Dump</a>
+					<a class="permalink" href="#TableHeader.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TableHeader">TableHeader</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="TableHeader.Kind">func (*TableHeader) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=2480:2522#L104">Kind</a>
+					<a class="permalink" href="#TableHeader.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TableHeader">TableHeader</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TableRow">type <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=1660:1724#L71">TableRow</a>
+				<a class="permalink" href="#TableRow">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TableRow struct represents a table row of Markdown(GFM) text.
+
+			<pre>type TableRow struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseBlock">BaseBlock</a>
+<span id="TableRow.Alignments"></span>    Alignments []<a href="#Alignment">Alignment</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTableRow">func <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=2097:2147#L90">NewTableRow</a>
+					<a class="permalink" href="#NewTableRow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTableRow(alignments []<a href="#Alignment">Alignment</a>) *<a href="#TableRow">TableRow</a></pre>
+				<p>NewTableRow returns a new TableRow node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="TableRow.Dump">func (*TableRow) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=1756:1805#L77">Dump</a>
+					<a class="permalink" href="#TableRow.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TableRow">TableRow</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="TableRow.Kind">func (*TableRow) <a href="/src/github.com/yuin/goldmark/extension/ast/table.go?s=1987:2026#L85">Kind</a>
+					<a class="permalink" href="#TableRow.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TableRow">TableRow</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TaskCheckBox">type <a href="/src/github.com/yuin/goldmark/extension/ast/tasklist.go?s=132:193#L1">TaskCheckBox</a>
+				<a class="permalink" href="#TaskCheckBox">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A TaskCheckBox struct represents a checkbox of a task list.
+
+			<pre>type TaskCheckBox struct {
+    <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#BaseInline">BaseInline</a>
+<span id="TaskCheckBox.IsChecked"></span>    IsChecked <a href="/pkg/builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTaskCheckBox">func <a href="/src/github.com/yuin/goldmark/extension/ast/tasklist.go?s=673:721#L21">NewTaskCheckBox</a>
+					<a class="permalink" href="#NewTaskCheckBox">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTaskCheckBox(checked <a href="/pkg/builtin/#bool">bool</a>) *<a href="#TaskCheckBox">TaskCheckBox</a></pre>
+				<p>NewTaskCheckBox returns a new TaskCheckBox node.
+
+				
+				
+			
+
+			
+				
+				<h3 id="TaskCheckBox.Dump">func (*TaskCheckBox) <a href="/src/github.com/yuin/goldmark/extension/ast/tasklist.go?s=225:278#L5">Dump</a>
+					<a class="permalink" href="#TaskCheckBox.Dump">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TaskCheckBox">TaskCheckBox</a>) Dump(source []<a href="/pkg/builtin/#byte">byte</a>, level <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>Dump implements Node.Dump.
+
+				
+				
+				
+			
+				
+				<h3 id="TaskCheckBox.Kind">func (*TaskCheckBox) <a href="/src/github.com/yuin/goldmark/extension/ast/tasklist.go?s=547:590#L16">Kind</a>
+					<a class="permalink" href="#TaskCheckBox.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#TaskCheckBox">TaskCheckBox</a>) Kind() <a href="/pkg/github.com/yuin/goldmark/ast/">gast</a>.<a href="/pkg/github.com/yuin/goldmark/ast/#NodeKind">NodeKind</a></pre>
+				<p>Kind implements Node.Kind.
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

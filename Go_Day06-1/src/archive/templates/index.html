@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+</head>
+<body>
+    <header>Welcome to my blog!</header>
+    <main>
+        <img src="../image/png.png">
+        <ul>{{range .Articles}}
+            <li><a href="/article/{{.Id}}">{{.Name}}</a></li>
+            {{end}}
+        </ul>
+        {{if .Previous}}<a href="/?page={{.Previous}}">previous</a>{{end}}
+        {{if .Next}}<a href="/?page={{.Next}}">next</a>{{end}}
+    </main>
+</body>
+</html>

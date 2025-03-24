@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package device;
+
+option go_package = "device/server";
+service Device {
+  rpc Connect(Empty) returns (stream Message) {}
+}
+
+message Empty {}
+
+message Message {
+  string session_id = 1;
+  double frequency = 2;
+  int64 timestamp = 3;
+}

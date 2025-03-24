@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>note - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package note
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/sumdb/note"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package note defines the notes signed by the Go module database server.
+<p>A note is text signed by one or more server keys.
+The text should be ignored unless the note is signed by
+a trusted server key and the signature has been verified
+using the server&apos;s public key.
+<p>A server&apos;s public key is identified by a name, typically the &quot;host[/path]&quot;
+giving the base URL of the server&apos;s transparency log.
+The syntactic restrictions on a name are that it be non-empty,
+well-formed UTF-8 containing neither Unicode spaces nor plus (U+002B).
+<p>A Go module database server signs texts using public key cryptography.
+A given server may have multiple public keys, each
+identified by a 32-bit hash of the public key.
+<h3 id="hdr-Verifying_Notes">Verifying Notes</h3>
+<p>A <a href="#Verifier">Verifier</a> allows verification of signatures by one server public key.
+It can report the name of the server and the uint32 hash of the key,
+and it can verify a purported signature by that key.
+<p>The standard implementation of a Verifier is constructed
+by <a href="#NewVerifier">NewVerifier</a> starting from a verifier key, which is a
+plain text string of the form &quot;&lt;name&gt;+&lt;hash&gt;+&lt;keydata&gt;&quot;.
+<p>A <a href="#Verifiers">Verifiers</a> allows looking up a Verifier by the combination
+of server name and key hash.
+<p>The standard implementation of a Verifiers is constructed
+by VerifierList from a list of known verifiers.
+<p>A <a href="#Note">Note</a> represents a text with one or more signatures.
+An implementation can reject a note with too many signatures
+(for example, more than 100 signatures).
+<p>A <a href="#Signature">Signature</a> represents a signature on a note, verified or not.
+<p>The <a href="#Open">Open</a> function takes as input a signed message
+and a set of known verifiers. It decodes and verifies
+the message signatures and returns a <a href="#Note">Note</a> structure
+containing the message text and (verified or unverified) signatures.
+<h3 id="hdr-Signing_Notes">Signing Notes</h3>
+<p>A <a href="#Signer">Signer</a> allows signing a text with a given key.
+It can report the name of the server and the hash of the key
+and can sign a raw text using that key.
+<p>The standard implementation of a Signer is constructed
+by <a href="#NewSigner">NewSigner</a> starting from an encoded signer key, which is a
+plain text string of the form &quot;PRIVATE+KEY+&lt;name&gt;+&lt;hash&gt;+&lt;keydata&gt;&quot;.
+Anyone with an encoded signer key can sign messages using that key,
+so it must be kept secret. The encoding begins with the literal text
+&quot;PRIVATE+KEY&quot; to avoid confusion with the public server key.
+<p>The <a href="#Sign">Sign</a> function takes as input a Note and a list of Signers
+and returns an encoded, signed message.
+<h3 id="hdr-Signed_Note_Format">Signed Note Format</h3>
+<p>A signed note consists of a text ending in newline (U+000A),
+followed by a blank line (only a newline),
+followed by one or more signature lines of this form:
+em dash (U+2014), space (U+0020),
+server name, space, base64-encoded signature, newline.
+<p>Signed notes must be valid UTF-8 and must not contain any
+ASCII control characters (those below U+0020) other than newline.
+<p>A signature is a base64 encoding of 4+n bytes.
+<p>The first four bytes in the signature are the uint32 key hash
+stored in big-endian order.
+<p>The remaining n bytes are the result of using the specified key
+to sign the note text (including the final newline but not the
+separating blank line).
+<h3 id="hdr-Generating_Keys">Generating Keys</h3>
+<p>There is only one key type, Ed25519 with algorithm identifier 1.
+New key types may be introduced in the future as needed,
+although doing so will require deploying the new algorithms to all clients
+before starting to depend on them for signatures.
+<p>The <a href="#GenerateKey">GenerateKey</a> function generates and returns a new signer
+and corresponding verifier.
+<h3 id="hdr-Example">Example</h3>
+<p>Here is a well-formed signed note:
+<pre>If you think cryptography is the answer to your problem,
+then you don&apos;t know what your problem is.
+
+— PeterNeumann x08go/ZJkuBS9UG/SffcvIAQxVBtiFupLLr8pAcElZInNIuGUgYN1FFYC2pZSNXgKvqfqdngotpRZb6KE6RyyBwJnAM=
+</pre>
+<p>It can be constructed and displayed using:
+<pre>skey := &quot;PRIVATE+KEY+PeterNeumann+c74f20a3+AYEKFALVFGyNhPJEMzD1QIDr+Y7hfZx09iUvxdXHKDFz&quot;
+text := &quot;If you think cryptography is the answer to your problem,\n&quot; +
+	&quot;then you don&apos;t know what your problem is.\n&quot;
+
+signer, err := note.NewSigner(skey)
+if err != nil {
+	log.Fatal(err)
+}
+
+msg, err := note.Sign(&amp;note.Note{Text: text}, signer)
+if err != nil {
+	log.Fatal(err)
+}
+os.Stdout.Write(msg)
+</pre>
+<p>The note&apos;s text is two lines, including the final newline,
+and the text is purportedly signed by a server named
+&quot;PeterNeumann&quot;. (Although server names are canonically
+base URLs, the only syntactic requirement is that they
+not contain spaces or newlines).
+<p>If <a href="#Open">Open</a> is given access to a <a href="#Verifiers">Verifiers</a> including the
+<a href="#Verifier">Verifier</a> for this key, then it will succeed at verifying
+the encoded message and returning the parsed <a href="#Note">Note</a>:
+<pre>vkey := &quot;PeterNeumann+c74f20a3+ARpc2QcUPDhMQegwxbzhKqiBfsVkmqq/LDE4izWy10TW&quot;
+msg := []byte(&quot;If you think cryptography is the answer to your problem,\n&quot; +
+	&quot;then you don&apos;t know what your problem is.\n&quot; +
+	&quot;\n&quot; +
+	&quot;— PeterNeumann x08go/ZJkuBS9UG/SffcvIAQxVBtiFupLLr8pAcElZInNIuGUgYN1FFYC2pZSNXgKvqfqdngotpRZb6KE6RyyBwJnAM=\n&quot;)
+
+verifier, err := note.NewVerifier(vkey)
+if err != nil {
+	log.Fatal(err)
+}
+verifiers := note.VerifierList(verifier)
+
+n, err := note.Open([]byte(msg), verifiers)
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Printf(&quot;%s (%08x):\n%s&quot;, n.Sigs[0].Name, n.Sigs[0].Hash, n.Text)
+</pre>
+<p>You can add your own signature to this message by re-signing the note:
+<pre>skey, vkey, err := note.GenerateKey(rand.Reader, &quot;EnochRoot&quot;)
+if err != nil {
+	log.Fatal(err)
+}
+_ = vkey // give to verifiers
+
+me, err := note.NewSigner(skey)
+if err != nil {
+	log.Fatal(err)
+}
+
+msg, err := note.Sign(n, me)
+if err != nil {
+	log.Fatal(err)
+}
+os.Stdout.Write(msg)
+</pre>
+<p>This will print a doubly-signed message, like:
+<pre>If you think cryptography is the answer to your problem,
+then you don&apos;t know what your problem is.
+
+— PeterNeumann x08go/ZJkuBS9UG/SffcvIAQxVBtiFupLLr8pAcElZInNIuGUgYN1FFYC2pZSNXgKvqfqdngotpRZb6KE6RyyBwJnAM=
+— EnochRoot rwz+eBzmZa0SO3NbfRGzPCpDckykFXSdeX+MNtCOXm2/5n2tiOHp+vAF1aGrQ5ovTG01oOTGwnWLox33WWd1RvMc+QQ=
+</pre>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#GenerateKey">func GenerateKey(rand io.Reader, name string) (skey, vkey string, err error)</a></dd>
+			
+				
+				<dd><a href="#NewEd25519VerifierKey">func NewEd25519VerifierKey(name string, key ed25519.PublicKey) (string, error)</a></dd>
+			
+				
+				<dd><a href="#Sign">func Sign(n *Note, signers ...Signer) ([]byte, error)</a></dd>
+			
+			
+				
+				<dd><a href="#InvalidSignatureError">type InvalidSignatureError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#InvalidSignatureError.Error">func (e *InvalidSignatureError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#Note">type Note</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Open">func Open(msg []byte, known Verifiers) (*Note, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Signature">type Signature</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Signer">type Signer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewSigner">func NewSigner(skey string) (Signer, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#UnknownVerifierError">type UnknownVerifierError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UnknownVerifierError.Error">func (e *UnknownVerifierError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#UnverifiedNoteError">type UnverifiedNoteError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UnverifiedNoteError.Error">func (e *UnverifiedNoteError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="#Verifier">type Verifier</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewVerifier">func NewVerifier(vkey string) (Verifier, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Verifiers">type Verifiers</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#VerifierList">func VerifierList(list ...Verifier) Verifiers</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="#example_Open">Open</a></dd>
+			
+			<dd><a class="exampleLink" href="#example_Sign">Sign</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/golang.org/x/mod/sumdb/note/note.go">note.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="GenerateKey">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=11273:11349#L352">GenerateKey</a>
+				<a class="permalink" href="#GenerateKey">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GenerateKey(rand <a href="/pkg/io/">io</a>.<a href="/pkg/io/#Reader">Reader</a>, name <a href="/pkg/builtin/#string">string</a>) (skey, vkey <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>GenerateKey generates a signer and verifier key pair for a named server.
+The signer key skey is private and must be kept secret.
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewEd25519VerifierKey">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=11885:11963#L368">NewEd25519VerifierKey</a>
+				<a class="permalink" href="#NewEd25519VerifierKey">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewEd25519VerifierKey(name <a href="/pkg/builtin/#string">string</a>, key <a href="/pkg/crypto/ed25519/">ed25519</a>.<a href="/pkg/crypto/ed25519/#PublicKey">PublicKey</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>NewEd25519VerifierKey returns an encoded verifier key using the given name
+and Ed25519 public key.
+
+			
+			
+
+		
+			
+			
+			<h2 id="Sign">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=19100:19153#L608">Sign</a>
+				<a class="permalink" href="#Sign">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Sign(n *<a href="#Note">Note</a>, signers ...<a href="#Signer">Signer</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<p>Sign signs the note with the given signers and returns the encoded message.
+The new signatures from signers are listed in the encoded message after
+the existing signatures already present in n.Sigs.
+If any signer uses the same key as an existing signature,
+the existing signature is elided from the output.
+
+			<div id="example_Sign" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">skey := &#34;PRIVATE+KEY+PeterNeumann+c74f20a3+AYEKFALVFGyNhPJEMzD1QIDr+Y7hfZx09iUvxdXHKDFz&#34;
+text := &#34;If you think cryptography is the answer to your problem,\n&#34; +
+    &#34;then you don&#39;t know what your problem is.\n&#34;
+
+signer, err := note.NewSigner(skey)
+if err != nil {
+    fmt.Println(err)
+    return
+}
+
+msg, err := note.Sign(&amp;note.Note{Text: text}, signer)
+if err != nil {
+    fmt.Println(err)
+    return
+}
+os.Stdout.Write(msg)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">If you think cryptography is the answer to your problem,
+then you don&#39;t know what your problem is.
+
+— PeterNeumann x08go/ZJkuBS9UG/SffcvIAQxVBtiFupLLr8pAcElZInNIuGUgYN1FFYC2pZSNXgKvqfqdngotpRZb6KE6RyyBwJnAM=
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+		
+			
+			
+			<h2 id="InvalidSignatureError">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=14923:14986#L473">InvalidSignatureError</a>
+				<a class="permalink" href="#InvalidSignatureError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An InvalidSignatureError indicates that the given key was known
+and the associated Verifier rejected the signature.
+
+			<pre>type InvalidSignatureError struct {
+<span id="InvalidSignatureError.Name"></span>    Name <a href="/pkg/builtin/#string">string</a>
+<span id="InvalidSignatureError.Hash"></span>    Hash <a href="/pkg/builtin/#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InvalidSignatureError.Error">func (*InvalidSignatureError) <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=14988:15034#L478">Error</a>
+					<a class="permalink" href="#InvalidSignatureError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="#InvalidSignatureError">InvalidSignatureError</a>) Error() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Note">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=14112:14280#L444">Note</a>
+				<a class="permalink" href="#Note">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Note is a text and signatures.
+
+			<pre>type Note struct {
+<span id="Note.Text"></span>    Text           <a href="/pkg/builtin/#string">string</a>      <span class="comment">// text of note</span>
+<span id="Note.Sigs"></span>    Sigs           []<a href="#Signature">Signature</a> <span class="comment">// verified signatures</span>
+<span id="Note.UnverifiedSigs"></span>    UnverifiedSigs []<a href="#Signature">Signature</a> <span class="comment">// unverified signatures</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Open">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=16194:16247#L505">Open</a>
+					<a class="permalink" href="#Open">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Open(msg []<a href="/pkg/builtin/#byte">byte</a>, known <a href="#Verifiers">Verifiers</a>) (*<a href="#Note">Note</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>Open opens and parses the message msg, checking signatures from the known verifiers.
+<p>For each signature in the message, Open calls known.Verifier to find a verifier.
+If known.Verifier returns a verifier and the verifier accepts the signature,
+Open records the signature in the returned note&apos;s Sigs field.
+If known.Verifier returns a verifier but the verifier rejects the signature,
+Open returns an InvalidSignatureError.
+If known.Verifier returns an UnknownVerifierError,
+Open records the signature in the returned note&apos;s UnverifiedSigs field.
+If known.Verifier returns any other error, Open returns that error.
+<p>If no known verifier has signed an otherwise valid note,
+Open returns an <a href="#UnverifiedNoteError">UnverifiedNoteError</a>.
+In this case, the unverified note can be fetched from inside the error.
+
+				<div id="example_Open" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">vkey := &#34;PeterNeumann+c74f20a3+ARpc2QcUPDhMQegwxbzhKqiBfsVkmqq/LDE4izWy10TW&#34;
+msg := []byte(&#34;If you think cryptography is the answer to your problem,\n&#34; +
+    &#34;then you don&#39;t know what your problem is.\n&#34; +
+    &#34;\n&#34; +
+    &#34;— PeterNeumann x08go/ZJkuBS9UG/SffcvIAQxVBtiFupLLr8pAcElZInNIuGUgYN1FFYC2pZSNXgKvqfqdngotpRZb6KE6RyyBwJnAM=\n&#34;)
+
+verifier, err := note.NewVerifier(vkey)
+if err != nil {
+    fmt.Println(err)
+    return
+}
+verifiers := note.VerifierList(verifier)
+
+n, err := note.Open(msg, verifiers)
+if err != nil {
+    fmt.Println(err)
+    return
+}
+fmt.Printf(&#34;%s (%08x):\n%s&#34;, n.Sigs[0].Name, n.Sigs[0].Hash, n.Text)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">PeterNeumann (c74f20a3):
+If you think cryptography is the answer to your problem,
+then you don&#39;t know what your problem is.
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Signature">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=14336:14549#L451">Signature</a>
+				<a class="permalink" href="#Signature">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Signature is a single signature found in a note.
+
+			<pre>type Signature struct {
+<span id="Signature.Name"></span>    <span class="comment">// Name and Hash give the name and key hash</span>
+    <span class="comment">// for the key that generated the signature.</span>
+    Name <a href="/pkg/builtin/#string">string</a>
+<span id="Signature.Hash"></span>    Hash <a href="/pkg/builtin/#uint32">uint32</a>
+
+<span id="Signature.Base64"></span>    <span class="comment">// Base64 records the base64-encoded signature bytes.</span>
+    Base64 <a href="/pkg/builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Signer">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=7032:7270#L194">Signer</a>
+				<a class="permalink" href="#Signer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Signer signs messages using a specific key.
+
+			<pre>type Signer interface {
+    <span class="comment">// Name returns the server name associated with the key.</span>
+    Name() <a href="/pkg/builtin/#string">string</a>
+
+    <span class="comment">// KeyHash returns the key hash.</span>
+    KeyHash() <a href="/pkg/builtin/#uint32">uint32</a>
+
+    <span class="comment">// Sign returns a signature for the given message.</span>
+    Sign(msg []<a href="/pkg/builtin/#byte">byte</a>) ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="/pkg/builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewSigner">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=9562:9605#L289">NewSigner</a>
+					<a class="permalink" href="#NewSigner">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewSigner(skey <a href="/pkg/builtin/#string">string</a>) (<a href="#Signer">Signer</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>NewSigner constructs a new <a href="#Signer">Signer</a> from an encoded signer key.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="UnknownVerifierError">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=12796:12864#L392">UnknownVerifierError</a>
+				<a class="permalink" href="#UnknownVerifierError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An UnknownVerifierError indicates that the given key is not known.
+The Open function records signatures without associated verifiers as
+unverified signatures.
+
+			<pre>type UnknownVerifierError struct {
+<span id="UnknownVerifierError.Name"></span>    Name    <a href="/pkg/builtin/#string">string</a>
+<span id="UnknownVerifierError.KeyHash"></span>    KeyHash <a href="/pkg/builtin/#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="UnknownVerifierError.Error">func (*UnknownVerifierError) <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=12866:12911#L397">Error</a>
+					<a class="permalink" href="#UnknownVerifierError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="#UnknownVerifierError">UnknownVerifierError</a>) Error() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="UnverifiedNoteError">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=14658:14705#L463">UnverifiedNoteError</a>
+				<a class="permalink" href="#UnverifiedNoteError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An UnverifiedNoteError indicates that the note
+successfully parsed but had no verifiable signatures.
+
+			<pre>type UnverifiedNoteError struct {
+<span id="UnverifiedNoteError.Note"></span>    Note *<a href="#Note">Note</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="UnverifiedNoteError.Error">func (*UnverifiedNoteError) <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=14707:14751#L467">Error</a>
+					<a class="permalink" href="#UnverifiedNoteError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="#UnverifiedNoteError">UnverifiedNoteError</a>) Error() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Verifier">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=6737:6981#L182">Verifier</a>
+				<a class="permalink" href="#Verifier">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Verifier verifies messages signed with a specific key.
+
+			<pre>type Verifier interface {
+    <span class="comment">// Name returns the server name associated with the key.</span>
+    Name() <a href="/pkg/builtin/#string">string</a>
+
+    <span class="comment">// KeyHash returns the key hash.</span>
+    KeyHash() <a href="/pkg/builtin/#uint32">uint32</a>
+
+    <span class="comment">// Verify reports whether sig is a valid signature of msg.</span>
+    Verify(msg, sig []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewVerifier">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=8096:8143#L232">NewVerifier</a>
+					<a class="permalink" href="#NewVerifier">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewVerifier(vkey <a href="/pkg/builtin/#string">string</a>) (<a href="#Verifier">Verifier</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>NewVerifier construct a new <a href="#Verifier">Verifier</a> from an encoded verifier key.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Verifiers">type <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=12358:12626#L381">Verifiers</a>
+				<a class="permalink" href="#Verifiers">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Verifiers is a collection of known verifier keys.
+
+			<pre>type Verifiers interface {
+    <span class="comment">// Verifier returns the Verifier associated with the key</span>
+    <span class="comment">// identified by the name and hash.</span>
+    <span class="comment">// If the name, hash pair is unknown, Verifier should return</span>
+    <span class="comment">// an UnknownVerifierError.</span>
+    Verifier(name <a href="/pkg/builtin/#string">string</a>, hash <a href="/pkg/builtin/#uint32">uint32</a>) (<a href="#Verifier">Verifier</a>, <a href="/pkg/builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="VerifierList">func <a href="/src/golang.org/x/mod/sumdb/note/note.go?s=13542:13587#L416">VerifierList</a>
+					<a class="permalink" href="#VerifierList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func VerifierList(list ...<a href="#Verifier">Verifier</a>) <a href="#Verifiers">Verifiers</a></pre>
+				<p>VerifierList returns a <a href="#Verifiers">Verifiers</a> implementation that uses the given list of verifiers.
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>util - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package util
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/yuin/goldmark/util"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package util provides utility functions for the goldmark.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#BytesToReadOnlyString">func BytesToReadOnlyString(b []byte) string</a></dd>
+			
+				
+				<dd><a href="#DedentPosition">func DedentPosition(bs []byte, currentPos, width int) (pos, padding int)</a></dd>
+			
+				
+				<dd><a href="#DedentPositionPadding">func DedentPositionPadding(bs []byte, currentPos, paddingv, width int) (pos, padding int)</a></dd>
+			
+				
+				<dd><a href="#DoFullUnicodeCaseFolding">func DoFullUnicodeCaseFolding(v []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#EastAsianWidth">func EastAsianWidth(r rune) string</a></dd>
+			
+				
+				<dd><a href="#EscapeHTML">func EscapeHTML(v []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#EscapeHTMLByte">func EscapeHTMLByte(b byte) []byte</a></dd>
+			
+				
+				<dd><a href="#FindClosure">func FindClosure(bs []byte, opener, closure byte, codeSpan, allowNesting bool) int</a></dd>
+			
+				
+				<dd><a href="#FindEmailIndex">func FindEmailIndex(b []byte) int</a></dd>
+			
+				
+				<dd><a href="#FindURLIndex">func FindURLIndex(b []byte) int</a></dd>
+			
+				
+				<dd><a href="#FirstNonSpacePosition">func FirstNonSpacePosition(bs []byte) int</a></dd>
+			
+				
+				<dd><a href="#IndentPosition">func IndentPosition(bs []byte, currentPos, width int) (pos, padding int)</a></dd>
+			
+				
+				<dd><a href="#IndentPositionPadding">func IndentPositionPadding(bs []byte, currentPos, paddingv, width int) (pos, padding int)</a></dd>
+			
+				
+				<dd><a href="#IndentWidth">func IndentWidth(bs []byte, currentPos int) (width, pos int)</a></dd>
+			
+				
+				<dd><a href="#IsAlphaNumeric">func IsAlphaNumeric(c byte) bool</a></dd>
+			
+				
+				<dd><a href="#IsBlank">func IsBlank(bs []byte) bool</a></dd>
+			
+				
+				<dd><a href="#IsEastAsianWideRune">func IsEastAsianWideRune(r rune) bool</a></dd>
+			
+				
+				<dd><a href="#IsEscapedPunctuation">func IsEscapedPunctuation(source []byte, i int) bool</a></dd>
+			
+				
+				<dd><a href="#IsHexDecimal">func IsHexDecimal(c byte) bool</a></dd>
+			
+				
+				<dd><a href="#IsNumeric">func IsNumeric(c byte) bool</a></dd>
+			
+				
+				<dd><a href="#IsPunct">func IsPunct(c byte) bool</a></dd>
+			
+				
+				<dd><a href="#IsPunctRune">func IsPunctRune(r rune) bool</a></dd>
+			
+				
+				<dd><a href="#IsSpace">func IsSpace(c byte) bool</a></dd>
+			
+				
+				<dd><a href="#IsSpaceDiscardingUnicodeRune">func IsSpaceDiscardingUnicodeRune(r rune) bool</a></dd>
+			
+				
+				<dd><a href="#IsSpaceRune">func IsSpaceRune(r rune) bool</a></dd>
+			
+				
+				<dd><a href="#ReadWhile">func ReadWhile(source []byte, index [2]int, pred func(byte) bool) (int, bool)</a></dd>
+			
+				
+				<dd><a href="#ReplaceSpaces">func ReplaceSpaces(source []byte, repl byte) []byte</a></dd>
+			
+				
+				<dd><a href="#ResolveEntityNames">func ResolveEntityNames(source []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#ResolveNumericReferences">func ResolveNumericReferences(source []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#StringToReadOnlyBytes">func StringToReadOnlyBytes(s string) (bs []byte)</a></dd>
+			
+				
+				<dd><a href="#TabWidth">func TabWidth(currentPos int) int</a></dd>
+			
+				
+				<dd><a href="#ToLinkReference">func ToLinkReference(v []byte) string</a></dd>
+			
+				
+				<dd><a href="#ToRune">func ToRune(source []byte, pos int) rune</a></dd>
+			
+				
+				<dd><a href="#ToValidRune">func ToValidRune(v rune) rune</a></dd>
+			
+				
+				<dd><a href="#TrimLeft">func TrimLeft(source, b []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#TrimLeftLength">func TrimLeftLength(source, s []byte) int</a></dd>
+			
+				
+				<dd><a href="#TrimLeftSpace">func TrimLeftSpace(source []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#TrimLeftSpaceLength">func TrimLeftSpaceLength(source []byte) int</a></dd>
+			
+				
+				<dd><a href="#TrimRight">func TrimRight(source, b []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#TrimRightLength">func TrimRightLength(source, s []byte) int</a></dd>
+			
+				
+				<dd><a href="#TrimRightSpace">func TrimRightSpace(source []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#TrimRightSpaceLength">func TrimRightSpaceLength(source []byte) int</a></dd>
+			
+				
+				<dd><a href="#URLEscape">func URLEscape(v []byte, resolveReference bool) []byte</a></dd>
+			
+				
+				<dd><a href="#UTF8Len">func UTF8Len(b byte) int8</a></dd>
+			
+				
+				<dd><a href="#UnescapePunctuations">func UnescapePunctuations(source []byte) []byte</a></dd>
+			
+				
+				<dd><a href="#VisualizeSpaces">func VisualizeSpaces(bs []byte) []byte</a></dd>
+			
+			
+				
+				<dd><a href="#BufWriter">type BufWriter</a></dd>
+				
+				
+			
+				
+				<dd><a href="#BytesFilter">type BytesFilter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewBytesFilter">func NewBytesFilter(elements ...[]byte) BytesFilter</a></dd>
+				
+				
+			
+				
+				<dd><a href="#CopyOnWriteBuffer">type CopyOnWriteBuffer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewCopyOnWriteBuffer">func NewCopyOnWriteBuffer(buffer []byte) CopyOnWriteBuffer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.Append">func (b *CopyOnWriteBuffer) Append(value []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.AppendByte">func (b *CopyOnWriteBuffer) AppendByte(c byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.AppendString">func (b *CopyOnWriteBuffer) AppendString(value string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.Bytes">func (b *CopyOnWriteBuffer) Bytes() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.IsCopied">func (b *CopyOnWriteBuffer) IsCopied() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.Write">func (b *CopyOnWriteBuffer) Write(value []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.WriteByte">func (b *CopyOnWriteBuffer) WriteByte(c byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#CopyOnWriteBuffer.WriteString">func (b *CopyOnWriteBuffer) WriteString(value string)</a></dd>
+				
+			
+				
+				<dd><a href="#HTML5Entity">type HTML5Entity</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LookUpHTML5EntityByName">func LookUpHTML5EntityByName(name string) (*HTML5Entity, bool)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#PrioritizedSlice">type PrioritizedSlice</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PrioritizedSlice.Remove">func (s PrioritizedSlice) Remove(v interface{}) PrioritizedSlice</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PrioritizedSlice.Sort">func (s PrioritizedSlice) Sort()</a></dd>
+				
+			
+				
+				<dd><a href="#PrioritizedValue">type PrioritizedValue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Prioritized">func Prioritized(v interface{}, priority int) PrioritizedValue</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/yuin/goldmark/util/html5entities.go">html5entities.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/util/unicode_case_folding.go">unicode_case_folding.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/util/util.go">util.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/util/util_cjk.go">util_cjk.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/util/util_unsafe.go">util_unsafe.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="BytesToReadOnlyString">func <a href="/src/github.com/yuin/goldmark/util/util_unsafe.go?s=172:215#L2">BytesToReadOnlyString</a>
+				<a class="permalink" href="#BytesToReadOnlyString">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BytesToReadOnlyString(b []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>BytesToReadOnlyString returns a string converted from given bytes.
+
+			
+			
+
+		
+			
+			
+			<h2 id="DedentPosition">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=4990:5062#L177">DedentPosition</a>
+				<a class="permalink" href="#DedentPosition">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DedentPosition(bs []<a href="/pkg/builtin/#byte">byte</a>, currentPos, width <a href="/pkg/builtin/#int">int</a>) (pos, padding <a href="/pkg/builtin/#int">int</a>)</pre>
+			<p>DedentPosition dedents lines by the given width.
+<p>Deprecated: This function has bugs. Use util.IndentPositionPadding and util.FirstNonSpacePosition.
+
+			
+			
+
+		
+			
+			
+			<h2 id="DedentPositionPadding">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=5600:5689#L204">DedentPositionPadding</a>
+				<a class="permalink" href="#DedentPositionPadding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DedentPositionPadding(bs []<a href="/pkg/builtin/#byte">byte</a>, currentPos, paddingv, width <a href="/pkg/builtin/#int">int</a>) (pos, padding <a href="/pkg/builtin/#int">int</a>)</pre>
+			<p>DedentPositionPadding dedents lines by the given width.
+This function is mostly same as DedentPosition except this function
+takes account into additional paddings.
+<p>Deprecated: This function has bugs. Use util.IndentPositionPadding and util.FirstNonSpacePosition.
+
+			
+			
+
+		
+			
+			
+			<h2 id="DoFullUnicodeCaseFolding">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=9918:9964#L408">DoFullUnicodeCaseFolding</a>
+				<a class="permalink" href="#DoFullUnicodeCaseFolding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DoFullUnicodeCaseFolding(v []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>DoFullUnicodeCaseFolding performs full unicode case folding to given bytes.
+
+			
+			
+
+		
+			
+			
+			<h2 id="EastAsianWidth">func <a href="/src/github.com/yuin/goldmark/util/util_cjk.go?s=5031:5065#L216">EastAsianWidth</a>
+				<a class="permalink" href="#EastAsianWidth">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EastAsianWidth(r <a href="/pkg/builtin/#rune">rune</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>EastAsianWidth returns the east asian width of the given rune.
+See <a href="https://www.unicode.org/reports/tr11/tr11-36.html">https://www.unicode.org/reports/tr11/tr11-36.html</a>
+
+			
+			
+
+		
+			
+			
+			<h2 id="EscapeHTML">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=13722:13754#L524">EscapeHTML</a>
+				<a class="permalink" href="#EscapeHTML">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EscapeHTML(v []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>EscapeHTML escapes characters that should be escaped in HTML text.
+
+			
+			
+
+		
+			
+			
+			<h2 id="EscapeHTMLByte">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=13585:13619#L519">EscapeHTMLByte</a>
+				<a class="permalink" href="#EscapeHTMLByte">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EscapeHTMLByte(b <a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>EscapeHTMLByte returns HTML escaped bytes if the given byte should be escaped,
+otherwise nil.
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindClosure">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=6968:7050#L270">FindClosure</a>
+				<a class="permalink" href="#FindClosure">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FindClosure(bs []<a href="/pkg/builtin/#byte">byte</a>, opener, closure <a href="/pkg/builtin/#byte">byte</a>, codeSpan, allowNesting <a href="/pkg/builtin/#bool">bool</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>FindClosure returns a position that closes the given opener.
+If codeSpan is set true, it ignores characters in code spans.
+If allowNesting is set true, closures correspond to nested opener will be
+ignored.
+<p>Deprecated: This function can not handle newlines. Many elements
+can be existed over multiple lines(e.g. link labels).
+Use text.Reader.FindClosure.
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindEmailIndex">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=18771:18804#L747">FindEmailIndex</a>
+				<a class="permalink" href="#FindEmailIndex">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FindEmailIndex(b []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>FindEmailIndex returns a stop index value if the given bytes seem an email address.
+
+			
+			
+
+		
+			
+			
+			<h2 id="FindURLIndex">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=18149:18180#L716">FindURLIndex</a>
+				<a class="permalink" href="#FindURLIndex">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FindURLIndex(b []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>FindURLIndex returns a stop index value if the given bytes seem an URL.
+This function is equivalent to [A-Za-z][A-Za-z0-9.+-]{1,31}:[^&lt;&gt;\x00-\x20]* .
+
+			
+			
+
+		
+			
+			
+			<h2 id="FirstNonSpacePosition">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=6392:6433#L247">FirstNonSpacePosition</a>
+				<a class="permalink" href="#FirstNonSpacePosition">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FirstNonSpacePosition(bs []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>FirstNonSpacePosition returns a position line that is a first nonspace
+character.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndentPosition">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=4096:4168#L145">IndentPosition</a>
+				<a class="permalink" href="#IndentPosition">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IndentPosition(bs []<a href="/pkg/builtin/#byte">byte</a>, currentPos, width <a href="/pkg/builtin/#int">int</a>) (pos, padding <a href="/pkg/builtin/#int">int</a>)</pre>
+			<p>IndentPosition searches an indent position with the given width for the given line.
+If the line contains tab characters, paddings may be not zero.
+currentPos==0 and width==2:
+<pre>position: 0    1
+          [TAB]aaaa
+width:    1234 5678
+</pre>
+<p>width=2 is in the tab character. In this case, IndentPosition returns
+(pos=1, padding=2).
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndentPositionPadding">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=4438:4527#L152">IndentPositionPadding</a>
+				<a class="permalink" href="#IndentPositionPadding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IndentPositionPadding(bs []<a href="/pkg/builtin/#byte">byte</a>, currentPos, paddingv, width <a href="/pkg/builtin/#int">int</a>) (pos, padding <a href="/pkg/builtin/#int">int</a>)</pre>
+			<p>IndentPositionPadding searches an indent position with the given width for the given line.
+This function is mostly same as IndentPosition except this function
+takes account into additional paddings.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndentWidth">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=6040:6100#L228">IndentWidth</a>
+				<a class="permalink" href="#IndentWidth">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IndentWidth(bs []<a href="/pkg/builtin/#byte">byte</a>, currentPos <a href="/pkg/builtin/#int">int</a>) (width, pos <a href="/pkg/builtin/#int">int</a>)</pre>
+			<p>IndentWidth calculate an indent width for the given line.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsAlphaNumeric">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=25371:25403#L825">IsAlphaNumeric</a>
+				<a class="permalink" href="#IsAlphaNumeric">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsAlphaNumeric(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsAlphaNumeric returns true if the given character is a alphabet or a numeric, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsBlank">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=2958:2986#L109">IsBlank</a>
+				<a class="permalink" href="#IsBlank">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsBlank(bs []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsBlank returns true if the given string is all space characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsEastAsianWideRune">func <a href="/src/github.com/yuin/goldmark/util/util_cjk.go?s=3186:3223#L171">IsEastAsianWideRune</a>
+				<a class="permalink" href="#IsEastAsianWideRune">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsEastAsianWideRune(r <a href="/pkg/builtin/#rune">rune</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsEastAsianWideRune returns trhe if the given rune is an east asian wide character, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsEscapedPunctuation">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=2479:2531#L89">IsEscapedPunctuation</a>
+				<a class="permalink" href="#IsEscapedPunctuation">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsEscapedPunctuation(source []<a href="/pkg/builtin/#byte">byte</a>, i <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsEscapedPunctuation returns true if character at a given index i
+is an escaped punctuation, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsHexDecimal">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=25159:25189#L820">IsHexDecimal</a>
+				<a class="permalink" href="#IsHexDecimal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsHexDecimal(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsHexDecimal returns true if the given character is a hexdecimal, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsNumeric">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=25011:25038#L815">IsNumeric</a>
+				<a class="permalink" href="#IsNumeric">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsNumeric(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsNumeric returns true if the given character is a numeric, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsPunct">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=24397:24422#L795">IsPunct</a>
+				<a class="permalink" href="#IsPunct">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsPunct(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsPunct returns true if the given character is a punctuation, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsPunctRune">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=24536:24565#L800">IsPunctRune</a>
+				<a class="permalink" href="#IsPunctRune">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsPunctRune(r <a href="/pkg/builtin/#rune">rune</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsPunctRune returns true if the given rune is a punctuation, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsSpace">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=24697:24722#L805">IsSpace</a>
+				<a class="permalink" href="#IsSpace">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsSpace(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsSpace returns true if the given character is a space, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsSpaceDiscardingUnicodeRune">func <a href="/src/github.com/yuin/goldmark/util/util_cjk.go?s=3644:3690#L182">IsSpaceDiscardingUnicodeRune</a>
+				<a class="permalink" href="#IsSpaceDiscardingUnicodeRune">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsSpaceDiscardingUnicodeRune(r <a href="/pkg/builtin/#rune">rune</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsSpaceDiscardingUnicodeRune returns true if the given rune is space-discarding unicode character, otherwise false.
+See <a href="https://www.w3.org/TR/2020/WD-css-text-3-20200429/#space-discard-set">https://www.w3.org/TR/2020/WD-css-text-3-20200429/#space-discard-set</a>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsSpaceRune">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=24830:24859#L810">IsSpaceRune</a>
+				<a class="permalink" href="#IsSpaceRune">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsSpaceRune(r <a href="/pkg/builtin/#rune">rune</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>IsSpaceRune returns true if the given rune is a space, otherwise false.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadWhile">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=2663:2740#L94">ReadWhile</a>
+				<a class="permalink" href="#ReadWhile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadWhile(source []<a href="/pkg/builtin/#byte">byte</a>, index [2]<a href="/pkg/builtin/#int">int</a>, pred func(<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#bool">bool</a>)</pre>
+			<p>ReadWhile read the given source while pred is true.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReplaceSpaces">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=10733:10784#L454">ReplaceSpaces</a>
+				<a class="permalink" href="#ReplaceSpaces">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReplaceSpaces(source []<a href="/pkg/builtin/#byte">byte</a>, repl <a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>ReplaceSpaces replaces sequence of spaces with the given repl.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ResolveEntityNames">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=16021:16066#L616">ResolveEntityNames</a>
+				<a class="permalink" href="#ResolveEntityNames">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ResolveEntityNames(source []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>ResolveEntityNames resolve entity references like &apos;&amp;ouml;&quot; .
+
+			
+			
+
+		
+			
+			
+			<h2 id="ResolveNumericReferences">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=14553:14604#L565">ResolveNumericReferences</a>
+				<a class="permalink" href="#ResolveNumericReferences">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ResolveNumericReferences(source []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>ResolveNumericReferences resolve numeric references like &apos;&amp;#1234;&quot; .
+
+			
+			
+
+		
+			
+			
+			<h2 id="StringToReadOnlyBytes">func <a href="/src/github.com/yuin/goldmark/util/util_unsafe.go?s=328:376#L7">StringToReadOnlyBytes</a>
+				<a class="permalink" href="#StringToReadOnlyBytes">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func StringToReadOnlyBytes(s <a href="/pkg/builtin/#string">string</a>) (bs []<a href="/pkg/builtin/#byte">byte</a>)</pre>
+			<p>StringToReadOnlyBytes returns bytes converted from given string.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TabWidth">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=3680:3713#L131">TabWidth</a>
+				<a class="permalink" href="#TabWidth">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TabWidth(currentPos <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>TabWidth calculates actual width of a tab at the given position.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ToLinkReference">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=11944:11981#L508">ToLinkReference</a>
+				<a class="permalink" href="#ToLinkReference">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ToLinkReference(v []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>ToLinkReference converts given bytes into a valid link reference string.
+ToLinkReference performs unicode case folding, trims leading and trailing spaces,  converts into lower
+case and replace spaces with a single space character.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ToRune">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=11353:11393#L486">ToRune</a>
+				<a class="permalink" href="#ToRune">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ToRune(source []<a href="/pkg/builtin/#byte">byte</a>, pos <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#rune">rune</a></pre>
+			<p>ToRune decode given bytes start at pos and returns a rune.
+
+			
+			
+
+		
+			
+			
+			<h2 id="ToValidRune">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=11599:11628#L498">ToValidRune</a>
+				<a class="permalink" href="#ToValidRune">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ToValidRune(v <a href="/pkg/builtin/#rune">rune</a>) <a href="/pkg/builtin/#rune">rune</a></pre>
+			<p>ToValidRune returns 0xFFFD if the given rune is invalid, otherwise v.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimLeft">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=8093:8131#L322">TrimLeft</a>
+				<a class="permalink" href="#TrimLeft">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimLeft(source, b []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>TrimLeft trims characters in the given s from head of the source.
+bytes.TrimLeft offers same functionalities, but bytes.TrimLeft
+allocates new buffer for the result.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimLeftLength">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=8741:8782#L360">TrimLeftLength</a>
+				<a class="permalink" href="#TrimLeftLength">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimLeftLength(source, s []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>TrimLeftLength returns a length of leading specified characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimLeftSpace">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=9573:9613#L397">TrimLeftSpace</a>
+				<a class="permalink" href="#TrimLeftSpace">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimLeftSpace(source []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>TrimLeftSpace returns a subslice of the given string by slicing off all leading
+space characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimLeftSpaceLength">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=9070:9113#L370">TrimLeftSpaceLength</a>
+				<a class="permalink" href="#TrimLeftSpaceLength">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimLeftSpaceLength(source []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>TrimLeftSpaceLength returns a length of leading space characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimRight">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=8414:8453#L341">TrimRight</a>
+				<a class="permalink" href="#TrimRight">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimRight(source, b []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>TrimRight trims characters in the given s from tail of the source.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimRightLength">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=8905:8947#L365">TrimRightLength</a>
+				<a class="permalink" href="#TrimRightLength">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimRightLength(source, s []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>TrimRightLength returns a length of trailing specified characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimRightSpace">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=9758:9799#L403">TrimRightSpace</a>
+				<a class="permalink" href="#TrimRightSpace">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimRightSpace(source []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>TrimRightSpace returns a subslice of the given string by slicing off all trailing
+space characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="TrimRightSpaceLength">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=9281:9325#L381">TrimRightSpaceLength</a>
+				<a class="permalink" href="#TrimRightSpaceLength">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TrimRightSpaceLength(source []<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int">int</a></pre>
+			<p>TrimRightSpaceLength returns a length of trailing space characters.
+
+			
+			
+
+		
+			
+			
+			<h2 id="URLEscape">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=16978:17032#L657">URLEscape</a>
+				<a class="permalink" href="#URLEscape">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func URLEscape(v []<a href="/pkg/builtin/#byte">byte</a>, resolveReference <a href="/pkg/builtin/#bool">bool</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>URLEscape escape the given URL.
+If resolveReference is set true:
+<ol>
+<li>unescape punctuations
+<li>resolve numeric references
+<li>resolve entity references
+</ol>
+<p>URL encoded values (%xx) are kept as is.
+
+			
+			
+
+		
+			
+			
+			<h2 id="UTF8Len">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=24260:24285#L790">UTF8Len</a>
+				<a class="permalink" href="#UTF8Len">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UTF8Len(b <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#int8">int8</a></pre>
+			<p>UTF8Len returns a byte length of the utf-8 character.
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnescapePunctuations">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=14090:14137#L543">UnescapePunctuations</a>
+				<a class="permalink" href="#UnescapePunctuations">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnescapePunctuations(source []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>UnescapePunctuations unescapes blackslash escaped punctuations.
+
+			
+			
+
+		
+			
+			
+			<h2 id="VisualizeSpaces">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=3128:3166#L119">VisualizeSpaces</a>
+				<a class="permalink" href="#VisualizeSpaces">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func VisualizeSpaces(bs []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+			<p>VisualizeSpaces visualize invisible space characters.
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BufWriter">type <a href="/src/github.com/yuin/goldmark/util/util.go?s=25535:25724#L830">BufWriter</a>
+				<a class="permalink" href="#BufWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A BufWriter is a subset of the bufio.Writer .
+
+			<pre>type BufWriter interface {
+    <a href="/pkg/io/">io</a>.<a href="/pkg/io/#Writer">Writer</a>
+    Available() <a href="/pkg/builtin/#int">int</a>
+    Buffered() <a href="/pkg/builtin/#int">int</a>
+    Flush() <a href="/pkg/builtin/#error">error</a>
+    WriteByte(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a>
+    WriteRune(r <a href="/pkg/builtin/#rune">rune</a>) (size <a href="/pkg/builtin/#int">int</a>, err <a href="/pkg/builtin/#error">error</a>)
+    WriteString(s <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="BytesFilter">type <a href="/src/github.com/yuin/goldmark/util/util.go?s=26943:27222#L889">BytesFilter</a>
+				<a class="permalink" href="#BytesFilter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>BytesFilter is a efficient data structure for checking whether bytes exist or not.
+BytesFilter is thread-safe.
+
+			<pre>type BytesFilter interface {
+    <span class="comment">// Add adds given bytes to this set.</span>
+    Add([]<a href="/pkg/builtin/#byte">byte</a>)
+
+    <span class="comment">// Contains return true if this set contains given bytes, otherwise false.</span>
+    Contains([]<a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Extend copies this filter and adds given bytes to new filter.</span>
+    Extend(...[]<a href="/pkg/builtin/#byte">byte</a>) <a href="#BytesFilter">BytesFilter</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBytesFilter">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=27357:27408#L907">NewBytesFilter</a>
+					<a class="permalink" href="#NewBytesFilter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBytesFilter(elements ...[]<a href="/pkg/builtin/#byte">byte</a>) <a href="#BytesFilter">BytesFilter</a></pre>
+				<p>NewBytesFilter returns a new BytesFilter.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="CopyOnWriteBuffer">type <a href="/src/github.com/yuin/goldmark/util/util.go?s=259:320#L7">CopyOnWriteBuffer</a>
+				<a class="permalink" href="#CopyOnWriteBuffer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A CopyOnWriteBuffer is a byte buffer that copies buffer when
+it need to be changed.
+
+			<pre>type CopyOnWriteBuffer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCopyOnWriteBuffer">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=379:437#L13">NewCopyOnWriteBuffer</a>
+					<a class="permalink" href="#NewCopyOnWriteBuffer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCopyOnWriteBuffer(buffer []<a href="/pkg/builtin/#byte">byte</a>) <a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a></pre>
+				<p>NewCopyOnWriteBuffer returns a new CopyOnWriteBuffer.
+
+				
+				
+			
+
+			
+				
+				<h3 id="CopyOnWriteBuffer.Append">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=1091:1139#L38">Append</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.Append">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) Append(value []<a href="/pkg/builtin/#byte">byte</a>)</pre>
+				<p>Append appends given bytes to the buffer.
+Append copy buffer at the first time.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.AppendByte">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=1909:1955#L67">AppendByte</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.AppendByte">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) AppendByte(c <a href="/pkg/builtin/#byte">byte</a>)</pre>
+				<p>AppendByte appends given bytes to the buffer.
+AppendByte copy buffer at the first time.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.AppendString">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=1414:1468#L50">AppendString</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.AppendString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) AppendString(value <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>AppendString appends given string to the buffer.
+AppendString copy buffer at the first time.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.Bytes">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=2163:2205#L78">Bytes</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) Bytes() []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<p>Bytes returns bytes of this buffer.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.IsCopied">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=2297:2340#L83">IsCopied</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.IsCopied">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) IsCopied() <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>IsCopied returns true if buffer has been copied, otherwise false.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.Write">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=613:660#L22">Write</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) Write(value []<a href="/pkg/builtin/#byte">byte</a>)</pre>
+				<p>Write writes given bytes to the buffer.
+Write allocate new buffer and clears it at the first time.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.WriteByte">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=1630:1681#L56">WriteByte</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.WriteByte">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) WriteByte(c <a href="/pkg/builtin/#byte">byte</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>WriteByte writes the given byte to the buffer.
+WriteByte allocate new buffer and clears it at the first time.
+
+				
+				
+				
+			
+				
+				<h3 id="CopyOnWriteBuffer.WriteString">func (*CopyOnWriteBuffer) <a href="/src/github.com/yuin/goldmark/util/util.go?s=907:960#L32">WriteString</a>
+					<a class="permalink" href="#CopyOnWriteBuffer.WriteString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#CopyOnWriteBuffer">CopyOnWriteBuffer</a>) WriteString(value <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>WriteString writes given string to the buffer.
+WriteString allocate new buffer and clears it at the first time.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HTML5Entity">type <a href="/src/github.com/yuin/goldmark/util/html5entities.go?s=96:179#L1">HTML5Entity</a>
+				<a class="permalink" href="#HTML5Entity">&#xb6;</a>
+				
+				
+			</h2>
+			<p>An HTML5Entity struct represents HTML5 entitites.
+
+			<pre>type HTML5Entity struct {
+<span id="HTML5Entity.Name"></span>    Name       <a href="/pkg/builtin/#string">string</a>
+<span id="HTML5Entity.CodePoints"></span>    CodePoints []<a href="/pkg/builtin/#int">int</a>
+<span id="HTML5Entity.Characters"></span>    Characters []<a href="/pkg/builtin/#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="LookUpHTML5EntityByName">func <a href="/src/github.com/yuin/goldmark/util/html5entities.go?s=306:368#L3">LookUpHTML5EntityByName</a>
+					<a class="permalink" href="#LookUpHTML5EntityByName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func LookUpHTML5EntityByName(name <a href="/pkg/builtin/#string">string</a>) (*<a href="#HTML5Entity">HTML5Entity</a>, <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>LookUpHTML5EntityByName returns (an HTML5Entity, true) if an entity named
+given name is found, otherwise (nil, false).
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="PrioritizedSlice">type <a href="/src/github.com/yuin/goldmark/util/util.go?s=26030:26070#L849">PrioritizedSlice</a>
+				<a class="permalink" href="#PrioritizedSlice">&#xb6;</a>
+				
+				
+			</h2>
+			<p>PrioritizedSlice is a slice of the PrioritizedValues.
+
+			<pre>type PrioritizedSlice []<a href="#PrioritizedValue">PrioritizedValue</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PrioritizedSlice.Remove">func (PrioritizedSlice) <a href="/src/github.com/yuin/goldmark/util/util.go?s=26296:26360#L859">Remove</a>
+					<a class="permalink" href="#PrioritizedSlice.Remove">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s <a href="#PrioritizedSlice">PrioritizedSlice</a>) Remove(v interface{}) <a href="#PrioritizedSlice">PrioritizedSlice</a></pre>
+				<p>Remove removes the given value from this slice.
+
+				
+				
+				
+			
+				
+				<h3 id="PrioritizedSlice.Sort">func (PrioritizedSlice) <a href="/src/github.com/yuin/goldmark/util/util.go?s=26127:26159#L852">Sort</a>
+					<a class="permalink" href="#PrioritizedSlice.Sort">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s <a href="#PrioritizedSlice">PrioritizedSlice</a>) Sort()</pre>
+				<p>Sort sorts the PrioritizedSlice in ascending order.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PrioritizedValue">type <a href="/src/github.com/yuin/goldmark/util/util.go?s=25804:25971#L841">PrioritizedValue</a>
+				<a class="permalink" href="#PrioritizedValue">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A PrioritizedValue struct holds pair of an arbitrary value and a priority.
+
+			<pre>type PrioritizedValue struct {
+<span id="PrioritizedValue.Value"></span>    <span class="comment">// Value is an arbitrary value that you want to prioritize.</span>
+    Value interface{}
+<span id="PrioritizedValue.Priority"></span>    <span class="comment">// Priority is a priority of the value.</span>
+    Priority <a href="/pkg/builtin/#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Prioritized">func <a href="/src/github.com/yuin/goldmark/util/util.go?s=26578:26640#L875">Prioritized</a>
+					<a class="permalink" href="#Prioritized">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Prioritized(v interface{}, priority <a href="/pkg/builtin/#int">int</a>) <a href="#PrioritizedValue">PrioritizedValue</a></pre>
+				<p>Prioritized returns a new PrioritizedValue.
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

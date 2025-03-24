@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>storage - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package storage
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/sumdb/storage"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package storage defines storage interfaces for and a basic implementation of a checksum database.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#TestStorage">func TestStorage(t *testing.T, ctx context.Context, storage Storage)</a></dd>
+			
+			
+				
+				<dd><a href="#Mem">type Mem</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mem.ReadOnly">func (m *Mem) ReadOnly(ctx context.Context, f func(context.Context, Transaction) error) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Mem.ReadWrite">func (m *Mem) ReadWrite(ctx context.Context, f func(context.Context, Transaction) error) error</a></dd>
+				
+			
+				
+				<dd><a href="#Storage">type Storage</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Transaction">type Transaction</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Write">type Write</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/golang.org/x/mod/sumdb/storage/mem.go">mem.go</a>
+			
+				<a href="/src/golang.org/x/mod/sumdb/storage/storage.go">storage.go</a>
+			
+				<a href="/src/golang.org/x/mod/sumdb/storage/test.go">test.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="TestStorage">func <a href="/src/golang.org/x/mod/sumdb/storage/test.go?s=271:339#L5">TestStorage</a>
+				<a class="permalink" href="#TestStorage">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TestStorage(t *<a href="/pkg/testing/">testing</a>.<a href="/pkg/testing/#T">T</a>, ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, storage <a href="#Storage">Storage</a>)</pre>
+			<p>TestStorage tests a Storage implementation.
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Mem">type <a href="/src/golang.org/x/mod/sumdb/storage/mem.go?s=411:475#L8">Mem</a>
+				<a class="permalink" href="#Mem">&#xb6;</a>
+				
+				
+			</h2>
+			<p>Mem is an in-memory implementation of <a href="#Storage">Storage</a>.
+It is meant for tests and does not store any data to persistent storage.
+<p>The zero value is an empty Mem ready for use.
+
+			<pre>type Mem struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Mem.ReadOnly">func (*Mem) <a href="/src/golang.org/x/mod/sumdb/storage/mem.go?s=776:869#L24">ReadOnly</a>
+					<a class="permalink" href="#Mem.ReadOnly">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#Mem">Mem</a>) ReadOnly(ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, f func(<a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, <a href="#Transaction">Transaction</a>) <a href="/pkg/builtin/#error">error</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>ReadOnly runs f in a read-only transaction.
+
+				
+				
+				
+			
+				
+				<h3 id="Mem.ReadWrite">func (*Mem) <a href="/src/golang.org/x/mod/sumdb/storage/mem.go?s=1231:1325#L47">ReadWrite</a>
+					<a class="permalink" href="#Mem.ReadWrite">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#Mem">Mem</a>) ReadWrite(ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, f func(<a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, <a href="#Transaction">Transaction</a>) <a href="/pkg/builtin/#error">error</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>ReadWrite runs f in a read-write transaction.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Storage">type <a href="/src/golang.org/x/mod/sumdb/storage/storage.go?s=352:1318#L1">Storage</a>
+				<a class="permalink" href="#Storage">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Storage is a transaction key-value storage system.
+
+			<pre>type Storage interface {
+    <span class="comment">// ReadOnly runs f in a read-only transaction.</span>
+    <span class="comment">// It is equivalent to ReadWrite except that the</span>
+    <span class="comment">// transaction&#39;s BufferWrite method will fail unconditionally.</span>
+    <span class="comment">// (The implementation may be able to optimize the</span>
+    <span class="comment">// transaction if it knows at the start that no writes will happen.)</span>
+    ReadOnly(ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, f func(<a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, <a href="#Transaction">Transaction</a>) <a href="/pkg/builtin/#error">error</a>) <a href="/pkg/builtin/#error">error</a>
+
+    <span class="comment">// ReadWrite runs f in a read-write transaction.</span>
+    <span class="comment">// If f returns an error, the transaction aborts and returns that error.</span>
+    <span class="comment">// If f returns nil, the transaction attempts to commit and then return nil.</span>
+    <span class="comment">// Otherwise it tries again. Note that f may be called multiple times and that</span>
+    <span class="comment">// the result only describes the effect of the final call to f.</span>
+    <span class="comment">// The caller must take care not to use any state computed during</span>
+    <span class="comment">// earlier calls to f, or even the last call to f when an error is returned.</span>
+    ReadWrite(ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, f func(<a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, <a href="#Transaction">Transaction</a>) <a href="/pkg/builtin/#error">error</a>) <a href="/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Transaction">type <a href="/src/golang.org/x/mod/sumdb/storage/storage.go?s=1455:2428#L21">Transaction</a>
+				<a class="permalink" href="#Transaction">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Transaction provides read and write operations within a transaction,
+as executed by <a href="#Storage">Storage</a>&apos;s ReadOnly or ReadWrite methods.
+
+			<pre>type Transaction interface {
+    <span class="comment">// ReadValue reads the value associated with a single key.</span>
+    <span class="comment">// If there is no value associated with that key, ReadKey returns an empty value.</span>
+    <span class="comment">// An error is only returned for problems accessing the storage.</span>
+    ReadValue(ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, key <a href="/pkg/builtin/#string">string</a>) (value <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// ReadValues reads the values associated with the given keys.</span>
+    <span class="comment">// If there is no value stored for a given key, ReadValues returns an empty value for that key.</span>
+    <span class="comment">// An error is only returned for problems accessing the storage.</span>
+    ReadValues(ctx <a href="/pkg/context/">context</a>.<a href="/pkg/context/#Context">Context</a>, keys []<a href="/pkg/builtin/#string">string</a>) (values []<a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)
+
+    <span class="comment">// BufferWrites buffers the given writes,</span>
+    <span class="comment">// to be applied at the end of the transaction.</span>
+    <span class="comment">// BufferWrites panics if this is a ReadOnly transaction.</span>
+    <span class="comment">// It returns an error if it detects any other problems.</span>
+    <span class="comment">// The behavior of multiple writes buffered using the same key</span>
+    <span class="comment">// is undefined: it may return an error or not.</span>
+    BufferWrites(writes []<a href="#Write">Write</a>) <a href="/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Write">type <a href="/src/golang.org/x/mod/sumdb/storage/storage.go?s=2594:2643#L43">Write</a>
+				<a class="permalink" href="#Write">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Write is a single change to be applied at the end of a read-write transaction.
+A Write with an empty value deletes the value associated with the given key.
+
+			<pre>type Write struct {
+<span id="Write.Key"></span>    Key   <a href="/pkg/builtin/#string">string</a>
+<span id="Write.Value"></span>    Value <a href="/pkg/builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

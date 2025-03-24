@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>text - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.23.0";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package text
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/yuin/goldmark/text"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>Package text provides functionalities to manipulate texts.
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="#BlockReader">type BlockReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewBlockReader">func NewBlockReader(source []byte, segments *Segments) BlockReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="#FindClosureOptions">type FindClosureOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Reader">type Reader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewReader">func NewReader(source []byte) Reader</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Segment">type Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewSegment">func NewSegment(start, stop int) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewSegmentPadding">func NewSegmentPadding(start, stop, n int) Segment</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.Between">func (t *Segment) Between(other Segment) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.ConcatPadding">func (t *Segment) ConcatPadding(v []byte) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.IsEmpty">func (t *Segment) IsEmpty() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.Len">func (t *Segment) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.TrimLeftSpace">func (t *Segment) TrimLeftSpace(buffer []byte) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.TrimLeftSpaceWidth">func (t *Segment) TrimLeftSpaceWidth(width int, buffer []byte) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.TrimRightSpace">func (t *Segment) TrimRightSpace(buffer []byte) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.Value">func (t *Segment) Value(buffer []byte) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.WithStart">func (t *Segment) WithStart(v int) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segment.WithStop">func (t *Segment) WithStop(v int) Segment</a></dd>
+				
+			
+				
+				<dd><a href="#Segments">type Segments</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewSegments">func NewSegments() *Segments</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.Append">func (s *Segments) Append(t Segment)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.AppendAll">func (s *Segments) AppendAll(t []Segment)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.At">func (s *Segments) At(i int) Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.Clear">func (s *Segments) Clear()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.Len">func (s *Segments) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.Set">func (s *Segments) Set(i int, v Segment)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.SetSliced">func (s *Segments) SetSliced(lo, hi int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.Sliced">func (s *Segments) Sliced(lo, hi int) []Segment</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Segments.Unshift">func (s *Segments) Unshift(v Segment)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/yuin/goldmark/text/package.go">package.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/text/reader.go">reader.go</a>
+			
+				<a href="/src/github.com/yuin/goldmark/text/segment.go">segment.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>EOF indicates the end of file.
+
+				<pre>const <span id="EOF">EOF</span> = <a href="/pkg/builtin/#byte">byte</a>(0xff)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="BlockReader">type <a href="/src/github.com/yuin/goldmark/text/reader.go?s=5943:6075#L264">BlockReader</a>
+				<a class="permalink" href="#BlockReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A BlockReader interface is a reader that is optimized for Blocks.
+
+			<pre>type BlockReader interface {
+    <a href="#Reader">Reader</a>
+    <span class="comment">// Reset resets current state and sets new segments to the reader.</span>
+    Reset(segment *<a href="#Segments">Segments</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBlockReader">func <a href="/src/github.com/yuin/goldmark/text/reader.go?s=6324:6390#L282">NewBlockReader</a>
+					<a class="permalink" href="#NewBlockReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBlockReader(source []<a href="/pkg/builtin/#byte">byte</a>, segments *<a href="#Segments">Segments</a>) <a href="#BlockReader">BlockReader</a></pre>
+				<p>NewBlockReader returns a new BlockReader.
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="FindClosureOptions">type <a href="/src/github.com/yuin/goldmark/text/reader.go?s=2056:2612#L70">FindClosureOptions</a>
+				<a class="permalink" href="#FindClosureOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>FindClosureOptions is options for Reader.FindClosure.
+
+			<pre>type FindClosureOptions struct {
+<span id="FindClosureOptions.CodeSpan"></span>    <span class="comment">// CodeSpan is a flag for the FindClosure. If this is set to true,</span>
+    <span class="comment">// FindClosure ignores closers in codespans.</span>
+    CodeSpan <a href="/pkg/builtin/#bool">bool</a>
+
+<span id="FindClosureOptions.Nesting"></span>    <span class="comment">// Nesting is a flag for the FindClosure. If this is set to true,</span>
+    <span class="comment">// FindClosure allows nesting.</span>
+    Nesting <a href="/pkg/builtin/#bool">bool</a>
+
+<span id="FindClosureOptions.Newline"></span>    <span class="comment">// Newline is a flag for the FindClosure. If this is set to true,</span>
+    <span class="comment">// FindClosure searches for a closer over multiple lines.</span>
+    Newline <a href="/pkg/builtin/#bool">bool</a>
+
+<span id="FindClosureOptions.Advance"></span>    <span class="comment">// Advance is a flag for the FindClosure. If this is set to true,</span>
+    <span class="comment">// FindClosure advances pointers when closer is found.</span>
+    Advance <a href="/pkg/builtin/#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Reader">type <a href="/src/github.com/yuin/goldmark/text/reader.go?s=251:1997#L8">Reader</a>
+				<a class="permalink" href="#Reader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Reader interface provides abstracted method for reading text.
+
+			<pre>type Reader interface {
+    <a href="/pkg/io/">io</a>.<a href="/pkg/io/#RuneReader">RuneReader</a>
+
+    <span class="comment">// Source returns a source of the reader.</span>
+    Source() []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// ResetPosition resets positions.</span>
+    ResetPosition()
+
+    <span class="comment">// Peek returns a byte at current position without advancing the internal pointer.</span>
+    Peek() <a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// PeekLine returns the current line without advancing the internal pointer.</span>
+    PeekLine() ([]<a href="/pkg/builtin/#byte">byte</a>, <a href="#Segment">Segment</a>)
+
+    <span class="comment">// PrecendingCharacter returns a character just before current internal pointer.</span>
+    PrecendingCharacter() <a href="/pkg/builtin/#rune">rune</a>
+
+    <span class="comment">// Value returns a value of the given segment.</span>
+    Value(<a href="#Segment">Segment</a>) []<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// LineOffset returns a distance from the line head to current position.</span>
+    LineOffset() <a href="/pkg/builtin/#int">int</a>
+
+    <span class="comment">// Position returns current line number and position.</span>
+    Position() (<a href="/pkg/builtin/#int">int</a>, <a href="#Segment">Segment</a>)
+
+    <span class="comment">// SetPosition sets current line number and position.</span>
+    SetPosition(<a href="/pkg/builtin/#int">int</a>, <a href="#Segment">Segment</a>)
+
+    <span class="comment">// SetPadding sets padding to the reader.</span>
+    SetPadding(<a href="/pkg/builtin/#int">int</a>)
+
+    <span class="comment">// Advance advances the internal pointer.</span>
+    Advance(<a href="/pkg/builtin/#int">int</a>)
+
+    <span class="comment">// AdvanceAndSetPadding advances the internal pointer and add padding to the</span>
+    <span class="comment">// reader.</span>
+    AdvanceAndSetPadding(<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#int">int</a>)
+
+    <span class="comment">// AdvanceLine advances the internal pointer to the next line head.</span>
+    AdvanceLine()
+
+    <span class="comment">// SkipSpaces skips space characters and returns a non-blank line.</span>
+    <span class="comment">// If it reaches EOF, returns false.</span>
+    SkipSpaces() (<a href="#Segment">Segment</a>, <a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#bool">bool</a>)
+
+    <span class="comment">// SkipSpaces skips blank lines and returns a non-blank line.</span>
+    <span class="comment">// If it reaches EOF, returns false.</span>
+    SkipBlankLines() (<a href="#Segment">Segment</a>, <a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#bool">bool</a>)
+
+    <span class="comment">// Match performs regular expression matching to current line.</span>
+    Match(reg *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>) <a href="/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Match performs regular expression searching to current line.</span>
+    FindSubMatch(reg *<a href="/pkg/regexp/">regexp</a>.<a href="/pkg/regexp/#Regexp">Regexp</a>) [][]<a href="/pkg/builtin/#byte">byte</a>
+
+    <span class="comment">// FindClosure finds corresponding closure.</span>
+    FindClosure(opener, closer <a href="/pkg/builtin/#byte">byte</a>, options <a href="#FindClosureOptions">FindClosureOptions</a>) (*<a href="#Segments">Segments</a>, <a href="/pkg/builtin/#bool">bool</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewReader">func <a href="/src/github.com/yuin/goldmark/text/reader.go?s=2835:2871#L99">NewReader</a>
+					<a class="permalink" href="#NewReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewReader(source []<a href="/pkg/builtin/#byte">byte</a>) <a href="#Reader">Reader</a></pre>
+				<p>NewReader return a new Reader that can read UTF-8 bytes .
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Segment">type <a href="/src/github.com/yuin/goldmark/text/segment.go?s=155:387#L1">Segment</a>
+				<a class="permalink" href="#Segment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>A Segment struct holds information about source positions.
+
+			<pre>type Segment struct {
+<span id="Segment.Start"></span>    <span class="comment">// Start is a start position of the segment.</span>
+    Start <a href="/pkg/builtin/#int">int</a>
+
+<span id="Segment.Stop"></span>    <span class="comment">// Stop is a stop position of the segment.</span>
+    <span class="comment">// This value should be excluded.</span>
+    Stop <a href="/pkg/builtin/#int">int</a>
+
+<span id="Segment.Padding"></span>    <span class="comment">// Padding is a padding length of the segment.</span>
+    Padding <a href="/pkg/builtin/#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewSegment">func <a href="/src/github.com/yuin/goldmark/text/segment.go?s=425:465#L14">NewSegment</a>
+					<a class="permalink" href="#NewSegment">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewSegment(start, stop <a href="/pkg/builtin/#int">int</a>) <a href="#Segment">Segment</a></pre>
+				<p>NewSegment return a new Segment.
+
+				
+				
+			
+				
+				<h3 id="NewSegmentPadding">func <a href="/src/github.com/yuin/goldmark/text/segment.go?s=607:657#L23">NewSegmentPadding</a>
+					<a class="permalink" href="#NewSegmentPadding">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewSegmentPadding(start, stop, n <a href="/pkg/builtin/#int">int</a>) <a href="#Segment">Segment</a></pre>
+				<p>NewSegmentPadding returns a new Segment with the given padding.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Segment.Between">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=1228:1276#L47">Between</a>
+					<a class="permalink" href="#Segment.Between">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) Between(other <a href="#Segment">Segment</a>) <a href="#Segment">Segment</a></pre>
+				<p>Between returns a segment between this segment and the given segment.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.ConcatPadding">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=3220:3268#L127">ConcatPadding</a>
+					<a class="permalink" href="#Segment.ConcatPadding">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) ConcatPadding(v []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<p>ConcatPadding concats the padding to the given slice.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.IsEmpty">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=1487:1519#L59">IsEmpty</a>
+					<a class="permalink" href="#Segment.IsEmpty">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) IsEmpty() <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>IsEmpty returns true if this segment is empty, otherwise false.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.Len">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=1085:1112#L42">Len</a>
+					<a class="permalink" href="#Segment.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) Len() <a href="/pkg/builtin/#int">int</a></pre>
+				<p>Len returns a length of the segment.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.TrimLeftSpace">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=2003:2057#L76">TrimLeftSpace</a>
+					<a class="permalink" href="#Segment.TrimLeftSpace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) TrimLeftSpace(buffer []<a href="/pkg/builtin/#byte">byte</a>) <a href="#Segment">Segment</a></pre>
+				<p>TrimLeftSpace returns a new segment by slicing off all leading
+space characters including padding.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.TrimLeftSpaceWidth">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=2274:2344#L84">TrimLeftSpaceWidth</a>
+					<a class="permalink" href="#Segment.TrimLeftSpaceWidth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) TrimLeftSpaceWidth(width <a href="/pkg/builtin/#int">int</a>, buffer []<a href="/pkg/builtin/#byte">byte</a>) <a href="#Segment">Segment</a></pre>
+				<p>TrimLeftSpaceWidth returns a new segment by slicing off leading space
+characters until the given width.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.TrimRightSpace">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=1658:1713#L65">TrimRightSpace</a>
+					<a class="permalink" href="#Segment.TrimRightSpace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) TrimRightSpace(buffer []<a href="/pkg/builtin/#byte">byte</a>) <a href="#Segment">Segment</a></pre>
+				<p>TrimRightSpace returns a new segment by slicing off all trailing
+space characters.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.Value">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=773:818#L32">Value</a>
+					<a class="permalink" href="#Segment.Value">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) Value(buffer []<a href="/pkg/builtin/#byte">byte</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<p>Value returns a value of the segment.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.WithStart">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=2908:2950#L117">WithStart</a>
+					<a class="permalink" href="#Segment.WithStart">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) WithStart(v <a href="/pkg/builtin/#int">int</a>) <a href="#Segment">Segment</a></pre>
+				<p>WithStart returns a new Segment with same value except Start.
+
+				
+				
+				
+			
+				
+				<h3 id="Segment.WithStop">func (*Segment) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=3067:3108#L122">WithStop</a>
+					<a class="permalink" href="#Segment.WithStop">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="#Segment">Segment</a>) WithStop(v <a href="/pkg/builtin/#int">int</a>) <a href="#Segment">Segment</a></pre>
+				<p>WithStop returns a new Segment with same value except Stop.
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Segments">type <a href="/src/github.com/yuin/goldmark/text/segment.go?s=3405:3447#L135">Segments</a>
+				<a class="permalink" href="#Segments">&#xb6;</a>
+				
+				
+			</h2>
+			<p>Segments is a collection of the Segment.
+
+			<pre>type Segments struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewSegments">func <a href="/src/github.com/yuin/goldmark/text/segment.go?s=3487:3515#L140">NewSegments</a>
+					<a class="permalink" href="#NewSegments">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewSegments() *<a href="#Segments">Segments</a></pre>
+				<p>NewSegments return a new Segments.
+
+				
+				
+			
+
+			
+				
+				<h3 id="Segments.Append">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=3628:3664#L147">Append</a>
+					<a class="permalink" href="#Segments.Append">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) Append(t <a href="#Segment">Segment</a>)</pre>
+				<p>Append appends the given segment after the tail of the collection.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.AppendAll">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=3849:3890#L155">AppendAll</a>
+					<a class="permalink" href="#Segments.AppendAll">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) AppendAll(t []<a href="#Segment">Segment</a>)</pre>
+				<p>AppendAll appends all elements of given segments after the tail of the collection.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.At">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4173:4209#L171">At</a>
+					<a class="permalink" href="#Segments.At">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) At(i <a href="/pkg/builtin/#int">int</a>) <a href="#Segment">Segment</a></pre>
+				<p>At returns a segment at the given index.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.Clear">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4635:4661#L191">Clear</a>
+					<a class="permalink" href="#Segments.Clear">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) Clear()</pre>
+				<p>Clear delete all element of the collection.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.Len">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4037:4065#L163">Len</a>
+					<a class="permalink" href="#Segments.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) Len() <a href="/pkg/builtin/#int">int</a></pre>
+				<p>Len returns the length of the collection.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.Set">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4266:4306#L176">Set</a>
+					<a class="permalink" href="#Segments.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) Set(i <a href="/pkg/builtin/#int">int</a>, v <a href="#Segment">Segment</a>)</pre>
+				<p>Set sets the given Segment.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.SetSliced">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4389:4429#L181">SetSliced</a>
+					<a class="permalink" href="#Segments.SetSliced">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) SetSliced(lo, hi <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>SetSliced replace the collection with a subsliced value.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.Sliced">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4511:4558#L186">Sliced</a>
+					<a class="permalink" href="#Segments.Sliced">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) Sliced(lo, hi <a href="/pkg/builtin/#int">int</a>) []<a href="#Segment">Segment</a></pre>
+				<p>Sliced returns a subslice of the collection.
+
+				
+				
+				
+			
+				
+				<h3 id="Segments.Unshift">func (*Segments) <a href="/src/github.com/yuin/goldmark/text/segment.go?s=4746:4783#L196">Unshift</a>
+					<a class="permalink" href="#Segments.Unshift">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="#Segments">Segments</a>) Unshift(v <a href="#Segment">Segment</a>)</pre>
+				<p>Unshift insert the given Segment to head of the collection.
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.23.0.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="https://golang.org/doc/tos.html">Terms of Service</a> |
+<a href="https://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
